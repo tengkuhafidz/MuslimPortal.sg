@@ -1,0 +1,86 @@
+
+/* label focus color */
+ .input-field input:focus + label {
+   color: #388e3c !important;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid #388e3c !important;
+   box-shadow: 0 1px 0 0 #388e3c !important
+ }
+
+/* label focus color */
+ .input-field-user input:focus + label {
+   color: #1976d2 !important;
+ }
+ /* label underline focus color */
+ .row .input-field-user input:focus {
+   border-bottom: 1px solid #1976d2 !important;
+   box-shadow: 0 1px 0 0 #1976d2 !important
+ }
+
+ .iconAlign {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+ .lessEmphasis {
+    color: grey;
+    font-size: 0.8em;
+}
+
+.eventsCard {
+	height: 200px !important;
+}
+
+.female {
+	color: pink !important;
+}
+
+.male {
+	color: #90caf9 !important;
+}
+
+.fullHeight{
+  min-height:100vh !important;
+}
+
+.topGap{
+  margin-top: 30px;
+}
+
+.topGapSmall{
+  margin-top: 15px;
+}
+
+.bottomGap{
+  margin-bottom: 30px;
+}
+
+.marginSides{
+  margin-right: 20px
+}
+
+.header{
+  font-size: 2.5em;
+}
+
+.fullButton{
+  display: block;
+  width: 100%;
+}
+
+.rightAbit{
+  margin-left: 28px
+}
+
+.rightAbitSgt{
+  margin-left: 15px
+}
+
+@media only screen and (min-width: 500px) {
+    .containedFAB{
+      bottom: 45px;
+      right: 170px;
+    }
+}
