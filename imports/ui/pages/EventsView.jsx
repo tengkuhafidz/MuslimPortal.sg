@@ -30,7 +30,8 @@ export default class EventsView extends TrackerReact(React.Component) {
     events() {
         var filterState = this.state.filter
 
-        console.log(filterState)
+        var nowDate = new Date().toISOString();
+        console.log(nowDate);
 
         if (filterState === "talk")
           events = Events.find({eventType: "talk"}).fetch()
@@ -39,11 +40,9 @@ export default class EventsView extends TrackerReact(React.Component) {
         else if (filterState === "class")
           events = Events.find({eventType: "class"}).fetch()
         else {
-          events = Events.find().sort({dateStart: -1})
+          events = Events.find({dateStart: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
         }
 
-        //var events = Events.find({hasExpired: { $ne: true }}).fetch()
-        console.log('THIS IS EVENT' + events)
         return events
     }
 
@@ -55,8 +54,6 @@ export default class EventsView extends TrackerReact(React.Component) {
             return <span>
                 loading
             </span>
-
-            //console.log("events: " + events)
 
         return (
             <div className="bottomGap topGap">
