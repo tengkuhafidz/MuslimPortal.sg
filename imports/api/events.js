@@ -24,10 +24,17 @@ Meteor.methods({
   addEvents(name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
 tags) {
 
-    properFormat = dateStart.split("-");
-    finalised = properFormat[2] + "-" + properFormat[1] + "-" + properFormat[0] + "T" + timeStart + ":00"
+    properDateEnd = dateEnd;
+    properFormat = dateEnd.split("-");
+    finalised = properFormat[2] + "-" + properFormat[1] + "-" + properFormat[0] + "T" + timeEnd + ":00"
 
-    dateStart = new Date(finalised).toISOString();
+    dateEnd = new Date(finalised)
+    dateEnd.setHours(dateEnd.getHours() - 8)
+
+    dateEnd = dateEnd.toISOString();
+
+    console.log("dateEnd" + dateEnd);
+
 
     if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags){
       throw new Meteor.Error('Some input fields are not filled in.');
@@ -50,6 +57,7 @@ tags) {
       address,
       fee,
       tags,
+      properDateEnd,
       createdAt: new Date(), // current time
       mosqueId: Meteor.userId(),           // _id of logged in user
       mosqueName: Meteor.user().profile.name  // username of logged in user

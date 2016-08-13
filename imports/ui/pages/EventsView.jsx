@@ -30,24 +30,25 @@ export default class EventsView extends TrackerReact(React.Component) {
     events() {
         var filterState = this.state.filter
 
-        var d = new Date();
-        var d2 = new Date();
+        // var d = new Date();
+        // var d2 = new Date();
+        //
+        // d2.setHours(d.getHours() + 8);
+        //
+        // var nowDate = d2.toISOString();
 
-        d2.setHours(d.getHours() + 8);
+        nowDate = new Date().toISOString();
 
-        var nowDate = d2.toISOString();
-
-        console.log(nowDate);
-
+        console.log("now Date" + nowDate);
 
         if (filterState === "talk")
-          events = Events.find({eventType: "talk"}).fetch()
+          events = Events.find({eventType: "talk", dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
         else if (filterState === "social")
-          events = Events.find({eventType: "social"}).fetch()
+          events = Events.find({eventType: "social", dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
         else if (filterState === "class")
-          events = Events.find({eventType: "class"}).fetch()
+          events = Events.find({eventType: "class", dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
         else {
-          events = Events.find({dateStart: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
+          events = Events.find({dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
         }
 
         return events

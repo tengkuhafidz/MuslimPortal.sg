@@ -82,7 +82,7 @@ export default class MosqueEventForm extends React.Component {
       var objAll = {name, speaker, eventType, description, dateStart, timeStart, dateEnd, timeEnd,
       venue, address, fee, tags}
 
-      console.log(objAll)
+      //console.log(objAll)
 
       Meteor.call('addEvents', name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
     tags, (error,data) => {
