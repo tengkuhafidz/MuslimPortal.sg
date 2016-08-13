@@ -1,15 +1,19 @@
 import React from 'react';
 
+import Greeting from '../Home/Greeting.jsx'
+
 export default class Home extends React.Component{
-  componentDidMount(){
-    document.title = "Quick Plate | Home"
-  }
 
   render(){
+    var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
     return(
-      <div>
-        <h1>This is home.. Truly.. Where I know I must be....</h1>
-        <a href="/login">login</a>
+      <div className="center">
+        <Greeting />
+        <h1 className=" topGap"> 
+          {randomMessage.message}
+        </h1>
+        <div className="flow-text">#{randomMessage.hashtag}</div>
 
       </div>
     )

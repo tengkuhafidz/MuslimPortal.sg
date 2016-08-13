@@ -1,3 +1,45 @@
+ html, .betaFont{
+  font-family: 'Indie Flower', cursive, sans-serif;
+ }
+
+.formalFont{
+  font-family: 'Raleway', helvetica, sans-serif;
+}
+
+.brand {
+  font-size: 1.5em;
+  color: grey;
+}
+
+.brand:hover {
+  font-size: 1.7em;
+}
+
+i { vertical-align: middle !important;}
+
+
+.editContent{
+  visibility: hidden;
+}
+
+  form{
+    display:inline;
+  }
+
+input[type="text"]
+{
+    font-size:1em;
+    width: auto;
+}
+
+
+.userNameSpan:hover{
+  border-bottom: 1px solid grey;
+}
+
+.userNameSpan:hover .editContent{
+  visibility: visible;
+}
 
 /* label focus color */
  .input-field input:focus + label {
@@ -53,6 +95,36 @@
   margin-top: 15px;
 }
 
+.noTopGap{
+  padding-top: 0;
+  margin-top: 0px;
+}
+
+.topLeft{
+    padding-top: 250px;
+    padding-left: 10px;
+}
+
+.contentDiv{
+  margin-top: 7%
+}
+
+.mainLink:hover{
+  font-size: 1.2em;
+}
+
+.bottomRight{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+
+.bottomLeft{
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
 .bottomGap{
   margin-bottom: 30px;
 }

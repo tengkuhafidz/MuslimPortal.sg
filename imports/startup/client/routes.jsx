@@ -22,6 +22,7 @@ import MosqueLogin from '/imports/ui/pages/MosqueLogin.jsx';
 import MosqueRegister from '/imports/ui/pages/MosqueRegister.jsx';
 import MosqueHistory from '/imports/ui/pages/MosqueHistory.jsx';
 import MosqueEventUpdate from '/imports/ui/pages/MosqueEventUpdate.jsx';
+import MusollaView from '/imports/ui/pages/MusollaView.jsx';
 
 function isAuthenticated(context, redirect){
   if(!Meteor.userId()){
@@ -42,10 +43,19 @@ function becauseAuthenticated(context, redirect){
 FlowRouter.route('/', {
   action: function(){
     mount(Layout, {
-      content: () => <EventsView />
+      content: () => <Home />
   })
 },
-name: "eventsView"
+name: "home"
+});
+
+FlowRouter.route('/musollaView', {
+  action: function(){
+    mount(Layout, {
+      content: () => <MusollaView />
+  })
+},
+name: "musollaView"
 });
 
 FlowRouter.route('/register', {
@@ -79,7 +89,7 @@ name: "dashboard"
 //here
 FlowRouter.route('/eventDetails/:eventId', {
   action: function(params) {
-    mount(MainLayout, {
+    mount(Layout, {
       content: () => <EventDetails eventId={params.eventId}/>,
   });
 },
@@ -88,7 +98,7 @@ name: "eventDetails"
 
 FlowRouter.route('/eventsView', {
   action: function() {
-    mount(MainLayout, {
+    mount(Layout, {
       content: () => <EventsView />,
   });
 },

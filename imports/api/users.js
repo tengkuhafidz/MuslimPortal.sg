@@ -7,8 +7,8 @@ export const Users = new Mongo.Collection('users');
 
 if (Meteor.isServer) {
 
-  Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
-});
+  	Meteor.publish("allUsers", function () {
+    	return Meteor.users.find({});
+	});
 
 }
