@@ -7,9 +7,9 @@ export const Events = new Mongo.Collection('events');
 
 if (Meteor.isServer) {
   //declare all publish relating to the collection here
-  //EXAMPLE:
+  //EXAMPLE: Tasks.find({}, { sort: { createdAt: -1 } });
   Meteor.publish('allEvents', function eventsPublication() {
-    return Events.find(); //db.events.find().sort({dateStart: -1})
+    return Events.find({}); //db.events.find({}, {name: 1, dateStart: 1, timeStart: 1}).sort({dateStart: -1})
   });
 
   Meteor.publish("allUsers", function () {
@@ -23,6 +23,19 @@ Meteor.methods({
   // EXAMPLE:
   addEvents(name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
 tags) {
+
+    properDateEnd = dateEnd;
+    properFormat = dateEnd.split("-");
+    finalised = properFormat[2] + "-" + properFormat[1] + "-" + properFormat[0] + "T" + timeEnd + ":00"
+
+    dateEnd = new Date(finalised)
+    dateEnd.setHours(dateEnd.getHours() - 8)
+
+    dateEnd = dateEnd.toISOString();
+
+    console.log("dateEnd" + dateEnd);
+
+
     if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags){
       throw new Meteor.Error('Some input fields are not filled in.');
     }
@@ -44,6 +57,7 @@ tags) {
       address,
       fee,
       tags,
+      properDateEnd,
       createdAt: new Date(), // current time
       mosqueId: Meteor.userId(),           // _id of logged in user
       mosqueName: Meteor.user().profile.name  // username of logged in user

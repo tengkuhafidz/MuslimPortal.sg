@@ -15,6 +15,13 @@ export default class EventSingle extends React.Component{
 
     speaker = (event.speaker == 0) ? <p>NIL</p> : <span>{event.speaker}</span>
 
+  dateEnd = new Date(event.dateEnd)
+  //console.log("date",date.toLocaleDateString("en-US"))
+
+  console.log("BAPAK KAU: " + dateEnd)
+
+  //I need ONLY date!
+
     return(
       <div>
           <div className="col s12 m6 ">
@@ -23,8 +30,7 @@ export default class EventSingle extends React.Component{
                 <span className="card-title truncate"><strong>{event.name}</strong></span>
 
               <p>{speaker}</p>
-
-                <p>{event.dateStart}, {event.timeStart} -  {event.dateEnd}, {event.timeEnd}
+                <p>{event.dateStart}, {event.timeStart} -  {event.properDateEnd}, {event.timeEnd}
                 <span className="">
                     <span> @ {event.mosqueName} Mosque</span>
                   </span>

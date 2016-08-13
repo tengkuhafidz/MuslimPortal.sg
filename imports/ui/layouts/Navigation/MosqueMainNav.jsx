@@ -23,7 +23,7 @@ const MosqueMainNav = React.createClass({
     }
   },
   render(){
-    console.log(Meteor.user())
+    
     return(
       <div className="navbar-fixed">
       <nav className="green darken-2">
