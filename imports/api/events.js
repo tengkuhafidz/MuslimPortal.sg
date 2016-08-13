@@ -26,6 +26,7 @@ tags) {
 
     properFormat = dateStart.split("-");
     finalised = properFormat[2] + "-" + properFormat[1] + "-" + properFormat[0] + "T" + timeStart + ":00"
+
     dateStart = new Date(finalised).toISOString();
 
     if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags){
