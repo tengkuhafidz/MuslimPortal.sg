@@ -6,6 +6,9 @@ import {Musolla} from '../../api/musolla.js'
 import MusollaSingle from '../MusollaView/MusollaSingle.jsx';
 
 export default class MusollaDetails extends TrackerReact(React.Component) {
+  componentDidMount() {
+      document.title = "NUSMS | Musolla Details"
+  }
 
   constructor(props) {
       super(props);
@@ -27,22 +30,12 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
     if (!musolla)
         return <span>loading</span>
 
+      directionSteps = ""
     if (musolla.direction){
       directionSteps = (
-<<<<<<< HEAD
-        musolla.direction.map((singleStep)=>{
-          return (<li>{singleStep}</li>)
-        })
-=======
-      <div>
-        <h5> Directions </h5>
-        <ul> 
-          {musolla.direction.map((singleStep)=>{
+          musolla.direction.map((singleStep)=>{
             return (<li>{singleStep}</li>)
-          })}
-        </ul>
-      </div>
->>>>>>> 25f66ec245cf0cea66f4c162b3060bc58a401919
+          })
       )
     }
 
@@ -52,22 +45,6 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
               <div className="col s12">
                   <div className="card-panel hoverable">
                       <h2>
-<<<<<<< HEAD
-                        {musolla.faculty}, {musolla.buildingName}
-                        <span className="eventType right formalFont">
-                            {musolla.gender}
-                        </span>
-                      </h2>
-
-                      <p className="formalFont ">{musolla.sideNote}</p>
-
-
-
-                      <p></p>
-                      <p className="topGap"></p>
-                      <h5>Directions: </h5>
-                      <p>{directionSteps}</p>
-=======
                         {musolla.faculty}, {musolla.building}
                         <span className="eventType right formalFont">
                           {musolla.gender}
@@ -75,9 +52,13 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
                       </h2>
 
                       <h5>({musolla.description})</h5>
-                      
-                      <div>{directionSteps}</div>
->>>>>>> 25f66ec245cf0cea66f4c162b3060bc58a401919
+
+                      <div className="topGap">
+                        <h5> Directions: </h5>
+                        <ol>
+                          {directionSteps}
+                        </ol>
+                      </div>
 
                   </div>
               </div>

@@ -39,7 +39,7 @@ export default class MusollaView extends TrackerReact(React.Component) {
 >>>>>>> 25f66ec245cf0cea66f4c162b3060bc58a401919
           Musolla in NUS
         </h1>
-
+        
         <MusollaAll musolla={musolla}/>
 
       </div>
