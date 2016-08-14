@@ -56,19 +56,31 @@ export default class EventsView extends TrackerReact(React.Component) {
 
             addBtn = "";
         if (Meteor.userId()) {
-          addBtn = (          <div className="fixed-action-btn containedFAB">
-                      <a className="btn-floating btn-large green darken-2" href="/mosqueEventForm">
-                        <i className="large material-icons ">add</i>
-                      </a>
-                    </div> )
+          addBtn = (          
+            <div>
+              <div className="addDataBtnLarge hide-on-med-and-down">
+                <a className="btn orange" href="/mosqueEventForm">
+                  Add Event
+                </a>
+              </div> 
+              <div className="fixed-action-btn hide-on-large-only addDataBtnSmall">
+                <a className="btn-floating btn-large orange" href="/mosqueEventForm">
+                  <i className="large material-icons">add</i>
+                </a>
+              </div>
+            </div>
+          )
         }
 
         console.log(Meteor.userId())
 
         return (
             <div className="bottomGap topGap">
-
-                <h1 className="col s12 center">NUSMS Events</h1>
+                
+                <div className="title">
+                  <h1 className="col s12 center">NUSMS Events </h1>
+                  {addBtn}
+                </div>
 
                   <div className="input-field center">
                     <select ref="type" className="browser-default" onChange={this.handleFilter.bind(this)}>
@@ -84,7 +96,7 @@ export default class EventsView extends TrackerReact(React.Component) {
 
                 <EventAll events={events}/>
 
-              {addBtn}
+              
 
             </div>
         )

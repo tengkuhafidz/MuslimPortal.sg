@@ -21,7 +21,7 @@ export default class LogoutBtn extends React.Component{
 
   render(){
     
-    var logoutBtn = Meteor.userId() ? <a href="#" onClick={this.handleLogout.bind(this)} className="formalFont grey-text mainLink"><i className="material-icons">power_settings_new</i> Logout</a> : "";
+    var logoutBtn = Meteor.userId() ? <a href="#" onClick={this.handleLogout.bind(this)} className="formalFont grey-text mainLink"><i className="material-icons iconAlign">power_settings_new</i> Logout</a> : "";
 
     return(
       <div className="topRight">
