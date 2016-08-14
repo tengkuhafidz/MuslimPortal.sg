@@ -1,5 +1,4 @@
 import React from 'react';
-import SpeakerSingle from './SpeakerSingle.jsx';
 
 export default class EventSingle extends React.Component{
 
@@ -8,24 +7,11 @@ export default class EventSingle extends React.Component{
   }
 
   render(){
+
   	event = this.props.event
 
-    needParticipants = event.needParticipants ? <span className="lessEmphasis"><i className="material-icons iconAlign">perm_identity</i> <span> Participants Needed </span> </span>: <span></span>
-    needVolunteers = event.needVolunteers ? <span className="lessEmphasis"><i className="material-icons iconAlign">assignment_ind</i> <span> Volunteers Needed </span>  </span>: <span></span>
-    gender = (event.gender == "f") ? <span className="lessEmphasis female"><i className="material-icons iconAlign">person</i> <span className=""> Female Only</span> </span>: (event.gender == "m") ? <span className="lessEmphasis male"><i className="material-icons iconAlign">person</i> <span className=""> Male Only </span> </span>: <span className="lessEmphasis"><i className="material-icons iconAlign">person</i> <span className=""> Any Genders </span> </span>
-
-  speaker = (event.speaker == "") ? <p>NIL</p> : <span>{event.speaker}</span>
-
-  dateEnd = new Date(event.dateEnd)
-  dateStart = new Date(event.dateStart)
-  //console.log("date",date.toLocaleDateString("en-US"))
-
-  //Get timeStart/timeEnd outta ISOString
-  //myDate.getMinutes();
-  //myDate.getHours();
-
-  // formattedDateEnd = dateEnd.getHours() + ":" + dateEnd.getMinutes()
-  // console.log(formattedDateEnd);
+    dateEnd = new Date(event.dateEnd)
+    dateStart = new Date(event.dateStart)
 
   //date start, time start
   var startTime = moment(dateStart).format("HH:mm");

@@ -103,7 +103,7 @@ export default class MosqueEventUpdate extends TrackerReact(React.Component) {
         if (defaultEventValues.speaker !== "" || this.state.eventType === "talk") {
             speaker = (
               <div className="input-field" className="col">
-                  <input id="speaker" type="text" className="validate" ref="speaker" placeholder="Speaker 1,Speaker 2,..."/>
+                  <input id="speaker" type="text" className="validate" ref="speaker" defaultValue={defaultEventValues.speaker}/>
                   <label htmlFor="speaker" className="active">Speaker</label>
               </div>
             )

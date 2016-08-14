@@ -6,10 +6,10 @@ export default class SpeakerSingle extends React.Component{
     speaker = this.props.singleSpeaker;
 
     return (
-      <div>
+        <span > 
+        	{speaker} |
+       	</span>
 
-        <p>{speaker}</p>
-      </div>
 
     )
   }

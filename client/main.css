@@ -10,7 +10,12 @@ html{
     background-attachment: fixed;
     text-shadow: 1px 1px #fff;
  }
-
+.smallFont{
+  font-size: 0.7em;
+}
+.marginRight{
+  margin-right: 25px;
+}
 
 .eventType {
   text-transform: capitalize;
