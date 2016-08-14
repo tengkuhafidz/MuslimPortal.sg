@@ -100,16 +100,16 @@ export default class MosqueEventForm extends React.Component {
 
       var type = this.state.eventType;
 
-      if (type === "social") {
-        speaker = <span></span>
+      if (type === "talk") {
+          speaker = (
+            <div className="input-field" className="col">
+                <input id="speaker" type="text" className="validate" ref="speaker"/>
+                <label htmlFor="speaker">Speaker</label>
+            </div>
+          )
 
       } else {
-        speaker = (
-          <div className="input-field" className="col">
-              <input id="speaker" type="text" className="validate" ref="speaker"/>
-              <label htmlFor="speaker">Speaker</label>
-          </div>
-        )
+          speaker = <span></span>
       }
 
         return (
@@ -132,7 +132,8 @@ export default class MosqueEventForm extends React.Component {
 
                                     <option value="talk" >talk</option>
                                     <option value="social">social</option>
-                                    <option value="class">class</option>
+                                    <option value="community">community</option>
+                                    <option value="others">others</option>
                                   </select>
 
                                 </div>
