@@ -6,9 +6,6 @@ import {Musolla} from '../../api/musolla.js'
 import MusollaSingle from '../MusollaView/MusollaSingle.jsx';
 
 export default class MusollaDetails extends TrackerReact(React.Component) {
-  componentDidMount() {
-      document.title = "NUSMS | Musolla Details"
-  }
 
   constructor(props) {
       super(props);
@@ -33,7 +30,7 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
     if (musolla.direction){
       directionSteps = (
         musolla.direction.map((singleStep)=>{
-          return (<p>singleStep</p>)
+          return (<li>{singleStep}</li>)
         })
       )
     }
@@ -43,16 +40,20 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
           <div className="row">
               <div className="col s12">
                   <div className="card-panel hoverable">
-                      <h2>{musolla.buildingName}{musolla.gender}</h2>
+                      <h2>
+                        {musolla.faculty}, {musolla.buildingName}
+                        <span className="eventType right formalFont">
+                            {musolla.gender}
+                        </span>
+                      </h2>
 
-                      <p className="formalFont lessEmphasis">{musolla.faculty}</p>
-                      <p className="formalFont lessEmphasis">{musolla.sideNote}</p>
+                      <p className="formalFont ">{musolla.sideNote}</p>
 
-                      <h4>Description</h4>
-                      <p>{musolla.description}</p>
+
 
                       <p></p>
                       <p className="topGap"></p>
+                      <h5>Directions: </h5>
                       <p>{directionSteps}</p>
 
                   </div>

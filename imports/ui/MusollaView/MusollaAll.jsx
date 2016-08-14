@@ -2,13 +2,6 @@ import React from 'react';
 import MusollaSingle from './MusollaSingle.jsx';
 
 export default class MusollaAll extends React.Component{
-  //filter
-  filter(type){
-
-  }
-  componentDidMount(){
-    document.title = "Musolla | View All Musolla"
-  }
 
   render(){
   	musolla = this.props.musolla
@@ -17,10 +10,13 @@ export default class MusollaAll extends React.Component{
 
     return(
     	<div className="row">
-          {musolla.map((musollaEach)=>{
-            return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />
-          })}
-
+        <div className="col s8 push-s2">
+          <div className="collection">
+            {musolla.map((musollaEach)=>{
+              return <MusollaSingle key={musollaEach._id} musolla={musollaEach}/>
+            })}
+          </div>
+        </div>
       </div>
     )
   }
