@@ -11,14 +11,14 @@ export default class MusollaAll extends React.Component{
   }
 
   render(){
-  	musolla = this.props.musolla
+    musolla = this.props.musolla
     if(!musolla)
       return <span> loading </span>
 
     return(
     	<div className="row">
         <div className="col s8 push-s2">
-        <div className="collection">
+          <div className="collection">
 
       
           {musolla.map((musollaEach)=>{
