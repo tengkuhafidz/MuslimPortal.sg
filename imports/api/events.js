@@ -54,15 +54,11 @@ tags) {
       description,
       speaker,
       dateStart,
-      timeStart,
       dateEnd,
-      timeEnd,
       venue,
       address,
       fee,
       tags,
-      properDateStart,
-      properDateEnd,
       createdAt: new Date(), // current time
       mosqueId: Meteor.userId(),           // _id of logged in user
       mosqueName: Meteor.user().profile.name  // username of logged in user
