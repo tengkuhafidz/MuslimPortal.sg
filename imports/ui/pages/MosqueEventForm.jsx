@@ -104,14 +104,16 @@ export default class MosqueEventForm extends React.Component {
 
       if (type === "talk") {
           speaker = (
-            <div className="input-field" className="col">
-                <input id="speaker" type="text" className="validate" ref="speaker" placeholder="Speaker 1,Speaker 2,..."/>
-                <label htmlFor="speaker" className="active">Speaker</label>
+            <div className="row">
+              <div className="input-field col s12" >
+                <input id="speaker" type="text" className="validate" ref="speaker"/>
+                <label htmlFor="speaker" className="active">Speakers (Separated by comma)</label>
+              </div>
             </div>
           )
 
       } else {
-          speaker = <span></span>
+          speaker = ""
       }
 
         return (
@@ -120,42 +122,61 @@ export default class MosqueEventForm extends React.Component {
                   <div className="col s12 m10 offset-m1">
                     <div className="card-panel">
 
-                        <h3> Add Event </h3>
+                        <h1> Add Event </h1>
                         <form onSubmit={this.handleSubmit.bind(this)} className="topGap">
+                          <div className="topGap">
+                            <h4> What ? </h4>
                             <div className="row">
-
-                                <div className="input-field col m6">
+                                <div className="input-field col s12">
                                     <input id="name" type="text" className="validate" ref="name"/>
-                                    <label htmlFor="name" className="active">title</label>
+                                    <label htmlFor="name" className="active">Title</label>
                                 </div>
+                            </div>
 
-                                <div className="input-field col m6">
-                                  <select ref="type" className="browser-default" onChange={this.handleEventType.bind(this)}>
+                            <div className="row">
+                                <div className="input-field col s12">
+                                  <select id="type" ref="type" className="browser-default topGap" onChange={this.handleEventType.bind(this)}>
 
-                                    <option value="talk">talk</option>
-                                    <option value="social">social</option>
-                                    <option value="community">community</option>
-                                    <option value="others">others</option>
+                                    <option value="talk" >Talk</option>
+                                    <option value="social">Social Event</option>
+                                    <option value="community">Community Service</option>
+                                    <option value="others">Others</option>
                                   </select>
+                                   <label htmlFor="type" className="active">Type</label>
 
                                 </div>
 
                             </div>
 
-                            <div className="row">
-                              <div className="input-field col m6">
-                                <div>{speaker}</div>
-                              </div>
-
-                            </div>
+                            {speaker}
 
                             <div className="row">
-                                <div className="input-field">
+                                <div className="input-field col s12">
                                     <textarea id="description" className="materialize-textarea" ref="description"></textarea>
                                     <label htmlFor="description" className="active">Description</label>
                                 </div>
 
                             </div>
+
+                            <div className="row">
+                              <div className="input-field col s12">
+                                  <input id="fee" type="number" step="0.01" className="validate" ref="fee" defaultValue="0.00"/>
+                                  <label htmlFor="fee" className="active">Fee (SGD)</label>
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="input-field col s12">
+                                  <input id="tags" type="text" className="validate" ref="tags"/>
+                                  <label htmlFor="tags" className="active">tags (separated by comma)</label>
+                              </div>
+                            </div>
+
+
+                        </div>
+
+                        <div className="topGap">
+                            <h4>When ? </h4>
+
                             <div className="row">
                                 <div className="input-field col m3">
                                     <input type="date" className="datepicker" id="dateStart" ref="dateStart"/>
@@ -173,34 +194,32 @@ export default class MosqueEventForm extends React.Component {
                                 <div className="input-field col m3">
                                     <input type="time" id="end" ref="end" />
                                 </div>
-
+                            </div>
+                        </div>
+                        <div className="topGap">
+                            <h4>Where ? </h4>
+                            <div className="row">
+                              <div className="input-field col s12">
+                                  <input id="venue" type="text" className="validate" ref="venue"/>
+                                  <label htmlFor="venue" className="active">Venue</label>
+                              </div>
                             </div>
 
-                            <div className="input-field">
-                                <input id="venue" type="text" className="validate" ref="venue"/>
-                                <label htmlFor="venue" className="active">Venue</label>
-                            </div>
-
-                            <div className="input-field">
+                            <div className="row">
+                              <div className="input-field col s12">
                                 <input id="address" type="text" className="validate" ref="address"/>
 
                                 <label htmlFor="address" className="active">Address</label>
+                              </div>
                             </div>
 
-                            <div className="input-field">
-                              <textarea id="direction" className="materialize-textarea" ref="direction"></textarea>
-                              <label htmlFor="direction" className="active">Directions (optional)</label>
+                            <div className="row">
+                              <div className="input-field col s12">
+                                <textarea id="direction" className="materialize-textarea" ref="direction"></textarea>
+                                <label htmlFor="direction" className="active">Directions (optional)</label>
+                              </div>
                             </div>
-
-                            <div className="input-field">
-                                <input id="fee" type="number" step="0.01" className="validate" ref="fee" defaultValue="0.00"/>
-                                <label htmlFor="fee" className="active">Fee (SGD)</label>
-                            </div>
-
-                            <div className="input-field">
-                                <input id="tags" type="text" className="validate" ref="tags"/>
-                                <label htmlFor="tags" className="active">tags (separated by comma)</label>
-                            </div>
+                        </div>
 
                             <div className="topGap"></div>
 

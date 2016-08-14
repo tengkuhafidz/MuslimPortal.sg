@@ -29,40 +29,29 @@ export default class EventSingle extends React.Component{
 
   //date start, time start
   var startTime = moment(dateStart).format("HH:mm");
-  var startDate = moment(dateStart).format("dddd, MMMM Do YYYY");
+  var startDate = moment(dateStart).format("Do MMMM");
 
   //date end, time end
   var endTime = moment(dateEnd).format("HH:mm");
-  var endDate = moment(dateEnd).format("dddd, MMMM Do YYYY");
+  var endDate = moment(dateEnd).format("Do MMMM");
 
   console.log("es", event.speaker[0])
-speaker = ""
-  if (event.speaker){
-    speaker = (
-      event.speaker.map((singleSpeaker)=>{
-        return <SpeakerSingle key={singleSpeaker} singleSpeaker={singleSpeaker} />
-      })
-    )
-  }
 
     return(
       <div>
           <div className="col s12 m6 ">
             <div className="card hoverable">
-              <div className="card-content black-text">
-                <span className="card-title truncate"><strong>{event.name}</strong></span>
+              <div className="card-content black-text ">
+                <span className="card-title truncate">
+                  <strong>{event.name}</strong>
+                  <span className="eventType right formalFont">
+                    {event.eventType}
 
-                  <div className="row">
-
-                      {speaker}
-                  </div>
-                <p>{startDate}, {startTime} -  {endDate}, {endTime}
-                <span className="">
-                    <span> @ {event.mosqueName} Mosque</span>
                   </span>
-                <br/>
-                <br/></p>
-                <p>{event.venue}</p>
+                </span>
+
+                <p className="formalFont grey-text"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
+                <p className="formalFont grey-text"> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
 
               </div>
               <div className="card-action">

@@ -84,12 +84,11 @@ export default class EventsView extends TrackerReact(React.Component) {
 
                   <div className="input-field center bottomGap">
                     <select ref="type" className="browser-default" onChange={this.handleFilter.bind(this)}>
-
-                      <option value="all">all</option>
-                      <option value="talk" >talk</option>
-                      <option value="social">social</option>
-                      <option value="community">community</option>
-                      <option value="others">others</option>
+                      <option value="all">All Events</option>
+                      <option value="talk" >Talks</option>
+                      <option value="social">Social Events</option>
+                      <option value="community">Community Works</option>
+                      <option value="others">Others</option>
                     </select>
 
                   </div>
