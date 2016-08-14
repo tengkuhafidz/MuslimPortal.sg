@@ -103,8 +103,6 @@ tags) {
   else
     tags = tags.split(',');
 
-
-
   if (speaker !== "")
     speaker = speaker.split(',');
 
@@ -125,9 +123,9 @@ tags) {
        speaker,
        dateStart,
        dateEnd,
-        venue,
-        address,
-        direction,
+       venue,
+       address,
+       direction,
        fee,
        tags,
        adminId: Meteor.userId(),
@@ -136,47 +134,7 @@ tags) {
     });
 
   },
-
-  participateUser(eventId){
-    Events.update({_id: eventId}, {
-      $addToSet: {
-        participants: Meteor.user().emails[0].address
-      } });
-  },
-  cancelParticipation(eventId){
-    Events.update({_id: eventId}, {
-      $pull: {
-        participants: Meteor.user().emails[0].address
-      } });
-  },
-  volunteerUser(eventId){
-    Events.update({_id: eventId}, {
-      $addToSet: {
-        volunteers: Meteor.user().emails[0].address
-      } });
-
-  },
-  cancelVolunteer(eventId){
-    Events.update({_id: eventId}, {
-      $pull: {
-        volunteers: Meteor.user().emails[0].address
-      } });
-  },
   removeEvent(eventId){
     Events.remove(eventId)
-  },
-  convertMnth(mnthString){
-    //declare dictionary of month; month => numeric value
-
-    //return the numeric value
-  },
-  convertDate(dateString){
-    dateFinal = ""
-
-
-    return dateFinal
-  },
-  sortDate(arrayOfDate){
-
   }
 });
