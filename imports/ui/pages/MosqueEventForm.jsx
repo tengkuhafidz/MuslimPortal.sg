@@ -84,6 +84,8 @@ export default class MosqueEventForm extends React.Component {
 
       //console.log(objAll)
 
+      console.log(dateStart)
+
       Meteor.call('addEvents', name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
     tags, (error,data) => {
             if(error){
@@ -130,7 +132,7 @@ export default class MosqueEventForm extends React.Component {
                                 <div className="input-field col m6">
                                   <select ref="type" className="browser-default" onChange={this.handleEventType.bind(this)}>
 
-                                    <option value="talk" >talk</option>
+                                    <option value="talk">talk</option>
                                     <option value="social">social</option>
                                     <option value="community">community</option>
                                     <option value="others">others</option>

@@ -1,4 +1,5 @@
 import React from 'react';
+import SpeakerSingle from './SpeakerSingle.jsx';
 
 export default class EventSingle extends React.Component{
 
@@ -13,7 +14,7 @@ export default class EventSingle extends React.Component{
     needVolunteers = event.needVolunteers ? <span className="lessEmphasis"><i className="material-icons iconAlign">assignment_ind</i> <span> Volunteers Needed </span>  </span>: <span></span>
     gender = (event.gender == "f") ? <span className="lessEmphasis female"><i className="material-icons iconAlign">person</i> <span className=""> Female Only</span> </span>: (event.gender == "m") ? <span className="lessEmphasis male"><i className="material-icons iconAlign">person</i> <span className=""> Male Only </span> </span>: <span className="lessEmphasis"><i className="material-icons iconAlign">person</i> <span className=""> Any Genders </span> </span>
 
-    speaker = (event.speaker == 0) ? <p>NIL</p> : <span>{event.speaker}</span>
+  speaker = (event.speaker == "") ? <p>NIL</p> : <span>{event.speaker}</span>
 
   dateEnd = new Date(event.dateEnd)
   dateStart = new Date(event.dateStart)
@@ -34,6 +35,16 @@ export default class EventSingle extends React.Component{
   var endTime = moment(dateEnd).format("HH:mm");
   var endDate = moment(dateEnd).format("dddd, MMMM Do YYYY");
 
+  console.log("es", event.speaker[0])
+speaker = ""
+  if (event.speaker){
+    speaker = (
+      event.speaker.map((singleSpeaker)=>{
+        return <SpeakerSingle key={singleSpeaker} singleSpeaker={singleSpeaker} />
+      })
+    )
+  }
+
     return(
       <div>
           <div className="col s12 m6 ">
@@ -41,7 +52,10 @@ export default class EventSingle extends React.Component{
               <div className="card-content black-text">
                 <span className="card-title truncate"><strong>{event.name}</strong></span>
 
-              <p>{speaker}</p>
+                  <div className="row">
+
+                      {speaker}
+                  </div>
                 <p>{startDate}, {startTime} -  {endDate}, {endTime}
                 <span className="">
                     <span> @ {event.mosqueName} Mosque</span>

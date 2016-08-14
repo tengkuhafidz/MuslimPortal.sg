@@ -27,59 +27,6 @@ export default class EventDetails extends TrackerReact(React.Component) {
         return Events.findOne(this.props.eventId)
     }
 
-    handleParticipate() {
-        event = this.event()
-
-        console.log(event._id)
-
-        if (this.state.participate) {
-
-            Meteor.call('participateUser', event._id, function() {
-                console.log("SUCCESSS")
-                Materialize.toast('Participation RSVP Success!', 4000)
-
-            })
-
-            this.setState({participate: false})
-
-        } else {
-            Meteor.call('cancelParticipation', event._id, function() {
-                console.log("SUCCESSS")
-                Materialize.toast('Participation Cancelled!', 4000)
-
-            })
-            this.setState({participate: true})
-
-        }
-
-    }
-
-    handleVolunteer() {
-        event = this.event()
-
-        console.log(event._id)
-
-        if (this.state.volunteer) {
-
-            Meteor.call('volunteerUser', event._id, function() {
-                console.log("SUCCESSS")
-                Materialize.toast('Volunteer RSVP Success!', 4000)
-
-            })
-
-            this.setState({volunteer: false})
-
-        } else {
-            Meteor.call('cancelVolunteer', event._id, function() {
-                console.log("SUCCESSS")
-                Materialize.toast('Volunteer Cancelled!', 4000)
-
-            })
-            this.setState({volunteer: true})
-        }
-
-    }
-
     removeEvent(){
         eventId = this.props.eventId
     swal({
@@ -94,8 +41,8 @@ export default class EventDetails extends TrackerReact(React.Component) {
     }, function(){
       Meteor.call('removeEvent', eventId)
       FlowRouter.go('/eventsView');
-    }); 
-      
+    });
+
     }
 
     // hasParticipated() {
