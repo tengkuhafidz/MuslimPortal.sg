@@ -10,7 +10,8 @@ export default class MusollaSingle extends React.Component{
 
   render(){
 
-  	musolla = this.props.musolla
+
+    musolla = this.props.musolla
 
     return(
 
