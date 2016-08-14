@@ -12,15 +12,6 @@ export default class MusollaSingle extends React.Component{
 
   	musolla = this.props.musolla
 
-    if (musolla.direction){
-      directionSteps = (
-        musolla.direction.map((singleStep)=>{
-          return (<p>singleStep</p>)
-        })
-      )
-    }
-
-
     return(
       <div>
           <div className="col s12 m6 ">
@@ -29,7 +20,7 @@ export default class MusollaSingle extends React.Component{
                 <span className="card-title truncate">
                   <strong>{musolla.faculty}</strong>
                   <span className="eventType right formalFont">
-                    {musolla.buildingName}
+                    {musolla.building}
 
                   </span>
                 </span>

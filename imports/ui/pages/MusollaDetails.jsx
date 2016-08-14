@@ -43,7 +43,7 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
           <div className="row">
               <div className="col s12">
                   <div className="card-panel hoverable">
-                      <h2>{musolla.buildingName}{musolla.gender}</h2>
+                      <h2>{musolla.building}{musolla.gender}</h2>
 
                       <p className="formalFont lessEmphasis">{musolla.faculty}</p>
                       <p className="formalFont lessEmphasis">{musolla.sideNote}</p>
