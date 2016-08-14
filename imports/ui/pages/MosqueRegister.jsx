@@ -57,7 +57,7 @@ const MosqueRegister = React.createClass({
         console.log("Register error")
       } else {
         console.log("Register Success")
-        FlowRouter.go("mosqueDashboard")
+        FlowRouter.go("eventsView")
       }
     })
     this.setState({name: '', email: '', password: ''});

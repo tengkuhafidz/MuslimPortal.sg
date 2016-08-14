@@ -70,6 +70,13 @@ export default class EventDetails extends TrackerReact(React.Component) {
             )
           } 
 
+          speakerDiv = (speaker === "") ? "" : (
+                                                        <p className="formalFont "> 
+                                                            <i className="material-icons iconAlign">person_pin</i> 
+                                                            {speaker}
+                                                        </p>
+                                                    )
+
         tags = ""
 
         if (event.tags !== ""){
@@ -82,7 +89,12 @@ export default class EventDetails extends TrackerReact(React.Component) {
 
         fee = event.fee > 0 ? <p className="formalFont "> <i className="material-icons iconAlign">monetization_on</i> ${parseInt(event.fee).toFixed(2)}</p> : ""
 
-
+        direction = event.direction === "" ? "" : (
+                                                    <div>
+                                                        <h4>Directions</h4>
+                                                        <p>{event.direction}</p>
+                                                    </div>
+                                                 )
 
         return (
             <div className="topGap formalFont">
@@ -96,7 +108,7 @@ export default class EventDetails extends TrackerReact(React.Component) {
                                 </span>
                             </h2>
 
-                            <p className="formalFont "> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
+                            {speakerDiv}
                             {fee}
 
                             <h4>Description</h4>
@@ -119,8 +131,7 @@ export default class EventDetails extends TrackerReact(React.Component) {
                             <p className="formalFont "> <i className="material-icons iconAlign">business</i> {event.venue}</p>
                             <p className="formalFont "> <i className="material-icons iconAlign">explore</i> {event.address}</p>
                             
-                            <h4>Directions</h4>
-                            <p>{event.direction}</p>
+                            {direction}
 
                         </div>
                     </div>
