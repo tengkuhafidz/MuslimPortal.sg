@@ -35,24 +35,24 @@ export default class EventsView extends TrackerReact(React.Component) {
 
         nowDate = new Date().toISOString();
 
-        console.log("now Date" + nowDate);
+        //console.log("now Date" + nowDate);
 
         if (filterState === "talk")
-          events = Events.find({eventType: "talk", dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
+          events = Events.find({eventType: "talk", dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
         else if (filterState === "social")
-          events = Events.find({eventType: "social", dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
+          events = Events.find({eventType: "social", dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
         else if (filterState === "class")
-          events = Events.find({eventType: "class", dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
+          events = Events.find({eventType: "class", dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
         else {
 
-          events = Events.find({dateEnd: {$gte: nowDate}}, {sort: {dateEnd: 1}}).fetch()
+          events = Events.find({dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
         }
 
         return events
     }
 
     render() {
-        console.log(Meteor.userId())
+        //console.log(Meteor.userId())
         events = this.events()
 
         if (!events)

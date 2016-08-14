@@ -16,11 +16,23 @@ export default class EventSingle extends React.Component{
     speaker = (event.speaker == 0) ? <p>NIL</p> : <span>{event.speaker}</span>
 
   dateEnd = new Date(event.dateEnd)
+  dateStart = new Date(event.dateStart)
   //console.log("date",date.toLocaleDateString("en-US"))
 
-  console.log("BAPAK KAU: " + dateEnd)
+  //Get timeStart/timeEnd outta ISOString
+  //myDate.getMinutes();
+  //myDate.getHours();
 
-  //I need ONLY date!
+  // formattedDateEnd = dateEnd.getHours() + ":" + dateEnd.getMinutes()
+  // console.log(formattedDateEnd);
+
+  //date start, time start
+  var startTime = moment(dateStart).format("HH:mm");
+  var startDate = moment(dateStart).format("dddd, MMMM Do YYYY");
+
+  //date end, time end
+  var endTime = moment(dateEnd).format("HH:mm");
+  var endDate = moment(dateEnd).format("dddd, MMMM Do YYYY");
 
     return(
       <div>
@@ -30,7 +42,7 @@ export default class EventSingle extends React.Component{
                 <span className="card-title truncate"><strong>{event.name}</strong></span>
 
               <p>{speaker}</p>
-                <p>{event.dateStart}, {event.timeStart} -  {event.properDateEnd}, {event.timeEnd}
+                <p>{startDate}, {startTime} -  {endDate}, {endTime}
                 <span className="">
                     <span> @ {event.mosqueName} Mosque</span>
                   </span>
