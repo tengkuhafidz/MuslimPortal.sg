@@ -44,9 +44,11 @@ tags) {
     if (speaker !== "")
       speaker = speaker.split(',');
 
-    if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags){
+    if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags)
       throw new Meteor.Error('Some input fields are not filled in.');
-    }
+    else if (dateEnd < dateStart)
+      throw new Meteor.Error('Please End Date cannot be earlier than Start Date');
+
     // Make sure the user is logged in before inserting a task
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');

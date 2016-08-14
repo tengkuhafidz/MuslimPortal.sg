@@ -87,7 +87,7 @@ export default class MosqueEventForm extends React.Component {
       Meteor.call('addEvents', name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
     tags, (error,data) => {
             if(error){
-                Bert.alert('Some input fields are not filled in.', 'danger', 'fixed-top', 'fa-frown-o');
+                Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
             } else {
                 Materialize.toast('Event Added Successfully!', 4000)
                 FlowRouter.go("/eventsView")
