@@ -24,6 +24,9 @@ import MosqueHistory from '/imports/ui/pages/MosqueHistory.jsx';
 import MosqueEventUpdate from '/imports/ui/pages/MosqueEventUpdate.jsx';
 import MusollaView from '/imports/ui/pages/MusollaView.jsx';
 
+import MusollaDetails from '/imports/ui/pages/MusollaDetails.jsx';
+
+
 // function isAuthenticated(context, redirect){
 //   if(!Meteor.userId()){
 //     Session.set("back", context.path)
@@ -58,6 +61,15 @@ FlowRouter.route('/musollaView', {
   })
 },
 name: "musollaView"
+});
+
+FlowRouter.route('/musollaDetails/:musollaId', {
+  action: function(params) {
+    mount(Layout, {
+      content: () => <MusollaDetails musollaId={params.musollaId}/>,
+  });
+},
+name: "musollaDetails"
 });
 
 //events
@@ -185,4 +197,3 @@ FlowRouter.route('/history', {
 },
 name: "history"
 });
-
