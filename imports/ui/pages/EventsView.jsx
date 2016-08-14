@@ -59,12 +59,12 @@ export default class EventsView extends TrackerReact(React.Component) {
           addBtn = (          
             <div>
               <div className="addDataBtnLarge hide-on-med-and-down">
-                <a className="btn orange" href="/mosqueEventForm">
+                <a className="btn blue lighten-1" href="/mosqueEventForm">
                   Add Event
                 </a>
               </div> 
               <div className="fixed-action-btn hide-on-large-only addDataBtnSmall">
-                <a className="btn-floating btn-large orange" href="/mosqueEventForm">
+                <a className="btn-floating btn-large blue lighten-1" href="/mosqueEventForm">
                   <i className="large material-icons">add</i>
                 </a>
               </div>
@@ -82,7 +82,7 @@ export default class EventsView extends TrackerReact(React.Component) {
                   {addBtn}
                 </div>
 
-                  <div className="input-field center">
+                  <div className="input-field center bottomGap">
                     <select ref="type" className="browser-default" onChange={this.handleFilter.bind(this)}>
 
                       <option value="all">all</option>

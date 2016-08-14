@@ -81,8 +81,21 @@ export default class EventDetails extends TrackerReact(React.Component) {
     }
 
     removeEvent(){
-      Meteor.call('removeEvent', this.props.eventId)
-        FlowRouter.go('/eventsView');
+        eventId = this.props.eventId
+    swal({
+      title: "Delete Event?",
+      text: "Are you sure you want to Delete this event?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Delete",
+      closeOnConfirm: true,
+      html: false
+    }, function(){
+      Meteor.call('removeEvent', eventId)
+      FlowRouter.go('/eventsView');
+    }); 
+      
     }
 
     // hasParticipated() {
