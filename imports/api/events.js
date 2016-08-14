@@ -12,10 +12,6 @@ if (Meteor.isServer) {
     return Events.find({}); //db.events.find({}, {name: 1, dateStart: 1, timeStart: 1}).sort({dateStart: -1})
   });
 
-  Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
-});
-
 }
 
 Meteor.methods({

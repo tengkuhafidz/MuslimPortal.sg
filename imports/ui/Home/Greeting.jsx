@@ -41,7 +41,7 @@ export default class Home extends React.Component{
     userName = localStorage.getItem("userName") || "awak";
     userNameSpan = <span className="userNameSpan" >{userName} <i className="material-icons editContent">edit_mode</i></span>
     userInputField = (
-      <form onSubmit={this.handleSubmit.bind(this)}  width="10">
+      <form onSubmit={this.handleSubmit.bind(this)}  className="greetingInput">
         <input type="text" ref="userName" name="userName" defaultValue={userName}/>
       </form>
     )

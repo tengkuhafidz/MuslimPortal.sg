@@ -1,9 +1,13 @@
 import React from 'react';
 
+import LogoutBtn from '../components/LogoutBtn.jsx'
+
 const Layout = ({content}) => (
     <div className="fullHeight grey-text text-darken-2 noTopGap">
     	<a href="/" className="topLeft formalFont brand">SG Muslim Portal <span className="betaFont">Beta</span></a>
-    	
+        <LogoutBtn />
+            
+
     	<div className="contentDiv container">
     		{content()}
     	</div>

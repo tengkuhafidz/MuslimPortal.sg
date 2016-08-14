@@ -5,9 +5,6 @@ const MosqueLogin = React.createClass({
   getInitialState: function(){
     return {email: '', password: ''};
   },
-  componentDidMount: function(){
-    document.title = "QuickPlate | Login"
-  },
 
   handleEmailChange: function(e){
     this.setState({email: e.target.value});
@@ -31,7 +28,7 @@ const MosqueLogin = React.createClass({
       } else {
         var back = Session.get("back")
         if(back == undefined || back == ""){
-          FlowRouter.go("mosqueDashboard")
+          FlowRouter.go("eventsView")
         } else {
           FlowRouter.go(Session.get("back"))
           Session.set("back", "");
@@ -45,7 +42,7 @@ const MosqueLogin = React.createClass({
     return (
       <div className="row">
         <div className="col m4 offset-m4 s12 center">
-          <h2 className="header">Login</h2>
+          <h2 className="header">Admin Login</h2>
           
           <form onSubmit={this.handleSubmit}>
             
@@ -63,7 +60,7 @@ const MosqueLogin = React.createClass({
             </div>
 
             <div className="row">
-              <button className="btn waves-effect waves-light green darken-2" type="submit" name="action">Login
+              <button className="btn waves-effect waves-light grey darken-2" type="submit" name="action">Login
                 <i className="material-icons right">send</i>
               </button>
             </div>

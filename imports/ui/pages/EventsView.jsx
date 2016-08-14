@@ -63,27 +63,9 @@ export default class EventsView extends TrackerReact(React.Component) {
         return (
             <div className="bottomGap topGap">
 
-                <div className="row">
-
-                        <span className="header col s12 m6"><strong>Upcoming NUSMS Events</strong></span>
-                            <form className=" col s12 m6 topGapSmall" onSubmit={this.handleFilter.bind(this)}>
-
-                                <div className="row">
-
-                                          <div className="input-field">
-                                            <select ref="type" className="browser-default" onChange={this.handleFilter.bind(this)}>
-                                              <option value="all">all</option>
-                                              <option value="talk">talk</option>
-                                              <option value="social">social</option>
-                                              <option value="class">class</option>
-                                            </select>
-                                          </div>
-                                </div>
-
-                            </form>
-                </div>
-
+                <h1 className="col s12 center">NUSMS Events</h1>
                 <EventAll events={events}/>
+
             </div>
         )
     }

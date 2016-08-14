@@ -24,22 +24,23 @@ import MosqueHistory from '/imports/ui/pages/MosqueHistory.jsx';
 import MosqueEventUpdate from '/imports/ui/pages/MosqueEventUpdate.jsx';
 import MusollaView from '/imports/ui/pages/MusollaView.jsx';
 
-function isAuthenticated(context, redirect){
-  if(!Meteor.userId()){
-    Session.set("back", context.path)
-    redirect("eventsView")
-  }
-}
+// function isAuthenticated(context, redirect){
+//   if(!Meteor.userId()){
+//     Session.set("back", context.path)
+//     redirect("eventsView")
+//   }
+// }
 
-function becauseAuthenticated(context, redirect){
-  if(Meteor.userId()){
-    redirect("eventsView");
-  }
-}
+// function becauseAuthenticated(context, redirect){
+//   if(Meteor.userId()){
+//     redirect("eventsView");
+//   }
+// }
 
 // FlowRouter.triggers.enter([isAuthenticated], {except: ["home", "login", "register", "mosqueLogin", "mosqueRegister"]});
 // FlowRouter.triggers.enter([becauseAuthenticated], {only: ["home", "login", "register", "mosqueLogin", "mosqueRegister"]})
 
+//home
 FlowRouter.route('/', {
   action: function(){
     mount(Layout, {
@@ -49,6 +50,7 @@ FlowRouter.route('/', {
 name: "home"
 });
 
+//musolla
 FlowRouter.route('/musollaView', {
   action: function(){
     mount(Layout, {
@@ -58,6 +60,92 @@ FlowRouter.route('/musollaView', {
 name: "musollaView"
 });
 
+//events
+FlowRouter.route('/eventDetails/:eventId', {
+  action: function(params) {
+    mount(Layout, {
+      content: () => <EventDetails eventId={params.eventId}/>,
+  });
+},
+name: "eventDetails"
+});
+
+FlowRouter.route('/eventsView', {
+  action: function() {
+    mount(Layout, {
+      content: () => <EventsView />,
+  });
+},
+name: "eventsView"
+});
+
+FlowRouter.route('/mosqueEventForm', {
+  action: function() {
+    mount(Layout, {
+      content: () => <MosqueEventForm />,
+  });
+},
+name: "mosqueEventForm"
+});
+
+FlowRouter.route('/MosqueEventUpdate/:eventId', {
+  action: function(params) {
+    mount(Layout, {
+      content: () => <MosqueEventUpdate  eventId={params.eventId}/>,
+  });
+},
+
+name: "mosqueEventForm"
+});
+
+//admin account
+FlowRouter.route('/administratorRegister_1324', {
+  action: function() {
+    mount(Layout, {
+      content: () => <MosqueRegister />,
+  });
+},
+name: "mosqueRegister"
+});
+
+FlowRouter.route('/administratorLogin', {
+  action: function() {
+    mount(Layout, {
+      content: () => <MosqueLogin />,
+  });
+},
+name: "mosqueLogin"
+});
+
+
+FlowRouter.route('/mosqueDashboard', {
+  action: function() {
+    mount(Layout, {
+      content: () => <MosqueDashboard />,
+  });
+},
+name: "mosqueDashboard"
+});
+
+FlowRouter.route('/mosqueEventDetails/:eventId', {
+  action: function(params) {
+    mount(Layout, {
+      content: () => <MosqueEventDetails eventId={params.eventId}/>,
+  });
+},
+name: "Layout"
+});
+
+FlowRouter.route('/mosqueHistory', {
+  action: function() {
+    mount(Layout, {
+      content: () => <MosqueHistory />,
+  });
+},
+name: "mosqueHistory"
+});
+
+// NOT USING FOR NOW
 FlowRouter.route('/register', {
   action: function() {
     mount(Layout, {
@@ -87,23 +175,7 @@ name: "dashboard"
 
 
 //here
-FlowRouter.route('/eventDetails/:eventId', {
-  action: function(params) {
-    mount(Layout, {
-      content: () => <EventDetails eventId={params.eventId}/>,
-  });
-},
-name: "eventDetails"
-});
 
-FlowRouter.route('/eventsView', {
-  action: function() {
-    mount(Layout, {
-      content: () => <EventsView />,
-  });
-},
-name: "eventsView"
-});
 
 FlowRouter.route('/history', {
   action: function() {
@@ -114,67 +186,3 @@ FlowRouter.route('/history', {
 name: "history"
 });
 
-FlowRouter.route('/mosqueDashboard', {
-  action: function() {
-    mount(MosqueMainLayout, {
-      content: () => <MosqueDashboard />,
-  });
-},
-name: "mosqueDashboard"
-});
-
-FlowRouter.route('/mosqueEventForm', {
-  action: function() {
-    mount(MosqueMainLayout, {
-      content: () => <MosqueEventForm />,
-  });
-},
-name: "mosqueEventForm"
-});
-
-FlowRouter.route('/MosqueEventUpdate/:eventId', {
-  action: function(params) {
-    mount(MosqueMainLayout, {
-      content: () => <MosqueEventUpdate  eventId={params.eventId}/>,
-  });
-},
-
-name: "mosqueEventForm"
-});
-
-FlowRouter.route('/mosqueEventDetails/:eventId', {
-  action: function(params) {
-    mount(MosqueMainLayout, {
-      content: () => <MosqueEventDetails eventId={params.eventId}/>,
-  });
-},
-name: "mosqueEventDetails"
-});
-
-FlowRouter.route('/mosqueHistory', {
-  action: function() {
-    mount(MosqueMainLayout, {
-      content: () => <MosqueHistory />,
-  });
-},
-name: "mosqueHistory"
-});
-
-FlowRouter.route('/mosqueLogin', {
-  action: function() {
-    mount(MosqueLayout, {
-      content: () => <MosqueLogin />,
-  });
-},
-name: "mosqueLogin"
-});
-
-
-FlowRouter.route('/mosqueRegister', {
-  action: function() {
-    mount(MosqueLayout, {
-      content: () => <MosqueRegister />,
-  });
-},
-name: "mosqueRegister"
-});

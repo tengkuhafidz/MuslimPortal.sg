@@ -89,7 +89,7 @@ const MosqueRegister = React.createClass({
             </div>
 
             <div className="row">
-              <button className="btn waves-effect waves-light green darken-2" type="submit" name="action">Sign Up
+              <button className="btn waves-effect waves-light grey darken-2" type="submit" name="action">Sign Up
                 <i className="material-icons right ">send</i>
               </button>
             </div>

@@ -8,9 +8,9 @@ export default class Home extends React.Component{
     var randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
     return(
-      <div className="center">
+      <div className="center moreTopPadding ">
         <Greeting />
-        <h1 className=" topGap"> 
+        <h1 className="topPadding"> 
           {randomMessage.message}
         </h1>
         <div className="flow-text">#{randomMessage.hashtag}</div>
