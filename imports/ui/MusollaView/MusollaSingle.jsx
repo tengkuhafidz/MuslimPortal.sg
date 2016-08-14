@@ -10,42 +10,14 @@ export default class MusollaSingle extends React.Component{
 
   render(){
 
-  	musolla = this.props.musolla
-
-    if (musolla.direction){
-      directionSteps = (
-        musolla.direction.map((singleStep)=>{
-          return (<p>singleStep</p>)
-        })
-      )
-    }
-
+    musolla = this.props.musolla
 
     return(
-      <div>
-          <div className="col s12 m6 ">
-            <div className="card hoverable">
-              <div className="card-content black-text ">
-                <span className="card-title truncate">
-                  <strong>{musolla.faculty}</strong>
-                  <span className="eventType right formalFont">
-                    {musolla.buildingName}
 
-                  </span>
-                </span>
-
-                <p className="formalFont grey-text"> <i className="material-icons iconAlign">business</i> {musolla.sideNote}</p>
-
-              {directionSteps}
-
-              <div className="card-action">
-                <a href={`/musollaDetails/${musolla._id}`} className="blue-text text-darken-2">View Details</a>
-              </div>
-              </div>
-
-            </div>
-          </div>
-      </div>
+      <a href={`/musollaDetails/${musolla._id}`} className="collection-item grey-text text-darken-2">
+        {musolla.faculty}, {musolla.building}
+        <i className="material-icons secondary-content grey-text text-darken-2">send</i>
+      </a>
 
     )
   }

@@ -75,19 +75,19 @@ export default class MosqueEventForm extends React.Component {
 
       var venue = this.refs.venue.value.trim();
       var address = this.refs.address.value.trim();
+      var direction = this.refs.direction.value;
 
       var fee = this.refs.fee.value;
       var tags = this.refs.tags.value;
 
-      var objAll = {name, speaker, eventType, description, dateStart, timeStart, dateEnd, timeEnd,
-      venue, address, fee, tags}
+      // var objAll = {name, speaker, eventType, description, dateStart, timeStart, dateEnd, timeEnd,
+      // venue, address, fee, tags}
 
       //console.log(objAll)
 
       console.log(dateStart)
 
-      Meteor.call('addEvents', name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
-    tags, (error,data) => {
+      Meteor.call('addEvents', this.props.eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags, (error,data) => {
             if(error){
                 Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
             } else {

@@ -17,8 +17,7 @@ if (Meteor.isServer) {
 Meteor.methods({
   //declare all methods related to the collection here
   // EXAMPLE:
-  addEvents(name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee,
-tags) {
+  addEvents(eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags) {
     console.log("TIMESTART FORMAT: " + timeStart)
 
     //dateStart
