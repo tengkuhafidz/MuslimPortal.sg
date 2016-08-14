@@ -32,12 +32,14 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
 
     if (musolla.direction){
       directionSteps = (
+      <div>
         <h5> Directions </h5>
-       <ul> 
-        musolla.direction.map((singleStep)=>{
-          return (<li>{singleStep}</li>)
-        })
+        <ul> 
+          {musolla.direction.map((singleStep)=>{
+            return (<li>{singleStep}</li>)
+          })}
         </ul>
+      </div>
       )
     }
 
