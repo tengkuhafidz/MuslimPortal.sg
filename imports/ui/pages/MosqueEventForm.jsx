@@ -185,7 +185,7 @@ export default class MosqueEventForm extends React.Component {
                             </div>
 
                             <div className="input-field">
-                                <input id="fee" type="text" className="validate" ref="fee"/>
+                                <input id="fee" type="number" step="0.01" className="validate" ref="fee"/>
                                 <label htmlFor="fee">Fee (SGD)</label>
                             </div>
 
