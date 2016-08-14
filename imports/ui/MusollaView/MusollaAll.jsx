@@ -17,13 +17,14 @@ export default class MusollaAll extends React.Component{
 
     return(
     	<div className="row">
+        <div className="col s8 push-s2">
         <div className="collection">
 
       
           {musolla.map((musollaEach)=>{
             return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />
           })}
-
+          </div>
         </div>
       </div>
     )

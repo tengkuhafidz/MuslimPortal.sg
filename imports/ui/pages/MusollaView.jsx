@@ -35,7 +35,7 @@ export default class MusollaView extends TrackerReact(React.Component) {
         <h1 className=" topGap center">
           Musolla in NUS
         </h1>
-
+        
         <MusollaAll musolla={musolla}/>
 
       </div>
