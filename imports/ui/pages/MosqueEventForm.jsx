@@ -64,7 +64,7 @@ export default class MosqueEventForm extends React.Component {
         var speaker = this.refs.speaker.value.trim();
 
       } catch (err) {
-        var speaker = 0
+        var speaker = "";
       }
 
       /* when */
@@ -87,7 +87,7 @@ export default class MosqueEventForm extends React.Component {
       Meteor.call('addEvents', name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
     tags, (error,data) => {
             if(error){
-                Bert.alert('Some input fields are not filled in.', 'danger', 'fixed-top', 'fa-frown-o');
+                Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
             } else {
                 Materialize.toast('Event Added Successfully!', 4000)
                 FlowRouter.go("/eventsView")
@@ -103,8 +103,8 @@ export default class MosqueEventForm extends React.Component {
       if (type === "talk") {
           speaker = (
             <div className="input-field" className="col">
-                <input id="speaker" type="text" className="validate" ref="speaker"/>
-                <label htmlFor="speaker">Speaker</label>
+                <input id="speaker" type="text" className="validate" ref="speaker" placeholder="Speaker 1,Speaker 2,..."/>
+                <label htmlFor="speaker"></label>
             </div>
           )
 
@@ -185,7 +185,7 @@ export default class MosqueEventForm extends React.Component {
                             </div>
 
                             <div className="input-field">
-                                <input id="fee" type="text" className="validate" ref="fee"/>
+                                <input id="fee" type="number" step="0.01" className="validate" ref="fee"/>
                                 <label htmlFor="fee">Fee (SGD)</label>
                             </div>
 
