@@ -239,13 +239,15 @@ export default class EventDetails extends TrackerReact(React.Component) {
                             <p className="topGap"></p>
                             <p></p>
 
+                              <div className="right-align">
+                                <a href={`/MosqueEventUpdate/${event._id}`} className="btn green darken-2">Update</a>
+                                  <span className="marginSides"></span>
+                                <button className="btn red darken-2" onClick={this.removeEvent.bind(this)}>Delete</button>
+                              </div>
+
                         </div>
                     </div>
-                    <div className="right-align">
-                      <a href={`/MosqueEventUpdate/${event._id}`} className="btn green darken-2">Update</a>
-                        <span className="marginSides"></span>
-                      <button className="btn red darken-2" onClick={this.removeEvent.bind(this)}>Delete</button>
-                    </div>
+
                 </div>
 
             </div>

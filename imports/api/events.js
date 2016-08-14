@@ -39,6 +39,10 @@ tags) {
     dateEnd.setHours(dateEnd.getHours() - 8)
 
     dateEnd = dateEnd.toISOString();
+    tags = tags.split(',');
+
+    if (speaker !== "")
+      speaker = speaker.split(',');
 
     if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags){
       throw new Meteor.Error('Some input fields are not filled in.');

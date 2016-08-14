@@ -64,7 +64,7 @@ export default class MosqueEventForm extends React.Component {
         var speaker = this.refs.speaker.value.trim();
 
       } catch (err) {
-        var speaker = 0
+        var speaker = "";
       }
 
       /* when */
@@ -103,8 +103,8 @@ export default class MosqueEventForm extends React.Component {
       if (type === "talk") {
           speaker = (
             <div className="input-field" className="col">
-                <input id="speaker" type="text" className="validate" ref="speaker"/>
-                <label htmlFor="speaker">Speaker</label>
+                <input id="speaker" type="text" className="validate" ref="speaker" placeholder="Speaker 1,Speaker 2,..."/>
+                <label htmlFor="speaker"></label>
             </div>
           )
 
