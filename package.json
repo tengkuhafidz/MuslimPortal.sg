@@ -9,7 +9,6 @@
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-materialize": "^0.14.4",
     "react-mounter": "^1.2.0"
   },
   "version": "1.0.0",
