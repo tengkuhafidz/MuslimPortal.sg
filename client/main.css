@@ -1,4 +1,4 @@
- html, .betaFont{
+.betaFont{
   font-family: 'Indie Flower', cursive, sans-serif;
  }
 
@@ -15,6 +15,10 @@ html{
 }
 .marginRight{
   margin-right: 25px;
+}
+
+.marginRightSmall{
+  margin-right: 10px;
 }
 
 .eventType {
@@ -51,7 +55,7 @@ html{
 }
 
 
-.formalFont{
+html, .formalFont{
   font-family: 'Raleway', helvetica, sans-serif;
 }
 
