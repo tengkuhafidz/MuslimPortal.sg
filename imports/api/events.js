@@ -19,6 +19,7 @@ Meteor.methods({
   // EXAMPLE:
   addEvents(name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee,
 tags) {
+    console.log("TIMESTART FORMAT: " + timeStart)
 
     //dateStart
     properDateStart = dateStart;
@@ -71,16 +72,47 @@ tags) {
       fee,
       tags,
       createdAt: new Date(), // current time
-      mosqueId: Meteor.userId(),           // _id of logged in user
+      adminId: Meteor.userId(),           // _id of logged in user
       mosqueName: Meteor.user().profile.name  // username of logged in user
     });
-  },
-  updateEvents(eventId, name, description, theDate, start, end, needParticipants, numberParticipants, needVolunteers, numberVolunteers,
-gender) {
-    if(!name || !description || !theDate || !start || !end || !needParticipants || !numberParticipants || !needVolunteers || !numberVolunteers || !gender){
-      throw new Meteor.Error('Some input fields are not filled in.');
-    }
-    // Make sure the user is logged in before inserting a task
+  },   //this.props.eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags
+  updateEvents(eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags) {
+  //dateStart
+  properDateStart = dateStart;
+  properDateStartFormat = dateStart.split("-");
+  finalisedStart = properDateStartFormat[2] + "-" + properDateStartFormat[1] + "-" + properDateStartFormat[0] + "T" + timeStart + ":00"
+
+  dateStart = new Date(finalisedStart)
+  dateStart.setHours(dateStart.getHours() - 8)
+
+  dateStart = dateStart.toISOString();
+
+  //dateEnd
+  properDateEnd = dateEnd;
+  properFormat = dateEnd.split("-");
+  finalised = properFormat[2] + "-" + properFormat[1] + "-" + properFormat[0] + "T" + timeEnd + ":00"
+
+  dateEnd = new Date(finalised)
+  dateEnd.setHours(dateEnd.getHours() - 8)
+
+  dateEnd = dateEnd.toISOString();
+
+  console.log("UPDATE START/END " + dateStart + "   "  + dateEnd)
+  if (!tags)
+    tags = ""
+  else
+    tags = tags.split(',');
+
+
+
+  if (speaker !== "")
+    speaker = speaker.split(',');
+
+  if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address)
+    throw new Meteor.Error('Some input fields are not filled in.');
+  else if (dateEnd < dateStart)
+    throw new Meteor.Error('Please End Date cannot be earlier than Start Date');
+
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
     }
@@ -88,18 +120,21 @@ gender) {
     Events.update({_id: eventId}, {
       $set: {
         name,
+        eventType,
         description,
-        theDate,
-        start,
-        end,
-        needParticipants,
-        numberParticipants,
-        needVolunteers,
-        numberVolunteers,
-        gender,
-        updatedAt: new Date(), // current time
+       speaker,
+       dateStart,
+       dateEnd,
+        venue,
+        address,
+        direction,
+       fee,
+       tags,
+       adminId: Meteor.userId(),
+       updatedAt: new Date(), // current time
       }
     });
+
   },
 
   participateUser(eventId){

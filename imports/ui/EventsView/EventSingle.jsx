@@ -1,4 +1,5 @@
 import React from 'react';
+import SpeakerSingle from './SpeakerSingle.jsx';
 
 export default class EventSingle extends React.Component{
 
@@ -21,21 +22,24 @@ export default class EventSingle extends React.Component{
   var endTime = moment(dateEnd).format("HH:mm");
   var endDate = moment(dateEnd).format("Do MMMM");
 
+  console.log("es", event.speaker[0])
+
     return(
       <div>
           <div className="col s12 m6 ">
             <div className="card hoverable">
               <div className="card-content black-text ">
                 <span className="card-title truncate">
-                  <strong>{event.name}</strong> 
+                  <strong>{event.name}</strong>
                   <span className="eventType right formalFont">
                     {event.eventType}
+
                   </span>
                 </span>
 
                 <p className="formalFont grey-text"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
                 <p className="formalFont grey-text"> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
-                
+
               </div>
               <div className="card-action">
                 <a href={`/eventDetails/${event._id}`} className="blue-text text-darken-2">View Details</a>

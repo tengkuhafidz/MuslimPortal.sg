@@ -84,6 +84,8 @@ export default class MosqueEventForm extends React.Component {
 
       //console.log(objAll)
 
+      console.log(dateStart)
+
       Meteor.call('addEvents', name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
     tags, (error,data) => {
             if(error){
@@ -131,7 +133,7 @@ export default class MosqueEventForm extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="row"> 
+                            <div className="row">
                                 <div className="input-field col s12">
                                   <select id="type" ref="type" className="browser-default topGap" onChange={this.handleEventType.bind(this)}>
 
@@ -174,7 +176,7 @@ export default class MosqueEventForm extends React.Component {
 
                         <div className="topGap">
                             <h4>When ? </h4>
-                            
+
                             <div className="row">
                                 <div className="input-field col m3">
                                     <input type="date" className="datepicker" id="dateStart" ref="dateStart"/>
