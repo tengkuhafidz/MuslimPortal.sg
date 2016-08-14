@@ -4,21 +4,18 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react'
 import {Events} from '../../api/events.js'
 
 import SpeakerSingle from '../EventsView/SpeakerSingle.jsx';
+import TagSingle from '../EventsView/TagSingle.jsx';
+
 
 export default class EventDetails extends TrackerReact(React.Component) {
-    componentDidMount() {
-        document.title = "GoMosque 2.0 | EventDetails"
-    }
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             subscription: {
                 events: Meteor.subscribe("allEvents")
             },
-
         }
     }
 
@@ -73,12 +70,23 @@ export default class EventDetails extends TrackerReact(React.Component) {
             )
           } 
 
+        tags = ""
+
+        if (event.tags !== ""){
+            tags = (
+              event.tags.map((singleTag)=>{
+                return <TagSingle key={singleTag} singleTag={singleTag} />
+              })
+            )
+        }
+
+
         return (
-            <div className="topGap">
+            <div className="topGap formalFont">
                 <div className="row">
                     <div className="col s12">
                         <div className="card-panel hoverable">
-                            <h2>{event.name}</h2>
+                            <h2 className="">{event.name}</h2>
                             <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
                             <p className="formalFont lessEmphasis "> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
                             <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
@@ -86,15 +94,15 @@ export default class EventDetails extends TrackerReact(React.Component) {
                             
                             <h4>Description</h4>
                             <p>{event.description}</p>
-
+                            {tags}
                             <p></p>
                             <p className="topGap"></p>
                             <p></p>
 
                               <div className="right-align">
-                                <a href={`/MosqueEventUpdate/${event._id}`} className="btn green darken-2">Update</a>
+                                <a href={`/MosqueEventUpdate/${event._id}`} className="btn green">Update</a>
                                   <span className="marginSides"></span>
-                                <button className="btn red darken-2" onClick={this.removeEvent.bind(this)}>Delete</button>
+                                <button className="btn red" onClick={this.removeEvent.bind(this)}>Delete</button>
                               </div>
 
                         </div>
