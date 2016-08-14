@@ -3,7 +3,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react'
 
 import {Events} from '../../api/events.js'
 
-import SpeakerSingle from '../SpeakerSingle.jsx';
+import SpeakerSingle from '../EventsView/SpeakerSingle.jsx';
 
 export default class EventDetails extends TrackerReact(React.Component) {
     componentDidMount() {
@@ -79,14 +79,15 @@ export default class EventDetails extends TrackerReact(React.Component) {
                     <div className="col s12">
                         <div className="card-panel hoverable">
                             <h2>{event.name}</h2>
-                            <p className="formalFont grey-text"> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
-                            <p className="formalFont grey-text"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
-                            <p className="formalFont grey-text"> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
-                            <p></p>
+                            <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
+                            <p className="formalFont lessEmphasis "> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
+                            <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
+                            <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">explore</i> {event.address}</p>
+                            
+                            <h4>Description</h4>
                             <p>{event.description}</p>
-                            <p></p>
-														<p></p>
 
+                            <p></p>
                             <p className="topGap"></p>
                             <p></p>
 
