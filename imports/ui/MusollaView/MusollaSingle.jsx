@@ -14,7 +14,7 @@ export default class MusollaSingle extends React.Component{
 
     return(
 
-      <a href={`/musollaDetails/${musolla._id}`} class="collection-item grey-text text-darken-2">
+      <a href={`/musollaDetails/${musolla._id}`} className="collection-item grey-text text-darken-2">
         {musolla.faculty}, {musolla.building}
         <i className="material-icons secondary-content grey-text text-darken-2">send</i>
       </a>

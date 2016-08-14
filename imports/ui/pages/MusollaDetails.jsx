@@ -30,16 +30,12 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
     if (!musolla)
         return <span>loading</span>
 
+      directionSteps = ""
     if (musolla.direction){
       directionSteps = (
-      <div>
-        <h5> Directions </h5>
-        <ul> 
-          {musolla.direction.map((singleStep)=>{
+          musolla.direction.map((singleStep)=>{
             return (<li>{singleStep}</li>)
-          })}
-        </ul>
-      </div>
+          })
       )
     }
 
@@ -57,7 +53,12 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
 
                       <h5>({musolla.description})</h5>
                       
-                      <div>{directionSteps}</div>
+                      <div className="topGap">
+                        <h5> Directions </h5>
+                        <ul>
+                          {directionSteps}
+                        </ul>
+                      </div>
 
                   </div>
               </div>
