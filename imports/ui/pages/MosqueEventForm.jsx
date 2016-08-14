@@ -104,7 +104,7 @@ export default class MosqueEventForm extends React.Component {
           speaker = (
             <div className="input-field" className="col">
                 <input id="speaker" type="text" className="validate" ref="speaker" placeholder="Speaker 1,Speaker 2,..."/>
-                <label htmlFor="speaker"></label>
+                <label htmlFor="speaker" className="active">Speaker</label>
             </div>
           )
 
@@ -124,7 +124,7 @@ export default class MosqueEventForm extends React.Component {
 
                                 <div className="input-field col m6">
                                     <input id="name" type="text" className="validate" ref="name"/>
-                                    <label htmlFor="name">title</label>
+                                    <label htmlFor="name" className="active">title</label>
                                 </div>
 
                                 <div className="input-field col m6">
@@ -150,14 +150,14 @@ export default class MosqueEventForm extends React.Component {
                             <div className="row">
                                 <div className="input-field">
                                     <textarea id="description" className="materialize-textarea" ref="description"></textarea>
-                                    <label htmlFor="description">Description</label>
+                                    <label htmlFor="description" className="active">Description</label>
                                 </div>
 
                             </div>
                             <div className="row">
                                 <div className="input-field col m3">
                                     <input type="date" className="datepicker" id="dateStart" ref="dateStart"/>
-                                    <label htmlFor="dateStart">Date</label>
+                                    <label htmlFor="dateStart">Start Date</label>
                                 </div>
                                 <div className="input-field col m3">
                                     <input type="time" id="start" ref="start" />
@@ -165,7 +165,7 @@ export default class MosqueEventForm extends React.Component {
 
                                 <div className="input-field col m3">
                                     <input type="date" className="datepicker" id="dateEnd" ref="dateEnd"/>
-                                    <label htmlFor="dateEnd">Date</label>
+                                    <label htmlFor="dateEnd">End Date</label>
                                 </div>
 
                                 <div className="input-field col m3">
@@ -176,22 +176,28 @@ export default class MosqueEventForm extends React.Component {
 
                             <div className="input-field">
                                 <input id="venue" type="text" className="validate" ref="venue"/>
-                                <label htmlFor="venue">Venue</label>
+                                <label htmlFor="venue" className="active">Venue</label>
                             </div>
 
                             <div className="input-field">
-                                <textarea id="address" className="materialize-textarea" ref="address"></textarea>
-                                <label htmlFor="address">Address</label>
+                                <input id="address" type="text" className="validate" ref="address"/>
+
+                                <label htmlFor="address" className="active">Address</label>
                             </div>
 
                             <div className="input-field">
-                                <input id="fee" type="number" step="0.01" className="validate" ref="fee"/>
-                                <label htmlFor="fee">Fee (SGD)</label>
+                              <textarea id="direction" className="materialize-textarea" ref="direction"></textarea>
+                              <label htmlFor="direction" className="active">Directions (optional)</label>
+                            </div>
+
+                            <div className="input-field">
+                                <input id="fee" type="number" step="0.01" className="validate" ref="fee" defaultValue="0.00"/>
+                                <label htmlFor="fee" className="active">Fee (SGD)</label>
                             </div>
 
                             <div className="input-field">
                                 <input id="tags" type="text" className="validate" ref="tags"/>
-                                <label htmlFor="tags">tags (separated by comma)</label>
+                                <label htmlFor="tags" className="active">tags (separated by comma)</label>
                             </div>
 
                             <div className="topGap"></div>

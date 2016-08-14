@@ -17,7 +17,7 @@ if (Meteor.isServer) {
 Meteor.methods({
   //declare all methods related to the collection here
   // EXAMPLE:
-  addEvents(name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, fee,
+  addEvents(name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee,
 tags) {
 
     //dateStart
@@ -39,12 +39,16 @@ tags) {
     dateEnd.setHours(dateEnd.getHours() - 8)
 
     dateEnd = dateEnd.toISOString();
-    tags = tags.split(',');
+    if (!tags)
+      tags = ""
+    else
+      tags = tags.split(',');
+
 
     if (speaker !== "")
       speaker = speaker.split(',');
 
-    if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address || !tags)
+    if(!name || !eventType || !description || !dateStart || !timeStart || !dateEnd || !timeEnd || !venue || !address)
       throw new Meteor.Error('Some input fields are not filled in.');
     else if (dateEnd < dateStart)
       throw new Meteor.Error('Please End Date cannot be earlier than Start Date');
@@ -63,6 +67,7 @@ tags) {
       dateEnd,
       venue,
       address,
+      direction,
       fee,
       tags,
       createdAt: new Date(), // current time
