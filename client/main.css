@@ -2,6 +2,10 @@
   font-family: 'Indie Flower', cursive, sans-serif;
  }
 
+ html, .formalFont{
+  font-family: 'Raleway', helvetica, sans-serif;
+}
+
 html{
     background-image: url("/paintBg.png");
     background-size:     contain;  
@@ -52,11 +56,6 @@ html{
   position: fixed;
   bottom: 70px; 
   right: 24px;
-}
-
-
-html, .formalFont{
-  font-family: 'Raleway', helvetica, sans-serif;
 }
 
 .brand {

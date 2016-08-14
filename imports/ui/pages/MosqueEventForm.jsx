@@ -122,7 +122,7 @@ export default class MosqueEventForm extends React.Component {
                   <div className="col s12 m10 offset-m1">
                     <div className="card-panel">
 
-                        <h1> Add Event </h1>
+                        <h2> Add Event </h2>
                         <form onSubmit={this.handleSubmit.bind(this)} className="topGap">
                           <div className="topGap">
                             <h4> What ? </h4>

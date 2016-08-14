@@ -32,7 +32,6 @@ export default class EventSingle extends React.Component{
                   <strong>{event.name}</strong>
                   <span className="eventType right formalFont">
                     {event.eventType}
-
                   </span>
                 </span>
 

@@ -80,30 +80,60 @@ export default class EventDetails extends TrackerReact(React.Component) {
             )
         }
 
+        fee = event.fee > 0 ? <p className="formalFont "> <i className="material-icons iconAlign">monetization_on</i> ${parseInt(event.fee).toFixed(2)}</p> : ""
+
+
 
         return (
             <div className="topGap formalFont">
                 <div className="row">
                     <div className="col s12">
                         <div className="card-panel hoverable">
-                            <h2 className="">{event.name}</h2>
-                            <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
-                            <p className="formalFont lessEmphasis "> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
-                            <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
-                            <p className="formalFont lessEmphasis"> <i className="material-icons iconAlign">explore</i> {event.address}</p>
-                            
+                            <h2 className="">
+                                {event.name} 
+                                <span className="eventType right formalFont">
+                                    {event.eventType}
+                                </span>
+                            </h2>
+
+                            <p className="formalFont "> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
+                            {fee}
+
                             <h4>Description</h4>
                             <p>{event.description}</p>
-                            {tags}
-                            <p></p>
+                            <p>{tags}</p>
                             <p className="topGap"></p>
-                            <p></p>
 
-                              <div className="right-align">
-                                <a href={`/MosqueEventUpdate/${event._id}`} className="btn green">Update</a>
-                                  <span className="marginSides"></span>
-                                <button className="btn red" onClick={this.removeEvent.bind(this)}>Delete</button>
-                              </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="row">
+                    <div className="col s12">
+                        <div className="card-panel hoverable">
+                            <h2 className="">
+                                Time & Location
+                            </h2>
+                            <p className="formalFont  "> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
+                            <p className="formalFont "> <i className="material-icons iconAlign">business</i> {event.venue}</p>
+                            <p className="formalFont "> <i className="material-icons iconAlign">explore</i> {event.address}</p>
+                            
+                            <h4>Directions</h4>
+                            <p>{event.direction}</p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="row">
+                    <div className="col s12">
+                        <div className="card-panel hoverable">
+                            
+                            <a href={`/MosqueEventUpdate/${event._id}`} className="btn blue lighten-1">Update</a>
+                            <span className="marginSides"></span>
+                            <button className="btn red lighten-1" onClick={this.removeEvent.bind(this)}>Delete</button>
 
                         </div>
                     </div>

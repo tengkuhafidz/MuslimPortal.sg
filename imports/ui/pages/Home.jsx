@@ -10,7 +10,7 @@ export default class Home extends React.Component{
     return(
       <div className="center moreTopPadding ">
         <Greeting />
-        <h1 className="topPadding"> 
+        <h1 className="topPadding "> 
           {randomMessage.message}
         </h1>
         <div className="flow-text">#{randomMessage.hashtag}</div>
