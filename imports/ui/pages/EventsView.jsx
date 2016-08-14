@@ -54,6 +54,17 @@ export default class EventsView extends TrackerReact(React.Component) {
                 loading
             </span>
 
+            addBtn = "";
+        if (Meteor.userId()) {
+          addBtn = (          <div className="fixed-action-btn containedFAB">
+                      <a className="btn-floating btn-large green darken-2" href="/mosqueEventForm">
+                        <i className="large material-icons ">add</i>
+                      </a>
+                    </div> )
+        }
+
+        console.log(Meteor.userId())
+
         return (
             <div className="bottomGap topGap">
 
@@ -72,6 +83,8 @@ export default class EventsView extends TrackerReact(React.Component) {
                   </div>
 
                 <EventAll events={events}/>
+
+              {addBtn}
 
             </div>
         )
