@@ -28,28 +28,27 @@ export default class EventSingle extends React.Component{
 
   //date start, time start
   var startTime = moment(dateStart).format("HH:mm");
-  var startDate = moment(dateStart).format("dddd, MMMM Do YYYY");
+  var startDate = moment(dateStart).format("Do MMMM");
 
   //date end, time end
   var endTime = moment(dateEnd).format("HH:mm");
-  var endDate = moment(dateEnd).format("dddd, MMMM Do YYYY");
+  var endDate = moment(dateEnd).format("Do MMMM");
 
     return(
       <div>
           <div className="col s12 m6 ">
             <div className="card hoverable">
-              <div className="card-content black-text">
-                <span className="card-title truncate"><strong>{event.name}</strong></span>
-
-              <p>{speaker}</p>
-                <p>{startDate}, {startTime} -  {endDate}, {endTime}
-                <span className="">
-                    <span> @ {event.mosqueName} Mosque</span>
+              <div className="card-content black-text ">
+                <span className="card-title truncate">
+                  <strong>{event.name}</strong> 
+                  <span className="eventType right formalFont">
+                    {event.eventType}
                   </span>
-                <br/>
-                <br/></p>
-                <p>{event.venue}</p>
+                </span>
 
+                <p className="formalFont grey-text"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
+                <p className="formalFont grey-text"> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
+                
               </div>
               <div className="card-action">
                 <a href={`/eventDetails/${event._id}`} className="blue-text text-darken-2">View Details</a>
