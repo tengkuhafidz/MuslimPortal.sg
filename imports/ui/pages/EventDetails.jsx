@@ -3,6 +3,8 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react'
 
 import {Events} from '../../api/events.js'
 
+import SpeakerSingle from '../SpeakerSingle.jsx';
+
 export default class EventDetails extends TrackerReact(React.Component) {
     componentDidMount() {
         document.title = "GoMosque 2.0 | EventDetails"
@@ -61,12 +63,23 @@ export default class EventDetails extends TrackerReact(React.Component) {
           var endTime = moment(dateEnd).format("HH:mm");
           var endDate = moment(dateEnd).format("Do MMMM YYYY");
 
+          speaker = ""
+
+          if (event.speaker){
+            speaker = (
+              event.speaker.map((singleSpeaker)=>{
+                return <SpeakerSingle key={singleSpeaker} singleSpeaker={singleSpeaker} />
+              })
+            )
+          } 
+
         return (
             <div className="topGap">
                 <div className="row">
                     <div className="col s12">
                         <div className="card-panel hoverable">
                             <h2>{event.name}</h2>
+                            <p className="formalFont grey-text"> <i className="material-icons iconAlign">person_pin</i> {speaker}</p>
                             <p className="formalFont grey-text"> <i className="material-icons iconAlign">business</i> {event.venue}</p>
                             <p className="formalFont grey-text"> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
                             <p></p>

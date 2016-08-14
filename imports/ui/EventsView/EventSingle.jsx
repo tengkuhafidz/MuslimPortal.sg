@@ -1,5 +1,4 @@
 import React from 'react';
-import SpeakerSingle from './SpeakerSingle.jsx';
 
 export default class EventSingle extends React.Component{
 
