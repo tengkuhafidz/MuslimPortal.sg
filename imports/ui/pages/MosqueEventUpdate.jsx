@@ -99,18 +99,21 @@ export default class MosqueEventUpdate extends TrackerReact(React.Component) {
             return <span>loading.. </span>
 
         //console.log(defaultEventValues)
+         var type = this.state.eventType;
 
-        if (defaultEventValues.speaker !== "" || this.state.eventType === "talk") {
-            speaker = (
-              <div className="input-field" className="col s12">
-                  <input id="speaker" type="text" className="validate" ref="speaker" defaultValue={defaultEventValues.speaker}/>
-                  <label htmlFor="speaker" className="active">Speaker</label>
+         if (type === "talk") {
+          speaker = (
+            <div className="row">
+              <div className="input-field col s12" >
+                <input id="speaker" type="text" className="validate" ref="speaker" defaultValue={defaultEventValues.speaker}/>
+                <label htmlFor="speaker" className="active">Speakers (Separated by comma)</label>
               </div>
-            )
+            </div>
+          )
 
-        } else {
-            speaker = <span></span>
-        }
+      } else {
+          speaker = ""
+      }
 
         //date start, time start
         var startTime = moment(defaultEventValues.dateStart).format("HH:mm");

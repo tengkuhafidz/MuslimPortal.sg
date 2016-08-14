@@ -29,9 +29,20 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
 
     if (musolla.direction){
       directionSteps = (
+<<<<<<< HEAD
         musolla.direction.map((singleStep)=>{
           return (<li>{singleStep}</li>)
         })
+=======
+      <div>
+        <h5> Directions </h5>
+        <ul> 
+          {musolla.direction.map((singleStep)=>{
+            return (<li>{singleStep}</li>)
+          })}
+        </ul>
+      </div>
+>>>>>>> 25f66ec245cf0cea66f4c162b3060bc58a401919
       )
     }
 
@@ -41,6 +52,7 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
               <div className="col s12">
                   <div className="card-panel hoverable">
                       <h2>
+<<<<<<< HEAD
                         {musolla.faculty}, {musolla.buildingName}
                         <span className="eventType right formalFont">
                             {musolla.gender}
@@ -55,6 +67,17 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
                       <p className="topGap"></p>
                       <h5>Directions: </h5>
                       <p>{directionSteps}</p>
+=======
+                        {musolla.faculty}, {musolla.building}
+                        <span className="eventType right formalFont">
+                          {musolla.gender}
+                        </span>
+                      </h2>
+
+                      <h5>({musolla.description})</h5>
+                      
+                      <div>{directionSteps}</div>
+>>>>>>> 25f66ec245cf0cea66f4c162b3060bc58a401919
 
                   </div>
               </div>

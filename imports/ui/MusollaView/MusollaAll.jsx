@@ -10,12 +10,22 @@ export default class MusollaAll extends React.Component{
 
     return(
     	<div className="row">
+<<<<<<< HEAD
         <div className="col s8 push-s2">
           <div className="collection">
             {musolla.map((musollaEach)=>{
               return <MusollaSingle key={musollaEach._id} musolla={musollaEach}/>
             })}
           </div>
+=======
+        <div className="collection">
+
+      
+          {musolla.map((musollaEach)=>{
+            return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />
+          })}
+
+>>>>>>> 25f66ec245cf0cea66f4c162b3060bc58a401919
         </div>
       </div>
     )
