@@ -133,12 +133,12 @@ FlowRouter.route('/mosqueEventDetails/:eventId', {
       content: () => <MosqueEventDetails eventId={params.eventId}/>,
   });
 },
-name: "Layout"
+name: "mosqueEventDetails"
 });
 
 FlowRouter.route('/mosqueHistory', {
   action: function() {
-    mount(Layout, {
+    mount(MosqueMainLayout, {
       content: () => <MosqueHistory />,
   });
 },
