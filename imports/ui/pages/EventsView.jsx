@@ -78,7 +78,7 @@ export default class EventsView extends TrackerReact(React.Component) {
             <div className="bottomGap topGap">
                 
                 <div className="title">
-                  <h1 className="col s12 center">NUSMS Events </h1>
+                  <h1 className="col s12 center">NUSMS Events</h1>
                   {addBtn}
                 </div>
 
