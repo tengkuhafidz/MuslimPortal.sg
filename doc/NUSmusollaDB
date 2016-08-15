@@ -1,0 +1,20 @@
+db.musolla.insert({"faculty": "Faculty of Science", "building": "AS3", "description": "6th Storey", "direction": ["From the 3rd storey of the AS3 building", "walk past the benches", "towards the lift", "Take the lift to the 6th storey", "Turn right upon exiting the stairwell"], "gender": "both", "sideNote": ""})
+
+//Arts, Biz, SoC
+{"faculty": "Faculty of Arts and Social Science", "building": "AS3", "description": "6th Storey", "direction": ["From the 3rd storey of the AS3 building", "walk past the benches", "towards the lift", "Take the lift to the 6th storey", "Turn right upon exiting the stairwell"], "gender": "both", "sideNote": ""}
+
+{"faculty": "Faculty of Arts and Social Science", "building": "AS4", "description": "6.5th Storey", "direction": ["From the deck walk past the Malay Stall", "Turn right into the road", "Walk towards the AS4 building and enter via the entrance", "Walk past the door..", "..and all the way to the lift", "Take the lift to the 6th Storey", "Turn right to find the stairwell door on the right", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""}
+
+{"faculty": "Faculty of Arts and Social Science", "building": "AS6", "description": "4.5th Storey", "direction": ["From the Central Library, walk past the walkaway and turn left to the entrance to AS6", "Walk all the way straight past the rooms", "and the door", "Take the lift to the 5th Storey", "Exit the lift and turn left to enter the stairway", "The musolla is located down the stairs"], "gender": "both", "sideNote": ""}
+
+{"faculty": "Faculty of Arts and Social Science", "building": "AS7", "description": "6.5th Storey", "direction": ["Take the lift in the AS7 building to the 6th Storey", "Exit the lift and turn to your left (facing the graduate division room)", "Walk through the small corridor beside it", "Walk past the door to the stairwell", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""}
+
+{"faculty": "Faculty of Arts and Social Science", "building": "Central Forum", "description": "Near Central Library", "direction": ["From the Central Forum", "Walk past the lift", "Walk past the stairs", "Find the pillar on the right", "Take stairs behind the pillar", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""}
+
+{"faculty": "School of Business", "building": "BIZ1", "description": "Near the Hon Sui Sen Memorial Library", "direction": ["Take the stairs opposite it via the entrance", "Climb the stairs to the 4th Storey to reach the musollah"], "gender": "both", "sideNote": ""}
+
+{"faculty": "School of Computing", "building": "COM1", "description": "", "direction": ["From the SoC Bus Stop, walk past the COM1 building", "turn right into the walkaway", "Walk straight via the walkway", "Turn right to find an exit (which leads to the stairwell)", "Ascend to the topmost storey"], "gender": "Male", "sideNote": ""}
+
+{"faculty": "School of Computing", "building": "COM2", "description": "", "direction": ["Go to the unloading bay of COM2 building", "and walk past the structure", "Enter the door marked Stair 1", "Climb the stairs to reach the 3rd storey where the musolla is located"], "gender": "Female", "sideNote": ""}
+
+//
