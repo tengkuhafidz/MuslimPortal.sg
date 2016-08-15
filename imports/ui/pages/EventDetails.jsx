@@ -96,6 +96,24 @@ export default class EventDetails extends TrackerReact(React.Component) {
                                                     </div>
                                                  )
 
+        adminDiv = "";
+        if (Meteor.userId()) {
+          adminDiv = (          
+                <div className="row">
+                    <div className="col s12">
+                        <div className="card-panel hoverable">
+                            
+                            <a href={`/MosqueEventUpdate/${event._id}`} className="btn blue lighten-1">Update</a>
+                            <span className="marginSides"></span>
+                            <button className="btn red lighten-1" onClick={this.removeEvent.bind(this)}>Delete</button>
+
+                        </div>
+                    </div>
+
+                </div>
+          )
+        }
+
         return (
             <div className="topGap formalFont">
                 <div className="row">
@@ -138,18 +156,7 @@ export default class EventDetails extends TrackerReact(React.Component) {
 
                 </div>
 
-                <div className="row">
-                    <div className="col s12">
-                        <div className="card-panel hoverable">
-                            
-                            <a href={`/MosqueEventUpdate/${event._id}`} className="btn blue lighten-1">Update</a>
-                            <span className="marginSides"></span>
-                            <button className="btn red lighten-1" onClick={this.removeEvent.bind(this)}>Delete</button>
-
-                        </div>
-                    </div>
-
-                </div>
+                {adminDiv}
 
             </div>
         )
