@@ -9,7 +9,6 @@ import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
 
 import MosqueEventForm from '/imports/ui/pages/MosqueEventForm.jsx';
-import MosqueEventDetails from '/imports/ui/pages/MosqueEventDetails.jsx';
 import MosqueLogin from '/imports/ui/pages/MosqueLogin.jsx';
 import MosqueRegister from '/imports/ui/pages/MosqueRegister.jsx';
 
