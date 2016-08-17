@@ -7,7 +7,7 @@ export default class Layout extends React.Component{
     componentDidMount(){
         
         $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
-
+        console.log("one signal start")
         var OneSignal = window.OneSignal || [];
         OneSignal.push(["init", {
           appId: "3ba1c92b-4e88-49cf-ac32-daf8996231aa",
@@ -16,6 +16,8 @@ export default class Layout extends React.Component{
             enable: true /* Set to false to hide */
           }
         }]);
+        console.log("one signal done")
+
 
 
     }
@@ -25,6 +27,7 @@ export default class Layout extends React.Component{
 
         return(
          <div className="fullHeight grey-text text-darken-2 noTopGap">
+           <link rel="manifest" href="/manifest.json" /> 
             <a href="/" className="topLeft formalFont brand">SG Muslim Portal <span className="betaFont">Beta</span></a>
             <LogoutBtn />
                 
