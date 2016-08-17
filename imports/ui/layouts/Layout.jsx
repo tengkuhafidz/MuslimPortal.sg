@@ -6,7 +6,7 @@ export default class Layout extends React.Component{
 
     componentDidMount(){
         
-        $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
+       // $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
         console.log("one signal start")
         var OneSignal = window.OneSignal || [];
         OneSignal.push(["init", {
