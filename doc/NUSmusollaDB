@@ -15,6 +15,6 @@ db.musolla.insert({"faculty": "Faculty of Science", "building": "AS3", "descript
 
 {"faculty": "School of Computing", "building": "COM1", "description": "", "direction": ["From the SoC Bus Stop, walk past the COM1 building", "turn right into the walkaway", "Walk straight via the walkway", "Turn right to find an exit (which leads to the stairwell)", "Ascend to the topmost storey"], "gender": "Male", "sideNote": ""}
 
-{"faculty": "School of Computing", "building": "COM2", "description": "", "direction": ["Go to the unloading bay of COM2 building", "and walk past the structure", "Enter the door marked Stair 1", "Climb the stairs to reach the 3rd storey where the musolla is located"], "gender": "Female", "sideNote": ""}
+db.musolla.insert({"faculty": "School of Computing", "building": "COM2", "description": "", "direction": ["Go to the unloading bay of COM2 building", "and walk past the structure", "Enter the door marked Stair 1", "Climb the stairs to reach the 3rd storey where the musolla is located"], "gender": "Female", "sideNote": ""})
 
 //

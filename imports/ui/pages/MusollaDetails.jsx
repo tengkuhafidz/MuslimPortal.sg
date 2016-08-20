@@ -55,9 +55,6 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
 
                       <h5>({musolla.description})</h5>
 
-
-                      {description}
-                      
                       <div className="topGap">
                         <h5> Directions: </h5>
                         <ol>

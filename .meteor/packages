@@ -26,8 +26,8 @@ accounts-base
 themeteorchef:bert
 check
 
-autopublish
-insecure
+#autopublish
+#insecure
 
 materialize:materialize
 planettraining:material-design-icons-font
@@ -36,3 +36,4 @@ msavin:mongol
 kevohagan:sweetalert
 momentjs:moment
 force-ssl
+fortawesome:fontawesome
