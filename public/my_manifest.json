@@ -1,0 +1,7 @@
+{
+  "name": "Muslim Portal SG",
+  "short_name": "MuslimPortalSG",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "486441400912"
+}
