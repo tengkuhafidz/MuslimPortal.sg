@@ -16,8 +16,6 @@ export default class Layout extends React.Component{
           }
         }]);
 
-
-
     }
 
     render(){
@@ -35,7 +33,7 @@ export default class Layout extends React.Component{
             </div>
 
             <a href="/musollaView" className="bottomLeft formalFont grey-text mainLink"><i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
-            <a href="https://sgmuslimportal.herokuapp.com/musollaView" className="bottomRight formalFont grey-text mainLink"><i className="material-icons iconAlign">today</i>NUSMS Events</a>
+            <a href="/eventsView" className="bottomRight formalFont grey-text mainLink"><i className="material-icons iconAlign">today</i>NUSMS Events</a>
 
         </div>
         )

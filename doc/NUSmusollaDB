@@ -1,20 +1,51 @@
 db.musolla.insert({"faculty": "Faculty of Science", "building": "AS3", "description": "6th Storey", "direction": ["From the 3rd storey of the AS3 building", "walk past the benches", "towards the lift", "Take the lift to the 6th storey", "Turn right upon exiting the stairwell"], "gender": "both", "sideNote": ""})
 
 //Arts, Biz, SoC
-{"faculty": "Faculty of Arts and Social Science", "building": "AS3", "description": "6th Storey", "direction": ["From the 3rd storey of the AS3 building", "walk past the benches", "towards the lift", "Take the lift to the 6th storey", "Turn right upon exiting the stairwell"], "gender": "both", "sideNote": ""}
+db.musolla.insert({"faculty": "Faculty of Arts and Social Science", "building": "AS3", "description": "6th Storey", "direction": ["From the 3rd storey of the AS3 building", "walk past the benches", "towards the lift", "Take the lift to the 6th storey", "Turn right upon exiting the stairwell"], "gender": "both", "sideNote": ""})
 
-{"faculty": "Faculty of Arts and Social Science", "building": "AS4", "description": "6.5th Storey", "direction": ["From the deck walk past the Malay Stall", "Turn right into the road", "Walk towards the AS4 building and enter via the entrance", "Walk past the door..", "..and all the way to the lift", "Take the lift to the 6th Storey", "Turn right to find the stairwell door on the right", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""}
+db.musolla.insert({"faculty": "Faculty of Arts and Social Science", "building": "AS4", "description": "6.5th Storey", "direction": ["From the deck walk past the Malay Stall", "Turn right into the road", "Walk towards the AS4 building and enter via the entrance", "Walk past the door..", "..and all the way to the lift", "Take the lift to the 6th Storey", "Turn right to find the stairwell door on the right", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""})
 
-{"faculty": "Faculty of Arts and Social Science", "building": "AS6", "description": "4.5th Storey", "direction": ["From the Central Library, walk past the walkaway and turn left to the entrance to AS6", "Walk all the way straight past the rooms", "and the door", "Take the lift to the 5th Storey", "Exit the lift and turn left to enter the stairway", "The musolla is located down the stairs"], "gender": "both", "sideNote": ""}
+db.musolla.insert({"faculty": "Faculty of Arts and Social Science", "building": "AS6", "description": "4.5th Storey", "direction": ["From the Central Library, walk past the walkaway and turn left to the entrance to AS6", "Walk all the way straight past the rooms", "and the door", "Take the lift to the 5th Storey", "Exit the lift and turn left to enter the stairway", "The musolla is located down the stairs"], "gender": "both", "sideNote": ""})
 
-{"faculty": "Faculty of Arts and Social Science", "building": "AS7", "description": "6.5th Storey", "direction": ["Take the lift in the AS7 building to the 6th Storey", "Exit the lift and turn to your left (facing the graduate division room)", "Walk through the small corridor beside it", "Walk past the door to the stairwell", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""}
+db.musolla.insert({"faculty": "Faculty of Arts and Social Science", "building": "AS7", "description": "6.5th Storey", "direction": ["Take the lift in the AS7 building to the 6th Storey", "Exit the lift and turn to your left (facing the graduate division room)", "Walk through the small corridor beside it", "Walk past the door to the stairwell", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""})
 
-{"faculty": "Faculty of Arts and Social Science", "building": "Central Forum", "description": "Near Central Library", "direction": ["From the Central Forum", "Walk past the lift", "Walk past the stairs", "Find the pillar on the right", "Take stairs behind the pillar", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""}
+db.musolla.insert({"faculty": "Faculty of Arts and Social Science", "building": "Central Forum", "description": "Near Central Library", "direction": ["From the Central Forum", "Walk past the lift", "Walk past the stairs", "Find the pillar on the right", "Take stairs behind the pillar", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""})
 
-{"faculty": "School of Business", "building": "BIZ1", "description": "Near the Hon Sui Sen Memorial Library", "direction": ["Take the stairs opposite it via the entrance", "Climb the stairs to the 4th Storey to reach the musollah"], "gender": "both", "sideNote": ""}
+db.musolla.insert({"faculty": "School of Business", "building": "BIZ1", "description": "Near the Hon Sui Sen Memorial Library", "direction": ["Take the stairs opposite it via the entrance", "Climb the stairs to the 4th Storey to reach the musollah"], "gender": "both", "sideNote": ""})
 
-{"faculty": "School of Computing", "building": "COM1", "description": "", "direction": ["From the SoC Bus Stop, walk past the COM1 building", "turn right into the walkaway", "Walk straight via the walkway", "Turn right to find an exit (which leads to the stairwell)", "Ascend to the topmost storey"], "gender": "Male", "sideNote": ""}
+db.musolla.insert({"faculty": "School of Computing", "building": "COM1", "description": "", "direction": ["From the SoC Bus Stop, walk past the COM1 building", "turn right into the walkaway", "Walk straight via the walkway", "Turn right to find an exit (which leads to the stairwell)", "Ascend to the topmost storey"], "gender": "Male", "sideNote": ""})
 
 db.musolla.insert({"faculty": "School of Computing", "building": "COM2", "description": "", "direction": ["Go to the unloading bay of COM2 building", "and walk past the structure", "Enter the door marked Stair 1", "Climb the stairs to reach the 3rd storey where the musolla is located"], "gender": "Female", "sideNote": ""})
 
-//
+//Sci & Med
+db.musolla.insert({"faculty": "Medicine", "building": "MD6", "description": "", "direction": ["Walk past NUH Kopitiam and cross the zebra crossing", "Walk towards the MD6 building", "Climb up the stairs", "walk past the Board of Notable Alumni", "Enter via the glass door on the left", "enter via the door into the stairwell", "Musollah is located underneath the stairs"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Medicine", "building": "MD9", "description": "", "direction": ["From the entrance of MD9, the Physiology block, walk straight via the corridor", "Take the lift on the right to the uppermost storey", "Exit the lift and turn right to find a staircase", "The musollah is located up the stairs"], "gender": "both", "sideNote": "Under Construction"})
+
+db.musolla.insert({"faculty": "Science", "building": "S5", "description": "", "direction": ["From the S5 building", "head towards the lifts", "Take the lift to the 6th storey", "Exit the lift", "find a door leading to the stairwell on the left", "The musollah is located up the stairs"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Science", "building": "S15", "description": "", "direction": ["From the Science Canteen, outside Platypus...", "..walk towards the open area (in front of the entrance of the S16 building)", "Walk past the Board of Awards", "Turn left at the road", "Walk straight and enter the corridor on the right", "Walk via the corridor towards the lift", "Ascend to the 6th Storey", "Turn right into the stairwell", "The musollah is located at the top of the stairwell"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Science", "building": "S17", "description": "", "direction": ["From the Science bus stop in front of S17..", "..walk towards the S17 sign", "enter through the main entrance", "Walk straight and head for the exit (leading to the lift lobby)", "Take the lift to the 4th storey", "Exit the lift and walk past the door on the right", "Turn towards a corridor on the left", "Walk straight all the way straight past two consecutive doors", "Musolla is located upstairs"], "gender": "both", "sideNote": ""})
+
+//Engine & SDE
+db.musolla.insert({"faculty": "Faculty of Engineering", "building": "E3", "description": "", "direction": ["From the 6th storey of the E3 building, walk via the passage", "Turn left into the corridor", "walk all the way straight", "Turn left to find the area", "Walk straight and find the stairs on the right", "The musolla is located up the stairs"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Faculty of Engineering", "building": "E5", "description": "", "direction": ["From the bus stop, walk via the stairway (all the way up)", "Turn left and continue straight past the benches", "Walk further to find a lift on the left", "Take the lift to the 4th storey", "Exit the lift, turn right and climb up the stairs"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Faculty of Engineering", "building": "EA", "description": "", "direction": ["Find the lift nearest to LT7A next to Good News Café", "Take the lift to the 7th storey", "Turn left towards the fire exit", "Climb the flight of stairs to reach the musollah"], "gender": "Female", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Faculty of Engineering", "building": "EA", "description": "", "direction": ["Find the lift nearest to Engineering Auditorium (opposite Good News Café)", "Take the lift to the 7th storey", "Turn left towards the fire exit", "Climb the flight of stairs to reach the musollah"], "gender": "Male", "sideNote": ""})
+
+db.musolla.insert({"faculty": "School of Design & Environment", "building": "SDE3", "description": "", "direction": ["From the 2nd storey of the SDE building, take the lift to 4th storey", "Exit the lift walk straight and turn right", "Walk past the lecture theatres, past the toilet signs and through the passage", "Turn left towards the female toilet", "Enter the staircase door", "and climb the stairs to reach the musollah"], "gender": "Female", "sideNote": ""})
+
+db.musolla.insert({"faculty": "School of Design & Environment", "building": "SDE3", "description": "", "direction": ["From the 2nd storey of the SDE building, take the lift to 4th storey", "Exit the lift walk straight and turn right", "Walk past the lecture theatres, past the toilet signs and through the passage", "Turn left towards the male toilet", "Enter the staircase door", "and climb the stairs to reach the musollah"], "gender": "Male", "sideNote": ""})
+
+//UTown, YIH, MPSH & University Hall
+db.musolla.insert({"faculty": "Others", "building": "UTown", "description": "beside Foodclique", "direction": ["Make you way to Foodclique’s aircon area", "Enter the door leading to the stairwell beside the sink", "Walk up the stairs to reach the musollah"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Others", "building": "Yusof Ishak House", "description": "(YIH)", "direction": ["From the Yusof Ishak House Open Plaza, take the stairs leading to the stairwell", "Climb all the way to the 3rd storey to reach the musollah"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Others", "building": "Multi-Purpose Sports Hall 1", "description": "MPSH 1", "direction": ["From the University Health Centre, walk along the pathway to the entrance of MPSH1", "Turn left", "Walk straight past the cupboards", "Continue walking all the way to the end (till you reach the Musolla)"], "gender": "both", "sideNote": ""})
+
+db.musolla.insert({"faculty": "Others", "building": "University Hall", "description": "", "direction": ["From the outside of University Hall, enter the Lee Kong Chian wing on the left", "walk straight from the entrance and find the exit", "Walk all the way in past the door till you reach the Musolla"], "gender": "both", "sideNote": ""})
