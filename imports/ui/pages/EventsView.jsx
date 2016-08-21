@@ -35,10 +35,14 @@ export default class EventsView extends TrackerReact(React.Component) {
 
         nowDate = new Date().toISOString();
 
-        //console.log("now Date" + nowDate);
+        standardTypes = ["all", "talk", "community", "social"];
 
-        if (filterState !== "all")
+        if (filterState === "others"){
+          events = Events.find({eventType: {$nin: standardTypes}, dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
+        }
+        else if (filterState !== "all") {
           events = Events.find({eventType: filterState, dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
+        }
         else
           events = Events.find({dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}}).fetch()
 
@@ -46,7 +50,6 @@ export default class EventsView extends TrackerReact(React.Component) {
     }
 
     render() {
-        //console.log(Meteor.userId())
         events = this.events()
 
         if (!events)
@@ -56,13 +59,13 @@ export default class EventsView extends TrackerReact(React.Component) {
 
             addBtn = "";
         if (Meteor.userId()) {
-          addBtn = (          
+          addBtn = (
             <div>
               <div className="addDataBtnLarge hide-on-med-and-down">
                 <a className="btn blue lighten-1" href="/mosqueEventForm">
                   Add Event
                 </a>
-              </div> 
+              </div>
               <div className="fixed-action-btn hide-on-large-only addDataBtnSmall">
                 <a className="btn-floating btn-large blue lighten-1" href="/mosqueEventForm">
                   <i className="large material-icons">add</i>
@@ -76,7 +79,7 @@ export default class EventsView extends TrackerReact(React.Component) {
 
         return (
             <div className="bottomGap topGap">
-                
+
                 <div className="title">
                   <h1 className="col s12 center">NUSMS Events</h1>
                   {addBtn}
@@ -94,9 +97,6 @@ export default class EventsView extends TrackerReact(React.Component) {
                   </div>
 
                 <EventAll events={events}/>
-
-              
-
             </div>
         )
     }

@@ -21,7 +21,7 @@ export default class EventSingle extends React.Component{
   var endTime = moment(dateEnd).format("HH:mm");
   var endDate = moment(dateEnd).format("Do MMMM");
 
-  console.log("es", event.speaker[0])
+  //console.log("es", event.speaker[0])
 
     return(
       <div>

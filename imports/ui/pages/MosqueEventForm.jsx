@@ -57,7 +57,7 @@ export default class MosqueEventForm extends React.Component {
 
       /* what */
       var name = this.refs.name.value.trim();
-      var eventType = this.refs.type.value.trim();
+      //var eventType = this.refs.type.value.trim();
       var description = this.refs.description.value.trim();
 
       try {
@@ -65,6 +65,12 @@ export default class MosqueEventForm extends React.Component {
 
       } catch (err) {
         var speaker = "";
+      }
+
+      try {
+        var eventType = this.refs.specify.value.trim();
+      } catch (err) {
+        var eventType = this.refs.type.value.trim();
       }
 
       /* when */
@@ -101,6 +107,17 @@ export default class MosqueEventForm extends React.Component {
     render() {
 
       var type = this.state.eventType;
+      specify = "";
+
+      if (type === "others")
+        specify = (
+          <div className="row">
+            <div className="input-field col s12" >
+              <input id="specify" type="text" className="validate" ref="specify"/>
+              <label htmlFor="specify" className="active">Specify: </label>
+            </div>
+          </div>
+        )
 
       if (type === "talk") {
           speaker = (
@@ -149,6 +166,7 @@ export default class MosqueEventForm extends React.Component {
                             </div>
 
                             {speaker}
+                            {specify}
 
                             <div className="row">
                                 <div className="input-field col s12">
