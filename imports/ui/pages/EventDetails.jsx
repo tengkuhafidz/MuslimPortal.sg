@@ -6,6 +6,7 @@ import {Events} from '../../api/events.js'
 import SpeakerSingle from '../EventsView/SpeakerSingle.jsx';
 import TagSingle from '../EventsView/TagSingle.jsx';
 
+import EventPosterUpload from '../EventDetails/EventPosterUpload.jsx';
 
 export default class EventDetails extends TrackerReact(React.Component) {
 
@@ -19,11 +20,16 @@ export default class EventDetails extends TrackerReact(React.Component) {
         }
     }
 
+
+    handleZoom(){
+      $('.materialboxed').materialbox();
+    }
+
     event() {
         return Events.findOne(this.props.eventId)
     }
 
-   
+
     removeEvent(){
         eventId = this.props.eventId
         swal({
@@ -38,12 +44,12 @@ export default class EventDetails extends TrackerReact(React.Component) {
         }, function(){
           Meteor.call('removeEvent', eventId)
           FlowRouter.go('/eventsView');
-        }); 
-      
+        });
+
     }
 
     render() {
-        
+
         event = this.event()
 
         if (!event)
@@ -68,15 +74,17 @@ export default class EventDetails extends TrackerReact(React.Component) {
                 return <SpeakerSingle key={singleSpeaker} singleSpeaker={singleSpeaker} />
               })
             )
-          } 
+          }
 
           speakerDiv = (speaker === "") ? "" : (
-                                                        <p className="formalFont "> 
-                                                            <i className="material-icons iconAlign">person_pin</i> 
+                                                        <p className="formalFont ">
+                                                            <i className="material-icons iconAlign">person_pin</i>
                                                             {speaker}
                                                         </p>
                                                     )
 
+
+        eventImageUploader = (Meteor.userId()) ? <EventPosterUpload eventDetails={event}/> : "";
         tags = ""
 
         if (event.tags !== ""){
@@ -98,14 +106,16 @@ export default class EventDetails extends TrackerReact(React.Component) {
 
         adminDiv = "";
         if (Meteor.userId()) {
-          adminDiv = (          
+          adminDiv = (
                 <div className="row">
                     <div className="col s12">
                         <div className="card-panel hoverable">
-                            
+
                             <a href={`/MosqueEventUpdate/${event._id}`} className="btn blue lighten-1">Update</a>
                             <span className="marginSides"></span>
                             <button className="btn red lighten-1" onClick={this.removeEvent.bind(this)}>Delete</button>
+
+
 
                         </div>
                     </div>
@@ -119,24 +129,26 @@ export default class EventDetails extends TrackerReact(React.Component) {
                 <div className="row">
                     <div className="col s12">
                         <div className="card-panel hoverable">
-                            <h2 className="">
-                                {event.name} 
-                                <span className="eventType right formalFont">
-                                    {event.eventType}
-                                </span>
-                            </h2>
 
-                            {speakerDiv}
-                            {fee}
+                                <h2 className="">
+                                    {event.name}
+                                    <span className="eventType right formalFont">
+                                        {event.eventType}
+                                    </span>
+                                </h2>
 
-                            <h4>Description</h4>
-                            <p>{event.description}</p>
-                            <p>{tags}</p>
-                            <p className="topGap"></p>
+                                {speakerDiv}
+                                {fee}
+                                  <img className="materialboxed" width="200" src={event.imageUrl} onClick={this.handleZoom.bind(this)}/>
+                                  {eventImageUploader}
+
+                              <h4>Description</h4>
+                              <p>{event.description}</p>
+                              <p>{tags}</p>
+                              <p className="topGap"></p>
 
                         </div>
                     </div>
-
                 </div>
 
                 <div className="row">
@@ -148,7 +160,7 @@ export default class EventDetails extends TrackerReact(React.Component) {
                             <p className="formalFont  "> <i className="material-icons iconAlign">schedule</i> {startDate}, {startTime} hrs -  {endDate}, {endTime} hrs</p>
                             <p className="formalFont "> <i className="material-icons iconAlign">business</i> {event.venue}</p>
                             <p className="formalFont "> <i className="material-icons iconAlign">explore</i> {event.address}</p>
-                            
+
                             {direction}
 
                         </div>

@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "fibers": "^1.0.13",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
