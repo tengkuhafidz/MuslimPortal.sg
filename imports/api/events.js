@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+//import { Future } from 'fibers/future';
 
+//Future = Npm.require('fibers/future');
 // initialise a collection here. mongo collection name should be the file name.
 export const Events = new Mongo.Collection('events');
 
@@ -18,7 +20,6 @@ Meteor.methods({
   //declare all methods related to the collection here
   // EXAMPLE:
   addEvents(eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags) {
-    console.log("TIMESTART FORMAT: " + timeStart)
 
     //dateStart
     properDateStart = dateStart;
@@ -135,5 +136,14 @@ Meteor.methods({
   },
   removeEvent(eventId){
     Events.remove(eventId)
+  },
+  eventImageUpload(eventId, imageUrl, uuid){
+    //events id,
+    Events.update({_id: eventId}, {
+      $set: {
+        imageUrl,
+        uuid
+      }
+    })
   }
 });

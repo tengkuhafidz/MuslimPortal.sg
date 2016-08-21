@@ -8,7 +8,7 @@
 
 html{
     background-image: url("/paintBg.png");
-    background-size:     contain;  
+    background-size:     contain;
     background-repeat:   no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -28,7 +28,7 @@ html{
 .eventType {
   text-transform: capitalize;
   font-size: 0.5em;
-  background-color: #4caf50;
+  background-color: #37AC3F;
   color: white;
   text-shadow: 0px 0px #fff;
   padding: 0 5px;
@@ -54,7 +54,7 @@ html{
 
 .addDataBtnSmall{
   position: fixed;
-  bottom: 70px; 
+  bottom: 70px;
   right: 24px;
 }
 
@@ -77,7 +77,7 @@ html{
     display:inline;
   }
 
-.greetingInput input[type="text"] 
+.greetingInput input[type="text"]
 {
     font-size:1em;
     width: auto;
