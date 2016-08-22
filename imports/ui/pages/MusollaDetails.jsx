@@ -43,7 +43,9 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
       )
     }
 
-    description = musolla.description === "" ? "" : <h5>({musolla.description})</h5>
+    description = (musolla.description === "") ? "" : <h5>({musolla.description})</h5>
+
+    console.log(description)
 
     return (
       <div className="topGap">
@@ -57,7 +59,7 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
                         </span>
                       </h2>
 
-                      <h5>({musolla.description})</h5>
+                      <h5>{description}</h5>
 
                       <div className="topGap">
                         <h5> Directions: </h5>
