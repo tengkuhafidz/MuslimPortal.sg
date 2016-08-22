@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default class EventSingle extends React.Component{
+  //
+  // constructor() {
+  //     super();
+  //       this.state = {
+  //           eventColor: "blue"
+  //       };
+  //   }
 
   componentDidMount(){
     document.title = "Mosque Events | Events"
@@ -13,15 +20,13 @@ export default class EventSingle extends React.Component{
     dateEnd = new Date(event.dateEnd)
     dateStart = new Date(event.dateStart)
 
-  //date start, time start
-  var startTime = moment(dateStart).format("HH:mm");
-  var startDate = moment(dateStart).format("Do MMMM");
+    //date start, time start
+    var startTime = moment(dateStart).format("HH:mm");
+    var startDate = moment(dateStart).format("Do MMMM");
 
-  //date end, time end
-  var endTime = moment(dateEnd).format("HH:mm");
-  var endDate = moment(dateEnd).format("Do MMMM");
-
-  //console.log("es", event.speaker[0])
+    //date end, time end
+    var endTime = moment(dateEnd).format("HH:mm");
+    var endDate = moment(dateEnd).format("Do MMMM");
 
     return(
       <div>

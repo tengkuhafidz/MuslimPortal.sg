@@ -20,7 +20,6 @@ export default class EventDetails extends TrackerReact(React.Component) {
         }
     }
 
-
     handleZoom(){
       $('.materialboxed').materialbox();
     }
@@ -103,6 +102,7 @@ export default class EventDetails extends TrackerReact(React.Component) {
                                                         <p>{event.direction}</p>
                                                     </div>
                                                  )
+
 
         adminDiv = "";
         if (Meteor.userId()) {

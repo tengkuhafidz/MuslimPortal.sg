@@ -30,7 +30,7 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
     if (!musolla)
         return <span>loading</span>
 
-      directionSteps = ""
+    directionSteps = ""
     if (musolla.direction){
       directionSteps = (
           musolla.direction.map((singleStep)=>{

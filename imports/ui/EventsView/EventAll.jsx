@@ -12,13 +12,14 @@ export default class EventAll extends React.Component{
 
   render(){
   	events = this.props.events
+
     if(!events)
       return <span> loading </span>
 
     return(
     	<div className="row">
           {events.map((event)=>{
-            return <EventSingle key={event._id} event={event} />
+            return <EventSingle key={event._id} event={event}/>
           } )}
 
       </div>
