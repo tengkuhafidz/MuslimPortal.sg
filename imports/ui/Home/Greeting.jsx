@@ -11,7 +11,7 @@ export default class Home extends React.Component{
     }
 
     componentDidMount(){
-            $('.swashIn').addClass('magictime puffIn');
+      $('.boingInUp').addClass('magictime boingInUp');
     }
 
   handleClick(){
@@ -56,7 +56,7 @@ export default class Home extends React.Component{
     userNameArea = showUserInputField ? userInputField : userNameSpan
 
     return(
-      <div className="header truncate swashIn" >
+      <div className="header truncate swap boingInUp" >
         Salaam, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
       </div>
     )

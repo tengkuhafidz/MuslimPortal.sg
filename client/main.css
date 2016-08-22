@@ -25,6 +25,15 @@ html{
   margin-right: 10px;
 }
 
+
+.invisible{
+  visibility: hidden;
+}
+
+.visible{
+  visibility: visible;
+}
+
 .eventType {
   text-transform: capitalize;
   font-size: 0.5em;
