@@ -11,14 +11,13 @@ export default class MusollaView extends TrackerReact(React.Component) {
       this.state = {
           subscription: {
               events: Meteor.subscribe("allMusolla")
-          },
-          filter: "all"
+          }
       }
   }
 
   showMusolla() {
 
-      musolla = Musolla.find({});
+      musolla = Musolla.find({}).fetch();
 
       return musolla
   }
@@ -31,7 +30,7 @@ export default class MusollaView extends TrackerReact(React.Component) {
             loading
         </span>
     return(
-      <div className="">
+      <div>
 
         <h1 className="center topGap">
 

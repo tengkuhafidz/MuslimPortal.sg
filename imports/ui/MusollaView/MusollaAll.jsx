@@ -2,10 +2,7 @@ import React from 'react';
 import MusollaSingle from './MusollaSingle.jsx';
 
 export default class MusollaAll extends React.Component{
-  //filter
-  filter(type){
 
-  }
   componentDidMount(){
     document.title = "Musolla | View All Musolla"
   }
@@ -22,6 +19,7 @@ export default class MusollaAll extends React.Component{
 
 
           {musolla.map((musollaEach)=>{
+            console.log(musollaEach._id)
             return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />
           })}
           </div>

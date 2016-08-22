@@ -10,7 +10,6 @@ export default class MusollaSingle extends React.Component{
 
   render(){
 
-
     musolla = this.props.musolla
 
     //gender = (musolla.gender === "Male") ? (<i className="fa fa-mars" aria-hidden="true"></i>) : (<i className="fa fa-venus" aria-hidden="true"></i>)
