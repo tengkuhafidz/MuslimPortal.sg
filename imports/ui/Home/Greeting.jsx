@@ -10,6 +10,10 @@ export default class Home extends React.Component{
       }
     }
 
+    componentDidMount(){
+      $('.boingInUp').addClass('magictime boingInUp');
+    }
+
   handleClick(){
     this.setState({showUserInputField: true})
   }
@@ -38,6 +42,7 @@ export default class Home extends React.Component{
 
   render(){
 
+
     userName = localStorage.getItem("userName") || "awak";
     userNameSpan = <span className="userNameSpan" >{userName} <i className="material-icons editContent">edit_mode</i></span>
     userInputField = (
@@ -51,7 +56,7 @@ export default class Home extends React.Component{
     userNameArea = showUserInputField ? userInputField : userNameSpan
 
     return(
-      <div className="header truncate" >
+      <div className="header truncate swap boingInUp" >
         Salaam, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
       </div>
     )
