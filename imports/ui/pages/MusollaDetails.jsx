@@ -21,11 +21,11 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
       }
   }
   showMusolla() {
-    var oid = new Meteor.Collection.ObjectID(this.props.musollaId);
-    var doc = Musolla.findOne(oid);
-      //return Musolla.findOne({"_id": this.props.musollaId})
+    // var oid = new Meteor.Collection.ObjectID(this.props.musollaId);
+    // var doc = Musolla.findOne(oid);
+      return Musolla.findOne({"_id": this.props.musollaId})
 
-      return doc
+      //return doc
   }
 
   render(){
