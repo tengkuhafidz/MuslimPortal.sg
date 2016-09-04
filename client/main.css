@@ -7,11 +7,13 @@
 }
 
 html{
-    background-image: url("/paintBg.png");
-    background-size:     contain;
+    background-image: url("/Picture1.png");
+    background-size:cover;
+    min-width: 100%;
+/*    background-size:     contain;
     background-repeat:   no-repeat;
     background-position: center center;
-    background-attachment: fixed;
+    background-attachment: fixed;*/
     text-shadow: 1px 1px #fff;
  }
 .smallFont{
