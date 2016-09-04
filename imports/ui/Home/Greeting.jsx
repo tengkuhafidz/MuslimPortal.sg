@@ -43,7 +43,7 @@ export default class Home extends React.Component{
   render(){
 
 
-    userName = localStorage.getItem("userName") || "awak";
+    userName = localStorage.getItem("userName") || "<Insert Your Name>";
     userNameSpan = <span className="userNameSpan" >{userName} <i className="material-icons editContent">edit_mode</i></span>
     userInputField = (
       <form onSubmit={this.handleSubmit.bind(this)}  className="greetingInput">
@@ -57,7 +57,7 @@ export default class Home extends React.Component{
 
     return(
       <div className="header truncate swap boingInUp" >
-        Salaam, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
+        Assalamualaikum, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
       </div>
     )
   }
