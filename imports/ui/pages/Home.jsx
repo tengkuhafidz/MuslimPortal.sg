@@ -2,6 +2,7 @@ import React from 'react';
 
 import Greeting from '../Home/Greeting.jsx'
 
+
 export default class Home extends React.Component{
 
   // componentDidMount(){
@@ -10,17 +11,22 @@ export default class Home extends React.Component{
 
   render(){
     var randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    setInterval(function(){ 
+    setInterval(function(){
         $('.messageAnimation').addClass('magictime swashIn visible');
     }, 1000 );
     return(
       <div className="center moreTopPadding ">
+
         <Greeting />
+        <br/>
+          <br/>
+            <br/>
+<br/>
         <div className="topPadding messageAnimation invisible">
-          <h1 className=""> 
-            {randomMessage.message}
-          </h1>
-          <div className="flow-text">#{randomMessage.hashtag}</div>
+          <h5 className="">
+            "{randomMessage.message}"
+          </h5>
+          <div className="flow-text">({randomMessage.hashtag})</div>
         </div>
       </div>
     )

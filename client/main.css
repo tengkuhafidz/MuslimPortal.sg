@@ -6,15 +6,21 @@
   font-family: 'Raleway', helvetica, sans-serif;
 }
 
+.time{
+  color: #fff;
+  font-size: 160px;
+  text-shadow: 2px 2px #333;
+}
+
 html{
-    background-image: url("/Picture1.png");
+    background-image: url("/trees.jpg");
     background-size:cover;
     min-width: 100%;
 /*    background-size:     contain;
     background-repeat:   no-repeat;
     background-position: center center;
     background-attachment: fixed;*/
-    text-shadow: 1px 1px #fff;
+    text-shadow: 2px 2px #333;
  }
 .smallFont{
   font-size: 0.7em;
@@ -47,7 +53,7 @@ html{
   line-height: 1.6;
 }
 
-.btn, .btn-floating{
+.noShadow,.btn, .btn-floating{
     text-shadow: 0px 0px #fff;
 }
 
@@ -187,6 +193,18 @@ html{
     position: absolute;
     top: 10px;
     right: 10px;
+    width:80%;
+    text-align: right;
+
+}
+
+.belowBrand{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width:80%;
+    text-align: left;
+
 }
 
 .bottomRight{
@@ -210,7 +228,7 @@ html{
 }
 
 .header{
-  font-size: 2.5em;
+  font-size: 3em;
 }
 
 .fullButton{
@@ -231,4 +249,9 @@ html{
       bottom: 45px;
       right: 170px;
     }
+}
+
+.fullWidth{
+  width: 100%;
+
 }

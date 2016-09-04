@@ -1,6 +1,8 @@
 import React from 'react';
 
 import LogoutBtn from '../components/LogoutBtn.jsx'
+import EventsView from '../pages/EventsView.jsx'
+
 
 export default class Layout extends React.Component{
 
@@ -22,18 +24,22 @@ export default class Layout extends React.Component{
 
 
         return(
-         <div className="fullHeight grey-text text-darken-2 noTopGap">
+         <div className="fullHeight white-text noTopGap">
            <link rel="manifest" href="/manifest.json" />
-            <a href="/" className="topLeft formalFont brand">SG Muslim Portal <span className="betaFont">Beta</span></a>
-            <LogoutBtn />
+            <a href="/" className="topLeft formalFont white-text brand">NUSMS Portal <span className="betaFont">Beta</span></a>
+
+              <div className="topRight">
+                <EventsView />
+              </div>
+              <LogoutBtn />
 
 
             <div className="contentDiv container">
                 {this.props.content()}
             </div>
 
-            <a href="/musollaView" className="bottomLeft formalFont grey-text mainLink"><i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
-            <a href="/eventsView" className="bottomRight formalFont grey-text mainLink"><i className="material-icons iconAlign">today</i>NUSMS Events</a>
+            <a href="/musollaView" className="bottomLeft formalFont white-text mainLink"><i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
+            <a href="/eventsView" className="bottomRight formalFont white-text mainLink"><i className="material-icons iconAlign">today</i>NUSMS Events</a>
 
         </div>
         )

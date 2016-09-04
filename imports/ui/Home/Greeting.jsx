@@ -6,13 +6,26 @@ export default class Home extends React.Component{
       super();
 
       this.state = {
-          showUserInputField: false
+          showUserInputField: false,
+          currTime: this.getCurrTime()
       }
+    }
+    getCurrTime(){
+      currTime = moment().format("HH:mm:ss")
+      return currTime;
+    }
+
+    updateCurrTime(){
+      this.setState({
+        currTime: this.getCurrTime()
+      });
     }
 
     componentDidMount(){
-      $('.boingInUp').addClass('magictime boingInUp');
-    }
+        $('.boingInUp').addClass('magictime boingInUp');
+        var that = this;
+        setInterval(that.updateCurrTime.bind(that), 1000);
+      }
 
   handleClick(){
     this.setState({showUserInputField: true})
@@ -42,12 +55,19 @@ export default class Home extends React.Component{
 
   render(){
 
+    userName = localStorage.getItem("userName") || "<Insert Name>";
 
-    userName = localStorage.getItem("userName") || "<Insert Your Name>";
+    if (!localStorage.getItem("userName"))
+      defaultName = ""
+    else {
+        defaultName = userName;
+    }
+
+
     userNameSpan = <span className="userNameSpan" >{userName} <i className="material-icons editContent">edit_mode</i></span>
     userInputField = (
       <form onSubmit={this.handleSubmit.bind(this)}  className="greetingInput">
-        <input type="text" ref="userName" name="userName" defaultValue={userName}/>
+        <input type="text" ref="userName" name="userName" defaultValue={defaultName}/>
       </form>
     )
 
@@ -55,9 +75,13 @@ export default class Home extends React.Component{
 
     userNameArea = showUserInputField ? userInputField : userNameSpan
 
+    currTime = this.getCurrTime();
+
     return(
       <div className="header truncate swap boingInUp" >
+        <h1 className="time">{this.state.currTime}</h1>
         Assalamualaikum, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
+
       </div>
     )
   }
