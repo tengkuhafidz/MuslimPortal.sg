@@ -13,7 +13,7 @@ export default class MusollaAll extends React.Component{
       return <span> loading </span>
 
     return(
-    	<div className="row">
+    	<div className="row noShadow">
         <div className="col s8 push-s2">
           <div className="collection">
 

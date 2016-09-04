@@ -23,6 +23,13 @@ export default class EventsView extends TrackerReact(React.Component) {
         this.setState({filter: this.refs.type.value});
     }
 
+    getOneUpcomingEvent(){
+      upcomingEvent = Events.findOne({dateEnd: {$gte: nowDate}}, {sort: {dateStart: 1}});
+
+      return upcomingEvent;
+
+    }
+
     events() {
         var filterState = this.state.filter
 
@@ -77,26 +84,23 @@ export default class EventsView extends TrackerReact(React.Component) {
 
         console.log(Meteor.userId())
 
+        upcomingEvent = this.getOneUpcomingEvent();
+        console.log("up", upcomingEvent)
+        //
+        if (!upcomingEvent)
+            return <span></span>
+        //
+
+        dateTimeStart = upcomingEvent.dateStart
+
+        dateStart = moment(dateTimeStart).format("DD MMM, HH:MM")
+       console.log("up", upcomingEvent)
+
         return (
-            <div className="bottomGap topGap">
+            <div className="topRight fullWidth">
 
-                <div className="title">
-                  <h1 className="col s12 center">NUSMS Events</h1>
-                  {addBtn}
-                </div>
+              <a href={`/eventDetails/${upcomingEvent._id}`} className="white-text mainLink"><i className="material-icons iconAlign">notifications_active</i> {upcomingEvent.name} @ {dateStart}hrs </a>
 
-                  <div className="input-field center bottomGap">
-                    <select ref="type" className="browser-default" onChange={this.handleFilter.bind(this)}>
-                      <option value="all">All Events</option>
-                      <option value="talk" >Talks</option>
-                      <option value="social">Social Events</option>
-                      <option value="community">Community Works</option>
-                      <option value="others">Others</option>
-                    </select>
-
-                  </div>
-
-                <EventAll events={events}/>
             </div>
         )
     }

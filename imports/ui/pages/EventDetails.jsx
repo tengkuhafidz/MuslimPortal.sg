@@ -125,10 +125,10 @@ export default class EventDetails extends TrackerReact(React.Component) {
         }
 
         return (
-            <div className="topGap formalFont">
+            <div className="topGap formalFont black-text noShadow">
                 <div className="row">
                     <div className="col s12">
-                        <div className="card-panel hoverable">
+                        <div className="card-panel hoverable ">
 
                                 <h2 className="">
                                     {event.name}
