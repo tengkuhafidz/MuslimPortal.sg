@@ -21,7 +21,6 @@ export default class Home extends React.Component{
         <br/>
           <br/>
             <br/>
-<br/>
         <div className="topPadding messageAnimation invisible">
           <h5 className="">
             "{randomMessage.message}"

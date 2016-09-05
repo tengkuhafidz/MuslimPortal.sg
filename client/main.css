@@ -14,7 +14,7 @@
 
 html{
 
-    background-image: url("/trees.jpg");
+    background-image: url("/tree.jpg");
     background-size:cover;
     min-width: 100%;
 /*    background-size:     contain;
@@ -229,7 +229,7 @@ html{
 }
 
 .header{
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 .fullButton{

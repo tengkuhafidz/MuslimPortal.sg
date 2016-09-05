@@ -48,7 +48,7 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
     console.log(description)
 
     return (
-      <div className="topGap noShadow">
+      <div className="topGap noShadow black-text">
           <div className="row">
               <div className="col s12">
                   <div className="card-panel hoverable">
