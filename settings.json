@@ -4,5 +4,12 @@
       "public_key": "81e73fd5cec3980a9b33",
       "secret_key": "c28b595bc501b990d67b"
     }
+  },
+  "public": {
+    "analyticsSettings": {
+      // Add your analytics tracking ids here (remove this line before running)
+      "Google Analytics" : {"trackingId": "UA-83691470-1"},
+    }
   }
+
 }
