@@ -26,7 +26,7 @@ export default class Layout extends React.Component{
         return(
          <div className="fullHeight white-text noTopGap">
            <link rel="manifest" href="/manifest.json" />
-            <a href="/" className="topLeft formalFont white-text brand">NUSMS Portal <span className="betaFont">Beta</span></a>
+            <a href="/" className="topLeft formalFont white-text brand">My NUSMS <span className="betaFont">Beta</span></a>
 
               <div className="topRight">
                 <EventsView />
