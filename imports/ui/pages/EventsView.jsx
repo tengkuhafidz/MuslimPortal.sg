@@ -93,7 +93,7 @@ export default class EventsView extends TrackerReact(React.Component) {
 
         dateTimeStart = upcomingEvent.dateStart
 
-        dateStart = moment(dateTimeStart).format("DD MMM, HH:MM")
+        dateStart = moment(dateTimeStart).format("DD MMM, h:mm a")
        console.log("up", upcomingEvent)
 
         return (

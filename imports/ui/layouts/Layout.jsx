@@ -7,6 +7,7 @@ import EventsView from '../pages/EventsView.jsx'
 export default class Layout extends React.Component{
 
     componentDidMount(){
+    $('.materialboxed').materialbox();
 
        // $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
         var OneSignal = window.OneSignal || [];
@@ -17,6 +18,8 @@ export default class Layout extends React.Component{
             enable: false /* Set to false to hide */
           }
         }]);
+
+
 
     }
 
@@ -39,7 +42,7 @@ export default class Layout extends React.Component{
             </div>
 
             <a href="/musollaView" className="bottomLeft formalFont white-text mainLink"><i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
-            <a href="/eventsView" className="bottomRight formalFont white-text mainLink"><i className="material-icons iconAlign">today</i>NUSMS Events</a>
+            <img className="materialboxed bottomRight" width="50" src="coe.jpg"  data-caption="Calendar of Events for AY 2016/2017" />
 
         </div>
         )
