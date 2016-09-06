@@ -99,7 +99,7 @@ export default class EventsView extends TrackerReact(React.Component) {
         return (
             <div className="topRight fullWidth">
 
-              <a href={`/eventDetails/${upcomingEvent._id}`} className="white-text mainLink"><i className="material-icons iconAlign">notifications_active</i> {upcomingEvent.name} @ {dateStart}hrs </a>
+              <a href={`/eventDetails/${upcomingEvent._id}`} className="white-text mainLink"><i className="material-icons iconAlign">notifications_active</i> {upcomingEvent.name} @ {dateStart} </a>
 
             </div>
         )
