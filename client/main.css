@@ -26,6 +26,9 @@ html{
 .smallFont{
   font-size: 0.7em;
 }
+.smallerFont{
+  font-size: 0.5em;
+}
 .marginRight{
   margin-right: 25px;
 }

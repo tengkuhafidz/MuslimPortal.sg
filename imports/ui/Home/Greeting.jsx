@@ -7,12 +7,18 @@ export default class Home extends React.Component{
 
       this.state = {
           showUserInputField: false,
-          currTime: this.getCurrTime()
+          currTime: this.getCurrTime(),
+          currAmPm: this.getCurrAmPm()
       }
     }
     getCurrTime(){
-      currTime = moment().format("HH:mm:ss")
+      currTime = moment().format("h:mm")
       return currTime;
+    }
+
+    getCurrAmPm(){
+      currAmPm = moment().format("a")
+      return currAmPm;
     }
 
     updateCurrTime(){
@@ -79,7 +85,7 @@ export default class Home extends React.Component{
 
     return(
       <div className="header truncate swap boingInUp" >
-        <h1 className="time">{this.state.currTime}</h1>
+        <h1 className="time">{this.state.currTime} <span className="smallFont">{this.state.currAmPm}</span></h1>
         Assalamualaikum, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
 
       </div>
