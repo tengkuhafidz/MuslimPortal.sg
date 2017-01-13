@@ -1,28 +1,49 @@
 .betaFont{
-  font-family: 'Indie Flower', cursive, sans-serif;
+  font-family: 'Roboto Slab', cursive, sans-serif;
  }
 
  html, .formalFont{
-  font-family: 'Raleway', helvetica, sans-serif;
+  font-family: 'futura', helvetica, sans-serif;
 }
 
 .time{
+  margin-top: 70px;
   color: #fff;
   font-size: 160px;
-  text-shadow: 2px 2px #333;
+  /*text-shadow: 2px 2px #333;*/
+}
+
+.ampm {
+    text-transform: uppercase;
+    font-size: 0.3em !important;
+    margin-left: -50px;
 }
 
 html{
 
-    background-image: url("/tree4.jpg");
+    /*background-image: url("/tree4.jpg");*/
+
+    background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(15,109,102, 0.8), 
+      rgba(15,109,102, 0.8)
+    ),
+    /* bottom, image */
+    url("/1.jpg");
+
     background-size:cover;
     min-width: 100%;
 /*    background-size:     contain;
     background-repeat:   no-repeat;
     background-position: center center;
     background-attachment: fixed;*/
-    text-shadow: 2px 2px #333;
+    /*text-shadow: 2px 2px #333;*/
  }
+
+ .slightSmall{
+  font-size: 1.2em;
+}
 .smallFont{
   font-size: 0.7em;
 }
@@ -97,6 +118,12 @@ html{
   form{
     display:inline;
   }
+
+.greet {
+  font-size: 1.2em;
+  margin-top: -40px;
+  margin-left: 30px;
+}
 
 .greetingInput input[type="text"]
 {

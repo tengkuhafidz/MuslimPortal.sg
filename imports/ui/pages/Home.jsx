@@ -21,11 +21,11 @@ export default class Home extends React.Component{
         <br/>
           <br/>
             <br/>
-        <div className="topPadding messageAnimation invisible">
+        <div className=" messageAnimation invisible betaFont">
           <h5 className="">
             "{randomMessage.message}"
           </h5>
-          <div className="flow-text">({randomMessage.hashtag})</div>
+          <div className="flow-text slightSmall" >({randomMessage.hashtag})</div>
         </div>
       </div>
     )
