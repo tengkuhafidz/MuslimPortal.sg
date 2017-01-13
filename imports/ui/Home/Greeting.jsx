@@ -85,8 +85,8 @@ export default class Home extends React.Component{
 
     return(
       <div className="header truncate swap boingInUp" >
-        <h1 className="time">{this.state.currTime} <span className="smallFont">{this.state.currAmPm}</span></h1>
-        Assalamualaikum, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span>
+        <h1 className="time">{this.state.currTime} <span className="smallFont ampm">{this.state.currAmPm}</span></h1>
+        <p className="greet">Assalamualaikum, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span></p>
 
       </div>
     )
