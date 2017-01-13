@@ -19,7 +19,7 @@ const HIJRI_MONTHS = {
 
 var currDate = moment().date();
 var currMonth = moment().month();
-// console.log(`currDate: ${currDate} currMonth: ${currMonth}`)
+console.log(`currDate: ${currDate} currMonth: ${currMonth}`)
 
 request({
   url: `https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2017/SG-1.json`,
@@ -35,6 +35,33 @@ request({
     var hijriYear = body[0][currDate-1].hijriYear;
 
     console.log(`Today is ${hijriDate}, ${hijriMonthName} ${hijriYear}`);
+
+  } else {
+    console.log('Error!');
+  }
+});
+
+//get prayertimes-database
+const PRAYER = {
+  'Subuh': 0,
+  'Syuruk': 1,
+  'Zuhur': 2,
+  'Asar': 3,
+  'Maghrib': 4,
+  'Isyak': 5
+}
+request({
+  url: `https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2017.json`,
+  json: true
+}, (error, response, body) => {
+
+  if (!error && response.statusCode === 200){
+    var timeArray = body[currMonth][currDate-1].times;
+
+    for (var i=0; i < 6; i++){
+      var time = moment(timeArray[i]).format('HH:mm');
+      console.log(`${Object.keys(PRAYER)[i]}: ${time}`)
+    }
 
   } else {
     console.log('Error!');
