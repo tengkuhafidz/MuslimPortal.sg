@@ -68,21 +68,6 @@ export default class EventsWidget extends TrackerReact(React.Component) {
       )
     }
 
-
-
-      // <div className="eventsPanel">
-      //   <h6> No Upcoming Events <i className="material-icons iconAlign">sentiment_dissatisfied</i></h6>
-      // </div>
-      // <div className="eventsPanel">
-      //   <h6> 2 Upcoming Events <i className="material-icons iconAlign">sentiment_satisfied</i></h6>
-      //   <div className="eventPanelItems">
-      //     <hr />
-      //     <p><a className="white-text mainLink">PBUH: ruNNur <br /><span className="smallFont">Monday, 11 Jan, 6pm</span></a></p>
-      //     <hr />
-      //     <p><a className="white-text mainLink truncate">PBUH: Grand Mawlid <br /><span className="smallFont">Friday, 13 Jan, 8pm</span></a></p>
-      //   </div>
-      // </div>
-
     showEvents = this.state.showEvents
     eventsArea = showEvents ? eventsPanel : ""
     eventLinkClasses = events.length > 0 ? "formalFont bottomRight white-text mainLink bounce animated eventLink" : "formalFont bottomRight white-text mainLink"
