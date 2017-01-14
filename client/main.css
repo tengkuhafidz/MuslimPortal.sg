@@ -122,7 +122,6 @@ html{
 
 .brand {
   font-size: 1.5em;
-  color: grey;
 }
 
 .brand:hover {
@@ -183,7 +182,7 @@ html{
  .iconAlign {
     display: inline-flex;
     vertical-align: middle;
-
+    margin-bottom: 5px;
 }
 
 .eventPanelItems{
@@ -233,9 +232,8 @@ html{
   margin-top: 0px;
 }
 
-.topLeft{
-    padding-top: 250px;
-    padding-left: 10px;
+.halfSee {
+  opacity: 0.5;
 }
 
 .contentDiv{
@@ -246,15 +244,27 @@ html{
   font-size: 1.2em;
 }
 
+.topMiddle{
+  position: fixed;
+  top: 10px;
+  width:100%;
+  margin: 0 auto;
+} 
+
 .topRight{
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
-    width:80%;
-    text-align: right;
 
 }
 
+.topLeft{
+    z-index: 10;
+    position: absolute;
+    top: 3px;
+    left: 10px;
+}
+/*
 .belowBrand{
     position: absolute;
     top: 50px;
@@ -262,7 +272,7 @@ html{
     width:80%;
     text-align: left;
 
-}
+}*/
 
 .bottomRight{
     position: fixed;

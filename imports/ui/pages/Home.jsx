@@ -13,9 +13,9 @@ export default class Home extends React.Component{
    
     return(
       <div className="center moreTopPadding ">
-
-        <Greeting />
-     
+        <p className="topGap">
+          <Greeting/>
+        </p>
       </div>
     )
   }
