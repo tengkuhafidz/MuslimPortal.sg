@@ -4,7 +4,7 @@ import LogoutBtn from '../components/LogoutBtn.jsx'
 import EventsView from '../pages/EventsView.jsx'
 import EventsWidget from '../Home/EventsWidget.jsx'
 
-
+import HijrahPrayer from '../pages/HijrahPrayer.jsx'
 
 export default class Layout extends React.Component{
 
@@ -34,6 +34,7 @@ export default class Layout extends React.Component{
             <a href="/" className="topLeft formalFont white-text brand">My NUSMS <span className="betaFont">Beta</span></a>
 
               <div className="topRight">
+                <HijrahPrayer />
                 {/*<EventsView />*/}
               </div>
               <LogoutBtn />
@@ -48,7 +49,7 @@ export default class Layout extends React.Component{
 
             <div className="bottomRight">
               <EventsWidget />
-              
+
             </div>
 
         </div>
