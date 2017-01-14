@@ -1,9 +1,23 @@
 .betaFont{
   font-family: 'Roboto Slab', cursive, sans-serif;
  }
+ .cursiveFont{
+   font-family: 'Pacifico', cursive;
+ }
 
  html, .formalFont{
   font-family: 'futura', helvetica, sans-serif;
+}
+
+a { cursor: pointer; cursor: hand; }
+
+.eventsPanel{
+  background-color: #333;
+  border-radius: 5px;
+  opacity: 0.8;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 35px;
 }
 
 .time{
@@ -13,10 +27,24 @@
   /*text-shadow: 2px 2px #333;*/
 }
 
+.container{
+  max-width: 65%;
+}
+
 .ampm {
     text-transform: uppercase;
     font-size: 0.3em !important;
     margin-left: -50px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.eventLink {
+  -webkit-animation-duration: 8s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-iteration-count: 3;
 }
 
 html{
@@ -92,7 +120,6 @@ html{
 
 .brand {
   font-size: 1.5em;
-  color: grey;
 }
 
 .brand:hover {
@@ -153,6 +180,12 @@ html{
  .iconAlign {
     display: inline-flex;
     vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+.eventPanelItems{
+  opacity: 0.8;
+  font-size: 0.8;
 }
 
  .lessEmphasis {
@@ -197,9 +230,8 @@ html{
   margin-top: 0px;
 }
 
-.topLeft{
-    padding-top: 250px;
-    padding-left: 10px;
+.halfSee {
+  opacity: 0.5;
 }
 
 .contentDiv{
@@ -210,15 +242,27 @@ html{
   font-size: 1.2em;
 }
 
+.topMiddle{
+  position: fixed;
+  top: 10px;
+  width:100%;
+  margin: 0 auto;
+} 
+
 .topRight{
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
-    width:80%;
-    text-align: right;
 
 }
 
+.topLeft{
+    z-index: 10;
+    position: absolute;
+    top: 3px;
+    left: 10px;
+}
+/*
 .belowBrand{
     position: absolute;
     top: 50px;
@@ -226,13 +270,23 @@ html{
     width:80%;
     text-align: left;
 
-}
+}*/
 
 .bottomRight{
     position: fixed;
     bottom: 10px;
     right: 10px;
 }
+
+.bottomMiddle{
+  position: absolute;
+  bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0px;
+  right: 0px;
+  width:60%;
+} 
 
 
 .bottomLeft{

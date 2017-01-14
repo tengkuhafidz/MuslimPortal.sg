@@ -4,9 +4,11 @@ import {FlowRouter} from 'meteor/kadira:flow-router-ssr';
 
 import Layout from '/imports/ui/layouts/Layout.jsx';
 import Home from '/imports/ui/pages/Home.jsx';
+import BeBetter from '/imports/ui/pages/BeBetter.jsx';
 
 import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
+import EventForm from '/imports/ui/pages/EventForm.jsx';
 
 import MosqueEventForm from '/imports/ui/pages/MosqueEventForm.jsx';
 import MosqueLogin from '/imports/ui/pages/MosqueLogin.jsx';
@@ -25,6 +27,16 @@ FlowRouter.route('/', {
   })
 },
 name: "home"
+});
+
+//home
+FlowRouter.route('/beBetter', {
+  action: function(){
+    mount(Layout, {
+      content: () => <BeBetter />
+  })
+},
+name: "beBetter"
 });
 
 //musolla
@@ -72,6 +84,15 @@ FlowRouter.route('/mosqueEventForm', {
   });
 },
 name: "mosqueEventForm"
+});
+
+FlowRouter.route('/eventForm', {
+  action: function() {
+    mount(Layout, {
+      content: () => <EventForm />,
+  });
+},
+name: "eventForm"
 });
 
 FlowRouter.route('/MosqueEventUpdate/:eventId', {
