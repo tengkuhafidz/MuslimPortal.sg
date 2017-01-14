@@ -29,10 +29,10 @@ export default class HijrahPrayer extends React.Component{
      const HIJRI_MONTHS = {
        'Muharram': 1,
        'Safar': 2,
-       'Rabiulawal': 3,
-       'Rabiulakhir': 4,
-       'Jamadilawal': 5,
-       'Jamadilakhir': 6,
+       'Rabiul-awwal': 3,
+       'Rabiul-akhir': 4,
+       'Jamadil-awwal': 5,
+       'Jamadil-akhir': 6,
        'Rejab': 7,
        'Syaaban': 8,
        'Ramadhan': 9,
@@ -54,7 +54,7 @@ export default class HijrahPrayer extends React.Component{
     var hijriDate = data[0][currDate-1].hijriDate;
     var hijriYear = data[0][currDate-1].hijriYear;
 
-    var hDate = `Today is ${hijriDate}, ${hijriMonthName} ${hijriYear}`;
+    var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}`;
 
      that.setState({
        hijrah: hDate
@@ -65,7 +65,7 @@ export default class HijrahPrayer extends React.Component{
 
  return (
    <div>
-     <h1>{this.state.hijrah}</h1>
+     <span>{this.state.hijrah}</span>
    </div>
  )
 

@@ -3,6 +3,8 @@ import React from 'react';
 import LogoutBtn from '../components/LogoutBtn.jsx'
 import EventsView from '../pages/EventsView.jsx'
 import EventsWidget from '../Home/EventsWidget.jsx'
+import QuotesWidget from '../Home/QuotesWidget.jsx'
+
 
 import HijrahPrayer from '../pages/HijrahPrayer.jsx'
 
@@ -31,7 +33,7 @@ export default class Layout extends React.Component{
         return(
          <div className="fullHeight white-text noTopGap">
            <link rel="manifest" href="/manifest.json" />
-            <a href="/" className="topLeft formalFont white-text brand">My NUSMS <span className="betaFont">Beta</span></a>
+            <a href="/" className="topLeft formalFont white-text brand">MyNUSMS <span className="betaFont smallFont">Beta</span></a>
 
               <div className="topRight">
                 <HijrahPrayer />
@@ -47,9 +49,12 @@ export default class Layout extends React.Component{
             <a href="/musollaView" className="bottomLeft formalFont white-text mainLink"><i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
             {/*<img className="materialboxed bottomRight" width="50" src="coe.jpg"  data-caption="Calendar of Events for AY 2016/2017" /> */}
 
+            <div className="bottomMiddle">
+              <QuotesWidget />
+            </div>
+
             <div className="bottomRight">
               <EventsWidget />
-
             </div>
 
         </div>
