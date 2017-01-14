@@ -21,7 +21,7 @@ export default class Home extends React.Component{
         <br/>
           <br/>
             <br/>
-        <div className=" messageAnimation invisible betaFont">
+        <div className=" betaFont mainContent">
           <h5 className="">
             "{randomMessage.message}"
           </h5>

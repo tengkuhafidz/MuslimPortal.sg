@@ -10,7 +10,7 @@ export default class MusollaView extends TrackerReact(React.Component) {
 
       this.state = {
           subscription: {
-              events: Meteor.subscribe("allMusolla")
+              musolla: Meteor.subscribe("allMusolla")
           }
       }
   }
@@ -26,9 +26,8 @@ export default class MusollaView extends TrackerReact(React.Component) {
     musolla = this.showMusolla()
 
     if (!musolla)
-        return <span>
-            loading
-        </span>
+        return <span>loading</span>
+      
     return(
       <div>
 

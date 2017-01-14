@@ -6,6 +6,17 @@
   font-family: 'futura', helvetica, sans-serif;
 }
 
+a { cursor: pointer; cursor: hand; }
+
+.eventsPanel{
+  background-color: #333;
+  border-radius: 5px;
+  opacity: 0.8;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 35px;
+}
+
 .time{
   margin-top: 70px;
   color: #fff;
@@ -13,10 +24,24 @@
   /*text-shadow: 2px 2px #333;*/
 }
 
+.container{
+  max-width: 65%;
+}
+
 .ampm {
     text-transform: uppercase;
     font-size: 0.3em !important;
     margin-left: -50px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.eventLink {
+  -webkit-animation-duration: 8s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-iteration-count: 3;
 }
 
 html{
@@ -155,6 +180,12 @@ html{
  .iconAlign {
     display: inline-flex;
     vertical-align: middle;
+
+}
+
+.eventPanelItems{
+  opacity: 0.8;
+  font-size: 0.8;
 }
 
  .lessEmphasis {

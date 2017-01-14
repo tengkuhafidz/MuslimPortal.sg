@@ -13,6 +13,24 @@ messages = [
   {"message": "The only lasting beauty is the beauty of the heart", "hashtag":"Jalaluddin al-Rumi"},
   {"message": "The best deed of a great man is to forgive and forget.", "hashtag":"Hazrat Ali Ibn Abu-Talib A.S"},
   {"message": "When the world pushes you to your knees, you're in the perfect position to pray", "hashtag":"Hazrat Ali ibn abu-talib a.s"},
-  {"message": "The real patience is at the first stroke of a calamity", "hashtag":"Hadith, Bukhari"}
-
+  {"message": "The real patience is at the first stroke of a calamity", "hashtag":"Hadith, Bukhari"},
+  {"message": "So verily, with every hardship, there is relief.", "hashtag": "Quran, 94:6"},
+  {"message": "Fear not. Indeed, I am with you both; I hear and I see.", "hashtag": "Quran, 20:46"},
+  {"message": "If anyone travels on a road in search of knowledge, God will cause him to travel on one of the roads of Paradise.", "hashtag": "Sunan of Abu Dawood, Hadith 1631"},
+  {"message": "There is reward for kindness to every living thing.", "hashtag": "Bukhari and Muslim"},
+  {"message": "Be kind, for whenever kindness becomes part of something, it beautifies it. Whenever it is taken from something, it leaves it tarnished.", "hashtag": "Imam Bukhari’s Book of Muslim Manners"},
+  {"message": "When you’re out of ideas, that’s when faith comes in. Let Allah show you the way.", "hashtag": "Wael Abdelgawad"},
+  {"message": "Allah has a beautiful plan for every woman and man. Trust Allah and pray and He will light the way", "hashtag": "Wael Abdelgawad"},
+  {"message": "The strong person is not the good wrestler. Rather,the strong person is the one who controls himself when he is angry.", "hashtag": "Sahih al-Bukhari, Book 73, #135)"},
+  {"message": "Be good to others, that will protect you against evil.", "hashtag": "Abu Bakr"},
+  {"message": "The only lasting beauty is the beauty of the heart.", "hashtag": "Jalaluddin al-Rumi"},
+  {"message": "The real patience is at the first stroke of a calamity.", "hashtag": "Sahih Al-Bukhari"},
+  {"message": "Do not put off today’s work until tomorrow, lest work accumulate and you achieve nothing.", "hashtag": "Umar ibn Al-Khattab"},
+  {"message": "If you were to rely upon Allah with the required reliance, then He would provide for you just as a bird is provided for, it goes out in the morning empty, and returns full.", "hashtag": "Jami’ at-Tirmidhi"},
+  {"message": "People think too much of their problems. They don’t think of Allah. If they think and remember Allah, there is no problem there is only Allah.", "hashtag": "Shaykh Mahy Cisse"},
+  {"message": "When you speak to Allah, don’t be embarrassed to tell Him anything. The most beautiful thing is that He Knows what you are about to tell Him and yet He still listens.", "hashtag": "Aa’id al-Qarni"},
+  {"message": "The Paradise is surrounded by hardships and the Hell-Fire is surrounded by temptations.", "hashtag": "Muslim"},
+  {"message": "Verily, the faith of one of you will diminish just as a shirt becomes worn out, so ask Allah to renew faith in your hearts.", "hashtag": "al-Mustadrak 5, Grade: Sahih (authentic) according to Al-Albani"},
+  {"message": "The example of a believer is like a fresh tender plant; from whichever direction the wind blows, it bends the plant. But when the wind dies down, it straightens up again.", "hashtag": "Fiqh-us-Sunnah, Volume 4, Number 1"},
+  {"message": "Oh feet of patience, keep going, for what remains is only a little. Remember the sweetness of worship, then the bitterness of striving will become easier for you.", "hashtag": "Ibn al-qayyim"}
 ]

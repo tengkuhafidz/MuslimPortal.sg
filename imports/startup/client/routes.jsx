@@ -7,6 +7,7 @@ import Home from '/imports/ui/pages/Home.jsx';
 
 import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
+import EventForm from '/imports/ui/pages/EventForm.jsx';
 
 import MosqueEventForm from '/imports/ui/pages/MosqueEventForm.jsx';
 import MosqueLogin from '/imports/ui/pages/MosqueLogin.jsx';
@@ -72,6 +73,15 @@ FlowRouter.route('/mosqueEventForm', {
   });
 },
 name: "mosqueEventForm"
+});
+
+FlowRouter.route('/eventForm', {
+  action: function() {
+    mount(Layout, {
+      content: () => <EventForm />,
+  });
+},
+name: "eventForm"
 });
 
 FlowRouter.route('/MosqueEventUpdate/:eventId', {

@@ -135,7 +135,7 @@ export default class MosqueEventForm extends React.Component {
 
         return (
 
-                <div className="row topGap bottomGap">
+                <div className="row topGap bottomGap grey-text text-darken-3">
                   <div className="col s12 m10 offset-m1">
                     <div className="card-panel">
 
