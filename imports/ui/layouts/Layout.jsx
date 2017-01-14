@@ -34,13 +34,13 @@ export default class Layout extends React.Component{
             <a href="/" className="topLeft formalFont white-text brand">My NUSMS <span className="betaFont">Beta</span></a>
 
               <div className="topRight">
-                <EventsView />
+                {/*<EventsView />*/}
               </div>
               <LogoutBtn />
 
 
             <div className="contentDiv container">
-                {this.props.content()}
+              {this.props.content()}
             </div>
 
             <a href="/musollaView" className="bottomLeft formalFont white-text mainLink"><i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
