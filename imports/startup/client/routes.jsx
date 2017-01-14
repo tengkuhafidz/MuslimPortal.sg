@@ -4,6 +4,7 @@ import {FlowRouter} from 'meteor/kadira:flow-router-ssr';
 
 import Layout from '/imports/ui/layouts/Layout.jsx';
 import Home from '/imports/ui/pages/Home.jsx';
+import BeBetter from '/imports/ui/pages/BeBetter.jsx';
 
 import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
@@ -26,6 +27,16 @@ FlowRouter.route('/', {
   })
 },
 name: "home"
+});
+
+//home
+FlowRouter.route('/beBetter', {
+  action: function(){
+    mount(Layout, {
+      content: () => <BeBetter />
+  })
+},
+name: "beBetter"
 });
 
 //musolla
