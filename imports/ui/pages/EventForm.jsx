@@ -48,7 +48,7 @@ export default class EventForm extends React.Component {
 
         dateEnd = dateEnd.toISOString();
 
-        Meteor.call('testAdd', name, dateStart, dateEnd, url, (error,data) => {
+        Meteor.call('addEvent', name, dateStart, dateEnd, url, (error,data) => {
             if(error){
                 Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
             } else {

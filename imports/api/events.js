@@ -17,6 +17,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
+
   //declare all methods related to the collection here
   // EXAMPLE:
   // addEvents(eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags) {
@@ -76,7 +77,8 @@ Meteor.methods({
   //     mosqueName: Meteor.user().profile.name  // username of logged in user
   //   });
   // }, 
-  testAdd(name, dateStart, dateEnd, url){
+
+  addEvent(name, dateStart, dateEnd, url){
 
     Events.insert({
       name,
