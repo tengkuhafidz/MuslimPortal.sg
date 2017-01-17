@@ -94,7 +94,7 @@ export default class Layout extends React.Component{
   getAllEvents() {
     that = this
 
-    var access_token = `EAACEdEose0cBAMnlrfukYbuTZB48K7Fpch81peXbEfryZAWzqAkwmpeZBk6bZAgiC2aIW00b01oaQZAWZAiDRPYj5u8dMfGK4Ho6XFcIzANJ3rhhFgaF40AaAPmjpTA6r0AWAeqEmXn0K99Au5sk14aZB4TZCDbHnfx8AFBSuCWuMAZDZD`;
+    var access_token = `EAACEdEose0cBAH7GIIZAbsncXWRiptZAjSOGvuvAJ5AxHC2GZBRdVcRd0UavQwrMFctzYyOgdq6s7lhxZCA5HpdSDKptW5E0y9Pwxwyi6VVXI16xHNQPgTTT96MKFb3UbzZAjGmUu6ZA9BuyJt3M83an0VMrGjhjiOeWWpYdtoXQZDZD`;
     const url = `https://graph.facebook.com/nusms/events?fields=name,end_time&&access_token=${access_token}`;
 
     HTTP.call('GET', url, {}, function( error, response ) {
