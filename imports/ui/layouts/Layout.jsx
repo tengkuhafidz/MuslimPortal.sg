@@ -118,9 +118,17 @@ export default class Layout extends React.Component{
            for (var i=0; i < event.length; i++){
             //  var time = moment(timeArray[i]).format('HH:mm');
 
+
             if(moment().diff(event[i].start_time, 'days') <= 0 )
               displayEvents.push(event[i]);
            }
+
+           //sort by start_time
+           displayEvents.sort(function (left, right) {
+             return moment.utc(left.start_time).diff(moment.utc(right.start_time))
+           });
+
+          console.log('displayEvents: ', displayEvents);
 
          that.setState({
            event: displayEvents
