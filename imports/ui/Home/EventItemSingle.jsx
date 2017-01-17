@@ -15,6 +15,7 @@ export default class EventItemSingle extends React.Component{
 
     dateFormatted = moment(dateStart).format("DD MMM (ddd), h:mm a")
     eventCountdown = moment(dateStart).fromNow()
+    console.log('date start',dateStart)
 
     return(
 

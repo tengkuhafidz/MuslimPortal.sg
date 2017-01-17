@@ -102,7 +102,7 @@ export default class Layout extends React.Component{
     for(var i = 0; i < eventPages.length; i++){
 
       var access_token = `2205419583016059|iYLrMK89FFNE--jw_VTQYRlmZjQ`;
-      const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time&&access_token=${access_token}`;
+      const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&&access_token=${access_token}`;
 
 
       HTTP.call('GET', url, {}, function( error, response ) {
