@@ -7,10 +7,12 @@ export default class EventItemSingle extends React.Component{
 
     event = this.props.eventItem
 
+    dateStart = new Date(event.start_time)
+
     //gender = (musolla.gender === "Male") ? (<i className="fa fa-mars" aria-hidden="true"></i>) : (<i className="fa fa-venus" aria-hidden="true"></i>)
 
-    dateFormatted = moment(event.dateStart).format("DD MMM (ddd), h:mm a")
-    eventCountdown = moment(event.dateStart).fromNow()
+    dateFormatted = moment(dateStart).format("DD MMM (ddd), h:mm a")
+    eventCountdown = moment(dateStart).fromNow()
 
     return(
 
