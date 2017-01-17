@@ -45,6 +45,16 @@ export default class Layout extends React.Component{
 
   }
 
+  isSunnahToFast(hijriDay, hijriMonth) {
+
+    const FASTING_DAYS = {
+      'occassion': { hijriDay: 18, hijriMonth: 4},
+    }
+
+    return FASTING_DAYS.hasOwnProperty('occassion');   // returns true
+
+  }
+
   getHijrahDate() {
 
     that = this
@@ -81,6 +91,10 @@ export default class Layout extends React.Component{
 
       var hijriDate = data[0][currDate-1].hijriDate;
       var hijriYear = data[0][currDate-1].hijriYear;
+      //var isSunnahToFast = this.isSunnahToFast(hijriDate, hijriYear)
+
+      // var something = this.isSunnahToFast(1, 2);
+      // console.log(something);
 
       var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}`;
 
