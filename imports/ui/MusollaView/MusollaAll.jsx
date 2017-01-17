@@ -22,10 +22,6 @@ export default class MusollaAll extends React.Component{
             console.log(musollaEach._id)
             return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />
           })}
-          {musolla.map((musollaEach)=>{
-            console.log(musollaEach._id)
-            return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />
-          })}
           
           </div>
         </div>

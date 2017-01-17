@@ -29,13 +29,12 @@ export default class MusollaView extends TrackerReact(React.Component) {
         return <span>loading</span>
       
     return(
-      <div className="center">
+      <div>
 
-        <h1 className=" moreTopPadding">
-
+        <h1 className="center moreTopPadding">
           Musolla in NUS
         </h1>
-        <p className="betaFont belowCaption">(Scrollable List)</p>
+        <p className="betaFont belowCaption center">(Scrollable List)</p>
         <MusollaAll musolla={musolla}/>
 
       </div>
