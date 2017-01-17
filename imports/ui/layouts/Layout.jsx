@@ -94,36 +94,42 @@ export default class Layout extends React.Component{
   getAllEvents() {
     that = this
 
-    var access_token = `EAACEdEose0cBAH7GIIZAbsncXWRiptZAjSOGvuvAJ5AxHC2GZBRdVcRd0UavQwrMFctzYyOgdq6s7lhxZCA5HpdSDKptW5E0y9Pwxwyi6VVXI16xHNQPgTTT96MKFb3UbzZAjGmUu6ZA9BuyJt3M83an0VMrGjhjiOeWWpYdtoXQZDZD`;
-    const url = `https://graph.facebook.com/nusms/events?fields=name,end_time&&access_token=${access_token}`;
+    var displayEvents = [];
 
-    HTTP.call('GET', url, {}, function( error, response ) {
+    eventPages = ['nusms', 'PBUH.TheLightofLife.1438H', 'nusms.ias']
 
-   if (error) {
-     console.log(error);
-   } else {
-       data = JSON.parse(response.content);
+    for(var i = 0; i < eventPages.length; i++){
 
-       var event = data.data; //returns an array of 25 event objects
-      //  console.log("EVENTS.length: ", event)
+      var access_token = `EAACEdEose0cBAH7GIIZAbsncXWRiptZAjSOGvuvAJ5AxHC2GZBRdVcRd0UavQwrMFctzYyOgdq6s7lhxZCA5HpdSDKptW5E0y9Pwxwyi6VVXI16xHNQPgTTT96MKFb3UbzZAjGmUu6ZA9BuyJt3M83an0VMrGjhjiOeWWpYdtoXQZDZD`;
+      const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time&&access_token=${access_token}`;
 
-       var displayEvents = [];
 
-       for (var i=0; i < event.length; i++){
-        //  var time = moment(timeArray[i]).format('HH:mm');
-         displayEvents.push(event[i]);
+      HTTP.call('GET', url, {}, function( error, response ) {
+
+       if (error) {
+         console.log(error);
+       } else {
+           data = JSON.parse(response.content);
+
+           var event = data.data; //returns an array of 25 event objects
+          //  console.log("EVENTS.length: ", event)
+
+           for (var i=0; i < event.length; i++){
+            //  var time = moment(timeArray[i]).format('HH:mm');
+             displayEvents.push(event[i]);
+           }
+
+         that.setState({
+           event: displayEvents
+         })
+
+        //  console.log('EVENTMS: ', this.state.event);
+
+        return displayEvents;
+
        }
-
-     that.setState({
-       event: displayEvents
-     })
-
-    //  console.log('EVENTMS: ', this.state.event);
-
-    return displayEvents;
-
-   }
-    })
+      })
+    }
   }
 
   getPrayerTime() {
