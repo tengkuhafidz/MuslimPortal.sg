@@ -200,7 +200,7 @@ export default class Layout extends React.Component{
     render(){
 
         var events = this.state.event;
-        // console.log("NUS EVENTS PLS: ", nusEvents)
+        // console.log("1 EVENT PLS: ", events[0])
 
         audioBtn = this.state.play? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a> : <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_up</a>
 
@@ -227,7 +227,7 @@ export default class Layout extends React.Component{
               </div>
 
               <div className="topRight">
-                <HijrahWidget hijrah={this.state.hijrah} /> 
+                <HijrahWidget hijrah={this.state.hijrah} />
                 {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
                 {/* <EventAll event={events}/> */}
               </div>
