@@ -9,6 +9,24 @@
   font-family: 'futura', helvetica, sans-serif;
 }
 
+.usefulLinks {
+  margin-top: -5px;
+  color: white;
+  
+}
+
+.socialLink {
+  opacity: 0.5;
+  margin-right: 15px;
+  color: white;
+}
+
+.socialLink:hover {
+  opacity: 1.0;
+  font-size: 1.2em;
+
+}
+
 a { cursor: pointer; cursor: hand; }
 
 .currentPrayer {
@@ -137,6 +155,16 @@ html{
 
 .brand:hover {
   font-size: 1.7em;
+}
+
+.brand > .usefulLinks {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.brand:hover > .usefulLinks {
+  visibility: visible;
+  opacity: 1;
 }
 
 

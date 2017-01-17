@@ -101,7 +101,7 @@ export default class Layout extends React.Component{
 
     for(var i = 0; i < eventPages.length; i++){
 
-      var access_token = `2205419583016059|iYLrMK89FFNE--jw_VTQYRlmZjQ`;
+      var access_token = `EAACEdEose0cBADMh7vfelixZB57Xt67ZAV3domjpH8ulKP2G67Oujc1dTMrZCjs5xF8ZCmkoe4A9sh34DXFGhrVTMSHH6n3fyZCAzSRuUZBuUab3NnBww6ws6bYYTYrhuu6bfizBc1G8TgXZAvZAZAwbBIohPXZBWl1Yp6FToly64XmwZDZD`;
       const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&&access_token=${access_token}`;
 
 
@@ -117,7 +117,9 @@ export default class Layout extends React.Component{
 
            for (var i=0; i < event.length; i++){
             //  var time = moment(timeArray[i]).format('HH:mm');
-             displayEvents.push(event[i]);
+
+            if(moment().diff(event[i].start_time, 'days') <= 0 )
+              displayEvents.push(event[i]);
            }
 
          that.setState({
@@ -216,9 +218,12 @@ export default class Layout extends React.Component{
                 <a href="/" className=" white-text brand">MyNUSMS <span className="betaFont smallFont">Beta</span></a>
 
                   &nbsp; {audioBtn}
-
-                <p className="smallerFont betaFont noTopGap halfSee white-text">Tech by MSociety</p>
-
+                <div className="usefulLinks">
+                    <a href="http://facebook.com/nusms" target="_blank" className="socialLink"><i className="fa fa-facebook  " aria-hidden="true"></i> </a>
+                    <a href="http://instagram.com/nusms" target="_blank" className="socialLink"><i className="fa fa-instagram " aria-hidden="true"></i></a>
+                    <a href="http://twitter.com/nusms" target="_blank" className="socialLink"><i className="fa fa-twitter  " aria-hidden="true"></i></a>
+                  {/*<p className="smallerFont betaFont noTopGap halfSee white-text">Tech by MSociety</p> */}
+                </div>
             </div>
 
 
