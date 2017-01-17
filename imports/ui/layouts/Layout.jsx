@@ -100,7 +100,7 @@ export default class Layout extends React.Component{
 
     for(var i = 0; i < eventPages.length; i++){
 
-      var access_token = `EAACEdEose0cBAH7GIIZAbsncXWRiptZAjSOGvuvAJ5AxHC2GZBRdVcRd0UavQwrMFctzYyOgdq6s7lhxZCA5HpdSDKptW5E0y9Pwxwyi6VVXI16xHNQPgTTT96MKFb3UbzZAjGmUu6ZA9BuyJt3M83an0VMrGjhjiOeWWpYdtoXQZDZD`;
+      var access_token = `2205419583016059|iYLrMK89FFNE--jw_VTQYRlmZjQ`;
       const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time&&access_token=${access_token}`;
 
 
