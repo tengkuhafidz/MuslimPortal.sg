@@ -57,10 +57,23 @@ export default class PrayerTimesWidget extends React.Component{
 
   render() {
 
-    console.log('PRAYER: ')
+    console.log('CURR PRAYER: ', this.props.currentPrayer)
+
+    var prayerTimes = this.props.prayer;
+    var currentPrayer = this.props.currentPrayer;
+
+    var prayerTimesArea = [];
+    for (var i = 0; i < prayerTimes.length; i++) {
+      if(currentPrayer === i)
+        prayerTimesArea.push(<span className="currentPrayer prayerTimes">{prayerTimes[i]}</span>);
+      else
+        prayerTimesArea.push(<span className="prayerTimes">{prayerTimes[i]}</span>)
+    }
+    
+
      return (
-       <div >
-          <span className="betaFont smallFont">{this.props.prayer[0]} &nbsp; {this.props.prayer[1]} &nbsp; {this.props.prayer[2]} &nbsp; {this.props.prayer[3]} &nbsp; {this.props.prayer[4]} &nbsp; {this.props.prayer[5]} &nbsp; {this.props.prayer[6]}</span>
+       <div className="betaFont smallFont">
+          {prayerTimesArea}          
        </div>
      )
 

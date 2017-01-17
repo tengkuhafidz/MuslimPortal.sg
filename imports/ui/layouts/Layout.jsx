@@ -22,6 +22,7 @@ export default class Layout extends React.Component{
       hijrah: '',
       prayer: '',
       event: '',
+      currentPrayer: ''
     }
   }
 
@@ -156,14 +157,24 @@ export default class Layout extends React.Component{
        var timeArray = data[currMonth][currDate-1].times;
 
        var displayPrayer = [];
+       var currTime = new Date;
+       console.log('currTime', currTime);
+       var currPayer;
+
 
        for (var i=0; i < 6; i++){
          var time = moment(timeArray[i]).format('HH:mm');
+         console.log('prayer time', i, moment(timeArray[i]).isBefore())
+
+         if (moment(timeArray[i]).isBefore(currTime))
+          currPayer = i;
+
          displayPrayer.push(`${Object.keys(PRAYER)[i]}: ${time}`);
        }
 
      that.setState({
-       prayer: displayPrayer
+       prayer: displayPrayer,
+       currentPrayer: currPayer
      })
    }
     })
@@ -212,7 +223,7 @@ export default class Layout extends React.Component{
 
 
               <div className="topMiddle center">
-                <PrayerTimesWidget prayer={this.state.prayer}  />
+                <PrayerTimesWidget prayer={this.state.prayer} currentPrayer={this.state.currentPrayer} />
               </div>
 
               <div className="topRight">
