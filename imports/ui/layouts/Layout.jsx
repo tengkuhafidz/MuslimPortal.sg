@@ -120,11 +120,15 @@ export default class Layout extends React.Component{
           //  console.log("EVENTS.length: ", event)
 
            for (var i=0; i < event.length; i++){
-            //  var time = moment(timeArray[i]).format('HH:mm');
-
-            // if(moment().diff(event[i].start_time, 'days') <= 0 )
               displayEvents.push(event[i]);
             }
+
+           //sort by start_time
+           displayEvents.sort(function (left, right) {
+             return moment.utc(left.start_time).diff(moment.utc(right.start_time))
+           });
+
+          console.log('displayEvents: ', displayEvents);
 
          that.setState({
            event: displayEvents
@@ -206,7 +210,7 @@ export default class Layout extends React.Component{
     render(){
 
         var events = this.state.event;
-        // console.log("NUS EVENTS PLS: ", nusEvents)
+        // console.log("1 EVENT PLS: ", events[0])
 
         audioBtn = this.state.play? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a> : <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_up</a>
 
@@ -236,7 +240,7 @@ export default class Layout extends React.Component{
               </div>
 
               <div className="topRight">
-                <HijrahWidget hijrah={this.state.hijrah} /> 
+                <HijrahWidget hijrah={this.state.hijrah} />
                 {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
                 {/* <EventAll event={events}/> */}
               </div>
