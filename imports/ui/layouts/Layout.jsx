@@ -101,8 +101,12 @@ export default class Layout extends React.Component{
 
     for(var i = 0; i < eventPages.length; i++){
 
+      currUnixTime = moment().unix();
+      endUnixTime = moment().add(7, 'days').endOf('day').unix();
+      // var date = new Date();
+
       var access_token = `EAACEdEose0cBADMh7vfelixZB57Xt67ZAV3domjpH8ulKP2G67Oujc1dTMrZCjs5xF8ZCmkoe4A9sh34DXFGhrVTMSHH6n3fyZCAzSRuUZBuUab3NnBww6ws6bYYTYrhuu6bfizBc1G8TgXZAvZAZAwbBIohPXZBWl1Yp6FToly64XmwZDZD`;
-      const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&&access_token=${access_token}`;
+      const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
 
 
       HTTP.call('GET', url, {}, function( error, response ) {
@@ -118,9 +122,9 @@ export default class Layout extends React.Component{
            for (var i=0; i < event.length; i++){
             //  var time = moment(timeArray[i]).format('HH:mm');
 
-            if(moment().diff(event[i].start_time, 'days') <= 0 )
+            // if(moment().diff(event[i].start_time, 'days') <= 0 )
               displayEvents.push(event[i]);
-           }
+            }
 
          that.setState({
            event: displayEvents
