@@ -230,12 +230,25 @@ html{
   margin-top: 0px;
 }
 
+.belowCaption{
+  padding-top: -25px;
+  margin-top: -25px;
+}
+
+.scrollView{
+  height: 400px;
+  overflow:hidden; 
+  overflow-y:auto;
+
+}
+
 .halfSee {
   opacity: 0.5;
 }
 
 .contentDiv{
-  margin-top: 3%
+  margin-top: 3%,
+
 }
 
 .mainLink:hover{
