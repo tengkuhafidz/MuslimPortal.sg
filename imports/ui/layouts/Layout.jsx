@@ -8,6 +8,9 @@ import QuotesWidget from '../Home/QuotesWidget.jsx'
 import HijrahWidget from '../pages/HijrahWidget.jsx'
 import PrayerTimesWidget from '../pages/PrayerTimesWidget.jsx'
 
+//events
+import EventAll from '../NUSEvents/EventAll.jsx'
+
 
 export default class Layout extends React.Component{
 
@@ -17,13 +20,15 @@ export default class Layout extends React.Component{
     this.state = {
       play: true,
       hijrah: '',
-      prayer: ''
+      prayer: '',
+      event: '',
     }
   }
 
   componentDidMount() {
     this.getHijrahDate();
     this.getPrayerTime();
+    this.getAllEvents();
 
     $('.materialboxed').materialbox();
 
@@ -86,6 +91,41 @@ export default class Layout extends React.Component{
 
   }
 
+  getAllEvents() {
+    that = this
+
+    var access_token = `EAACEdEose0cBAH7GIIZAbsncXWRiptZAjSOGvuvAJ5AxHC2GZBRdVcRd0UavQwrMFctzYyOgdq6s7lhxZCA5HpdSDKptW5E0y9Pwxwyi6VVXI16xHNQPgTTT96MKFb3UbzZAjGmUu6ZA9BuyJt3M83an0VMrGjhjiOeWWpYdtoXQZDZD`;
+    const url = `https://graph.facebook.com/nusms/events?fields=name,end_time&&access_token=${access_token}`;
+
+    HTTP.call('GET', url, {}, function( error, response ) {
+
+   if (error) {
+     console.log(error);
+   } else {
+       data = JSON.parse(response.content);
+
+       var event = data.data; //returns an array of 25 event objects
+      //  console.log("EVENTS.length: ", event)
+
+       var displayEvents = [];
+
+       for (var i=0; i < event.length; i++){
+        //  var time = moment(timeArray[i]).format('HH:mm');
+         displayEvents.push(event[i]);
+       }
+
+     that.setState({
+       event: displayEvents
+     })
+
+    //  console.log('EVENTMS: ', this.state.event);
+
+    return displayEvents;
+
+   }
+    })
+  }
+
   getPrayerTime() {
     that = this
     HTTP.call('GET', 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2017.json', {}, function( error, response ) {
@@ -134,7 +174,7 @@ export default class Layout extends React.Component{
 
     if (this.state.play)
       document.getElementById('audio').play()
-    else 
+    else
       document.getElementById('audio').pause()
     this.setState({play: !this.state.play})
 
@@ -142,14 +182,16 @@ export default class Layout extends React.Component{
 
     render(){
 
+        var nusEvents = this.state.event;
+        // console.log("NUS EVENTS PLS: ", nusEvents)
 
-        audioBtn = this.state.play? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a> : <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_up</a>  
+        audioBtn = this.state.play? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a> : <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_up</a>
 
 
         return(
          <div className="white-text">
            <link rel="manifest" href="/manifest.json" />
-           
+
             <div className="topLeft">
               <audio id="audio" loop>
                   <source src="dzikr_mix2.mp3" type="audio/mpeg" />
@@ -159,16 +201,18 @@ export default class Layout extends React.Component{
                   &nbsp; {audioBtn}
 
                 <p className="smallerFont betaFont noTopGap halfSee white-text">Tech by MSociety</p>
-              
+
             </div>
-              
+
 
               <div className="topMiddle center">
                 <PrayerTimesWidget prayer={this.state.prayer}  />
               </div>
 
               <div className="topRight">
-                <HijrahWidget hijrah={this.state.hijrah} />
+                {/* <HijrahWidget hijrah={this.state.hijrah} /> */}
+                {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
+                <EventAll event={nusEvents}/>
               </div>
 
 
