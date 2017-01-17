@@ -52,6 +52,7 @@ materialize:materialize@0.97.5
 maximdubrovin:uploadcare@1.5.1_1
 meteor@1.1.14
 meteor-base@1.0.4
+meteorhacks:async@1.0.0
 meteorhacks:fast-render@2.14.0
 meteorhacks:inject-data@2.0.0
 meteorhacks:meteorx@1.4.1
@@ -105,6 +106,7 @@ spacebars-compiler@1.0.11
 srp@1.0.8
 standard-minifier-css@1.0.6
 standard-minifier-js@1.0.6
+stevezhu:fbgraph@2.1.0
 templating@1.1.9
 templating-tools@1.0.4
 themeteorchef:bert@2.1.0
