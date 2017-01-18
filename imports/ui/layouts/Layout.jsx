@@ -17,16 +17,48 @@ export default class Layout extends React.Component {
         super();
 
         this.state = {
+            accessToken: '',
             play: true,
             hijrah: '',
             prayer: '',
             event: '',
             eventToday: '',
-            currentPrayer: ''
+            currentPrayer: '',
+
         }
     }
 
+    getAccessToken() {
+      const url = 'https://graph.facebook.com/v2.8/oauth/access_token?grant_type=fb_exchange_token&client_id=1855990044615179&client_secret=37d5e38b8a80fc243ece45b575ef72ce&fb_exchange_token=EAAaYA1tQ4gsBAO5ZCJiYFEmADblMZAjFtzOojVXxkZAh10UQyDpZBQLeHF2WU3ksf0nXaYLjEdcaBLMtrJ3QZA8S7Rnkgsk4hieDNcYnHnodYFcBZCZCNJhErXjDRq8vZBqsbTokZCv8W8fnX1l7Vz7CKo5ZBDXSM8ZB9ex2dqWY2YcJQZDZD';
+      that = this;
+      HTTP.call('GET', url, {}, function(error, response) {
+
+          if (error) {
+              console.log(error);
+          } else {
+
+              data = JSON.parse(response.content)
+
+              var access_token = data.access_token;
+              // return access_token;
+              console.log('IM GETTING THERE: ', access_token);
+              var workingAccessToken = 'EAAaYA1tQ4gsBAI1RwZCO7cXHEvhE6HpowidmesemCrUL0YqflEvJ878NZCNBTT4JuFD5EbeNS3JPP6ygZAPqU2g7HegelZB7ZCJOxMDzQgShBgWkeXpWYP0nYhFlOLmv0eRSRMs97d1x3b3eKu05M9a5KhnrOpFYZD';
+
+              if (access_token === workingAccessToken)
+                console.log("THEY MATCH!");
+              else {
+                console.log("THEY DO NOT MATCH!")
+              }
+
+              that.setState({
+                accessToken: access_token
+              })
+          }
+      })
+    }
+
     componentDidMount() {
+        this.getAccessToken();
         this.getHijrahDate();
         this.getPrayerTime();
         this.getAllEvents();
@@ -117,9 +149,10 @@ export default class Layout extends React.Component {
             currUnixTime = moment().unix();
             endUnixTime = moment().add(6, 'days').endOf('day').unix();
             // var date = new Date();
-
-            var access_token = `EAACEdEose0cBAOPWZBaiebC2F1ZB3ZAToFUp1Sdgtg4LCErN3GLfp1MEXU3ps7ZBrY5kuH3531vgOk0NP39jDsjmwbd1q1CRvlmI4ZCdWoz83YsxiZCOYoMV1ZB9hCs8vFvWOaNVBOkCafLsfc6BosfE4OxyL5IeZAQ7WBJHM1ZBB4AZDZD`;
+            // var access_token = 'EAAaYA1tQ4gsBAI1RwZCO7cXHEvhE6HpowidmesemCrUL0YqflEvJ878NZCNBTT4JuFD5EbeNS3JPP6ygZAPqU2g7HegelZB7ZCJOxMDzQgShBgWkeXpWYP0nYhFlOLmv0eRSRMs97d1x3b3eKu05M9a5KhnrOpFYZD';
+            var access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
             const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
+            // https://graph.facebook.com/nusms/events?fields=name,end_time,start_time&since=currUnixTime&until=${endUnixTime}&&access_token=${access_token}
 
             HTTP.call('GET', url, {}, function(error, response) {
 
@@ -142,11 +175,7 @@ export default class Layout extends React.Component {
                         return moment.utc(left.start_time).diff(moment.utc(right.start_time))
                     });
 
-                    console.log('displayEvents: ', displayEvents);
-
                     that.setState({event: displayEvents, eventToday: todayEvents})
-
-                    //  console.log('EVENTMS: ', this.state.event);
 
                     return displayEvents;
 
