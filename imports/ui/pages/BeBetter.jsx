@@ -46,7 +46,7 @@ export default class BeBetter extends TrackerReact(React.Component){
     var challenge = this.getChallenge();
 
     if (!challenge)
-            return <span></span>
+            return <span> &nbsp; </span>
 
     var joinedNo = challenge.joined ? <span>{challenge.joined}</span> : "";
 

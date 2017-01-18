@@ -33,6 +33,8 @@ export default class Layout extends React.Component{
     this.getPrayerTime();
     this.getAllEvents();
 
+    
+
     $('.materialboxed').materialbox();
 
        // $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
@@ -108,7 +110,7 @@ export default class Layout extends React.Component{
       endUnixTime = moment().add(6, 'days').endOf('day').unix();
       // var date = new Date();
 
-      var access_token = `EAACEdEose0cBAOPWZBaiebC2F1ZB3ZAToFUp1Sdgtg4LCErN3GLfp1MEXU3ps7ZBrY5kuH3531vgOk0NP39jDsjmwbd1q1CRvlmI4ZCdWoz83YsxiZCOYoMV1ZB9hCs8vFvWOaNVBOkCafLsfc6BosfE4OxyL5IeZAQ7WBJHM1ZBB4AZDZD`;
+      var access_token = `2205419583016059|e4e4ac227d256ebeb50028d5d623e7d5`;
       const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
 
 
