@@ -3,6 +3,7 @@ import React from 'react';
 import LogoutBtn from '../components/LogoutBtn.jsx'
 import EventsWidget from '../Home/EventsWidget.jsx'
 import QuotesWidget from '../Home/QuotesWidget.jsx'
+import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
 
 
 import HijrahWidget from '../pages/HijrahWidget.jsx'
@@ -22,6 +23,7 @@ export default class Layout extends React.Component{
       hijrah: '',
       prayer: '',
       event: '',
+      eventToday: '',
       currentPrayer: ''
     }
   }
@@ -96,16 +98,17 @@ export default class Layout extends React.Component{
     that = this
 
     var displayEvents = [];
+    var todayEvents = [];
 
-    eventPages = ['nusms', 'PBUH.TheLightofLife.1438H', 'nusms.ias']
+    eventPages = ['nusms', 'PBUH.TheLightofLife.1438H', 'nusms.ias', 'projectlink2017', 'valour2016', 'rihlah1438H', 'nusprojectasa', 'freshmencamp', 'BrothersOfNUS', 'nusnisaa', 'voksnus']
 
     for(var i = 0; i < eventPages.length; i++){
 
       currUnixTime = moment().unix();
-      endUnixTime = moment().add(7, 'days').endOf('day').unix();
+      endUnixTime = moment().add(6, 'days').endOf('day').unix();
       // var date = new Date();
 
-      var access_token = `EAACEdEose0cBADMh7vfelixZB57Xt67ZAV3domjpH8ulKP2G67Oujc1dTMrZCjs5xF8ZCmkoe4A9sh34DXFGhrVTMSHH6n3fyZCAzSRuUZBuUab3NnBww6ws6bYYTYrhuu6bfizBc1G8TgXZAvZAZAwbBIohPXZBWl1Yp6FToly64XmwZDZD`;
+      var access_token = `EAACEdEose0cBAJZACKZCY3Xi5gFEGYtdkZAqhz2dRd1gkt9aXZBr33sEiJg0z9LVdVscWYRcCFth5JEtjoP0mHokZBdG5PmCr4GzDXFj69i3esq9QB4aZCS4mj4kq0Ya99k4CdxbPtmKHuSUZAXjV9sIHJCZCMPt9glRBQNA1E5f5AZDZD`;
       const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
 
 
@@ -119,8 +122,12 @@ export default class Layout extends React.Component{
            var event = data.data; //returns an array of 25 event objects
           //  console.log("EVENTS.length: ", event)
 
+
+
            for (var i=0; i < event.length; i++){
               displayEvents.push(event[i]);
+              if(moment().isSame(event[i].start_time, 'day'))
+                todayEvents.push(event[i]);
             }
 
            //sort by start_time
@@ -131,7 +138,8 @@ export default class Layout extends React.Component{
           console.log('displayEvents: ', displayEvents);
 
          that.setState({
-           event: displayEvents
+           event: displayEvents,
+           eventToday: todayEvents
          })
 
         //  console.log('EVENTMS: ', this.state.event);
@@ -191,9 +199,6 @@ export default class Layout extends React.Component{
 
   }
 
-  handleSongEnd(){
-
-  }
 
   handleClick(e){
 
@@ -209,8 +214,9 @@ export default class Layout extends React.Component{
 
     render(){
 
+
         var events = this.state.event;
-        // console.log("1 EVENT PLS: ", events[0])
+        var todayEvents = this.state.eventToday;
 
         audioBtn = this.state.play? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a> : <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_up</a>
 
@@ -239,6 +245,10 @@ export default class Layout extends React.Component{
                 <PrayerTimesWidget prayer={this.state.prayer} currentPrayer={this.state.currentPrayer} />
               </div>
 
+              <div className="topAnnouncement center">
+                <AnnouncementWidget events={this.state.eventToday} />
+              </div>
+
               <div className="topRight">
                 <HijrahWidget hijrah={this.state.hijrah} />
                 {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
@@ -258,7 +268,7 @@ export default class Layout extends React.Component{
             </div>
 
             <div className="bottomRight">
-              <EventsWidget events={events}/>
+              <EventsWidget events={events} todayEvents={todayEvents}/>
             </div>
 
         </div>

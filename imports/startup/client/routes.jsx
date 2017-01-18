@@ -5,6 +5,8 @@ import {FlowRouter} from 'meteor/kadira:flow-router-ssr';
 import Layout from '/imports/ui/layouts/Layout.jsx';
 import Home from '/imports/ui/pages/Home.jsx';
 import BeBetter from '/imports/ui/pages/BeBetter.jsx';
+import ChallengeForm from '/imports/ui/pages/ChallengeForm.jsx';
+
 
 import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
@@ -37,6 +39,15 @@ FlowRouter.route('/beBetter', {
   })
 },
 name: "beBetter"
+});
+
+FlowRouter.route('/challengeForm', {
+  action: function(){
+    mount(Layout, {
+      content: () => <ChallengeForm />
+  })
+},
+name: "challengeForm"
 });
 
 //musolla

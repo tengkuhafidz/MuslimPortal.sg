@@ -16,8 +16,15 @@ export default class BeBetter extends React.Component{
         <h5>#BeBetter Challenge of The Week:</h5>
         <br/>
         <h1 className="cursiveFont noTopGap">Start Every Conversation With A Smile</h1>
-          <br/>
-            <br/>
+        <h6 className="halfSee topGap"> Current Challenge Takers: 65 </h6>
+        <a className="waves-effect waves-light btn-large ">Join Challenge</a>
+       {/* <p className="betaFont animated challengeMessage">
+          <b>Thank you for joining!</b> Let's keep at this and <b>#bebetter #together</b>. 
+        </p> */}
+       {/* <p className="betaFont challengeMessage">
+          <b>FINAL DAY!</b> &nbsp; Share your reflections with <b>#bebetter #nusms</b>.
+        </p> */}
+
         </div>
       </div>
     )

@@ -68,6 +68,7 @@ export default class HijrahWidget extends React.Component{
      return (
        <div>
          <span>{this.props.hijrah}</span>
+         <p className="betaFont smallFont noTopGap halfSee right-align"><i>Its sunnah to fast today!</i></p>
        </div>
      )
 
