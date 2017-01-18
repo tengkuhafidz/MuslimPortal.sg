@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
             event: '',
             eventToday: '',
             currentPrayer: '',
-            fasting: false,
+            fasting: '',
 
         }
     }
@@ -118,6 +118,7 @@ export default class Layout extends React.Component {
                 var hijriYear = data[0][currDate - 1].hijriYear;
 
                 /* list can be expand */
+                // const sunnahToFastDateToday = [14, 15, 16]
                 const sunnahToFastDate = [13, 14, 15];
                 const sunnahToFastDay = [1, 4];
 
@@ -125,11 +126,12 @@ export default class Layout extends React.Component {
 
                 if (hijriMonthName !== 'Ramadhan'){
                   var today = moment().weekday() + 1; //returns 1 (Monday), 2 (Tuesday)...
-                  // console.log('TODAY', sunnahToFastDate.includes(hijriDate+1))
-                  if (sunnahToFastDate.includes(hijriDate+1) || sunnahToFastDay.includes(today)){
-                    that.setState({fasting: true})
-                    // sunnahString += 'It\'s sunnah to fast today ;)'
 
+                  if (sunnahToFastDate.includes(hijriDate+1) || sunnahToFastDay.includes(today)){// TOMORROW
+                    that.setState({fasting: 'tomorrow'})
+
+                  } else if (sunnahToFastDate.includes(hijriDate) || sunnahToFastDay.includes(today-1)){ //TODAY
+                    that.setState({fasting: 'today'})
                   }
                 }
 
