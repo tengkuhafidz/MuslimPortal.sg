@@ -1,13 +1,15 @@
 import React from 'react';
 
 import LogoutBtn from '../components/LogoutBtn.jsx'
-import EventAll from '../NUSEvents/EventAll.jsx'
-
-/* widgets */
 import EventsWidget from '../Home/EventsWidget.jsx'
 import QuotesWidget from '../Home/QuotesWidget.jsx'
+import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
+
 import HijrahWidget from '../pages/HijrahWidget.jsx'
 import PrayerTimesWidget from '../pages/PrayerTimesWidget.jsx'
+
+//events
+import EventAll from '../NUSEvents/EventAll.jsx'
 
 export default class Layout extends React.Component {
 
@@ -19,6 +21,7 @@ export default class Layout extends React.Component {
             hijrah: '',
             prayer: '',
             event: '',
+            eventToday: '',
             currentPrayer: ''
         }
     }
@@ -41,19 +44,6 @@ export default class Layout extends React.Component {
                 }
             }
         ]);
-
-    }
-
-    isSunnahToFast(hijriDay, hijriMonth) {
-
-        const FASTING_DAYS = {
-            'occassion': {
-                hijriDay: 18,
-                hijriMonth: 4
-            }
-        }
-
-        return FASTING_DAYS.hasOwnProperty('occassion'); // returns true
 
     }
 
@@ -85,16 +75,14 @@ export default class Layout extends React.Component {
                 var currMonth = moment().month();
 
                 data = JSON.parse(response.content)
+                // keys = Object.keys(data)
+
                 //get current month, day, year (hijri)
                 var currHijriMonth = data[0][currDate - 1].hijriMonth;
                 var hijriMonthName = Object.keys(HIJRI_MONTHS)[currHijriMonth - 1];
 
                 var hijriDate = data[0][currDate - 1].hijriDate;
                 var hijriYear = data[0][currDate - 1].hijriYear;
-                //var isSunnahToFast = this.isSunnahToFast(hijriDate, hijriYear)
-
-                // var something = this.isSunnahToFast(1, 2);
-                // console.log(something);
 
                 var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}`;
 
@@ -108,16 +96,29 @@ export default class Layout extends React.Component {
         that = this
 
         var displayEvents = [];
+        var todayEvents = [];
 
-        eventPages = ['nusms', 'PBUH.TheLightofLife.1438H', 'nusms.ias']
+        eventPages = [
+            'nusms',
+            'PBUH.TheLightofLife.1438H',
+            'nusms.ias',
+            'projectlink2017',
+            'valour2016',
+            'rihlah1438H',
+            'nusprojectasa',
+            'freshmencamp',
+            'BrothersOfNUS',
+            'nusnisaa',
+            'voksnus'
+        ]
 
         for (var i = 0; i < eventPages.length; i++) {
 
             currUnixTime = moment().unix();
-            endUnixTime = moment().add(7, 'days').endOf('day').unix();
+            endUnixTime = moment().add(6, 'days').endOf('day').unix();
             // var date = new Date();
 
-            var access_token = `EAACEdEose0cBADMh7vfelixZB57Xt67ZAV3domjpH8ulKP2G67Oujc1dTMrZCjs5xF8ZCmkoe4A9sh34DXFGhrVTMSHH6n3fyZCAzSRuUZBuUab3NnBww6ws6bYYTYrhuu6bfizBc1G8TgXZAvZAZAwbBIohPXZBWl1Yp6FToly64XmwZDZD`;
+            var access_token = `EAACEdEose0cBAOPWZBaiebC2F1ZB3ZAToFUp1Sdgtg4LCErN3GLfp1MEXU3ps7ZBrY5kuH3531vgOk0NP39jDsjmwbd1q1CRvlmI4ZCdWoz83YsxiZCOYoMV1ZB9hCs8vFvWOaNVBOkCafLsfc6BosfE4OxyL5IeZAQ7WBJHM1ZBB4AZDZD`;
             const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
 
             HTTP.call('GET', url, {}, function(error, response) {
@@ -126,20 +127,27 @@ export default class Layout extends React.Component {
                     console.log(error);
                 } else {
                     data = JSON.parse(response.content);
-                    var event = data.data;
+
+                    var event = data.data; //returns an array of 25 event objects
+                    //  console.log("EVENTS.length: ", event)
 
                     for (var i = 0; i < event.length; i++) {
                         displayEvents.push(event[i]);
-                    }
+                        if (moment().isSame(event[i].start_time, 'day'))
+                            todayEvents.push(event[i]);
+                        }
 
                     //sort by start_time
                     displayEvents.sort(function(left, right) {
                         return moment.utc(left.start_time).diff(moment.utc(right.start_time))
                     });
 
-                    console.log('DISPLAYEVENTS: ', displayEvents);
+                    console.log('displayEvents: ', displayEvents);
 
-                    that.setState({event: displayEvents})
+                    that.setState({event: displayEvents, eventToday: todayEvents})
+
+                    //  console.log('EVENTMS: ', this.state.event);
+
                     return displayEvents;
 
                 }
@@ -172,11 +180,12 @@ export default class Layout extends React.Component {
 
                 var displayPrayer = [];
                 var currTime = new Date;
+                console.log('currTime', currTime);
                 var currPayer;
 
                 for (var i = 0; i < 6; i++) {
                     var time = moment(timeArray[i]).format('HH:mm');
-                    // console.log('prayer time', i, moment(timeArray[i]).isBefore())
+                    console.log('prayer time', i, moment(timeArray[i]).isBefore())
 
                     if (moment(timeArray[i]).isBefore(currTime))
                         currPayer = i;
@@ -189,8 +198,6 @@ export default class Layout extends React.Component {
         })
 
     }
-
-    handleSongEnd() {}
 
     handleClick(e) {
 
@@ -209,6 +216,7 @@ export default class Layout extends React.Component {
     render() {
 
         var events = this.state.event;
+        var todayEvents = this.state.eventToday;
 
         audioBtn = this.state.play
             ? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a>
@@ -245,6 +253,10 @@ export default class Layout extends React.Component {
                     <PrayerTimesWidget prayer={this.state.prayer} currentPrayer={this.state.currentPrayer}/>
                 </div>
 
+                <div className="topAnnouncement center">
+                    <AnnouncementWidget events={this.state.eventToday}/>
+                </div>
+
                 <div className="topRight">
                     <HijrahWidget hijrah={this.state.hijrah}/> {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
                     {/* <EventAll event={events}/> */}
@@ -262,7 +274,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="bottomRight">
-                    <EventsWidget events={events}/>
+                    <EventsWidget events={events} todayEvents={todayEvents}/>
                 </div>
 
             </div>

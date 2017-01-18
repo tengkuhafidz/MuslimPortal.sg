@@ -9,7 +9,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
     super();
 
     this.state = {
-        showEvents: false,
+        showEvents: 0,
         subscription: {
             events: Meteor.subscribe("allEvents")
         }
@@ -28,7 +28,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
   }
 
   handleClick(){
-    this.setState({showEvents: !this.state.showEvents})
+    this.setState({showEvents: this.state.showEvents + 1})
   }
 
   render(){
@@ -68,14 +68,42 @@ export default class EventsWidget extends TrackerReact(React.Component) {
       )
     }
 
+    eventsToday = this.props.todayEvents
+
+    
+    eventAlert = "" 
+    if(eventsToday.length === 1){
+      eventAlert = (
+                      <div className="eventAlert center flash animated  ">
+                         <h6> <i className="material-icons iconAlign">event_available</i> 1 EVENT TODAY!</h6>
+                      </div>
+                    ) 
+    } else if (eventsToday.length > 1) {
+      eventAlert = (
+                      <div className="eventsPanel center flash animated">
+                         <h6> <i className="material-icons iconAlign">error_outline</i> {eventsToday.length} EVENTS TODAY!</h6>
+                      </div>
+                    ) 
+    }
+
+
     showEvents = this.state.showEvents
-    eventsArea = showEvents ? eventsPanel : ""
-    eventLinkClasses = events.length > 0 ? "formalFont bottomRight white-text mainLink bounce animated eventLink" : "formalFont bottomRight white-text mainLink"
+    // eventsArea = showEvents  ? eventsPanel : eventAlert
+
+    console.log('showEvents', showEvents)
+        console.log('showEventsMod', showEvents % 2)
+
+
+    eventsArea = "";
+    if(showEvents === 0)
+      eventsArea = eventAlert;
+    else if (showEvents % 2 === 1)
+      eventsArea = eventsPanel;
 
     return(
       <div>
         {eventsArea}
-        <a onClick={this.handleClick.bind(this)} className={eventLinkClasses}><i className="material-icons iconAlign">date_range</i> NUSMS Events ({events.length}) </a>
+        <a onClick={this.handleClick.bind(this)} className="formalFont bottomRight white-text mainLink"><i className="material-icons iconAlign">date_range</i> NUSMS Events ({events.length}) </a>
       </div>
     )
   }

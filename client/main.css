@@ -15,6 +15,54 @@
   
 }
 
+.challengeMessage{
+  background: rgba(96,96,96, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 65%;
+  text-align: center;
+  margin: 5px auto;
+
+}
+
+.quote {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+.quote:hover {
+  font-size: 1em;
+  opacity: 1;
+  cursor: default;
+}
+
+/*.challengeMessage{
+  background-color: #333;
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  text-align: center;
+  margin: 5px auto;
+
+}*/
+
+/*.topAnnouncement{
+  position: absolute;
+  top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0px;
+  right: 0px;
+  width:40%;
+  background-color: #333;
+  opacity: 0.8;
+  font-size: 0.8em;
+  padding:5px;
+  margin-top: 10px;
+  border-radius: 10px;
+}*/
+
 .socialLink {
   opacity: 0.5;
   margin-right: 15px;
@@ -72,10 +120,16 @@ a { cursor: pointer; cursor: hand; }
   text-transform: capitalize;
 }
 
-.eventLink {
-  -webkit-animation-duration: 8s;
-  -webkit-animation-delay: 1s;
-  -webkit-animation-iteration-count: 3;
+.eventAlert {
+  background-color: white;
+  color: #333;
+  border-radius: 5px;
+  padding: 5px;
+  width: 190px;
+  margin-bottom: 35px;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-delay: 0.5s;
+  -webkit-animation-iteration-count: 2;
 }
 
 html{
@@ -252,6 +306,11 @@ html{
 
 .topGap{
   margin-top: 30px;
+}
+
+.joinedCount{
+  margin-top: 50px;
+  opacity: 0.8;
 }
 
 .moreTopPadding{
