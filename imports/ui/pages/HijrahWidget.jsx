@@ -52,7 +52,7 @@ export default class HijrahWidget extends React.Component{
 
   //     var hijriDate = data[0][currDate-1].hijriDate;
   //     var hijriYear = data[0][currDate-1].hijriYear;
-      
+
   //     var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}h`;
 
 
@@ -63,12 +63,14 @@ export default class HijrahWidget extends React.Component{
   //   })
 
   // }
-  
+
   render() {
+    var j = (this.props.fasting) ? <p className="betaFont smallFont noTopGap halfSee right-align"><i>Its sunnah to fast today!</i></p> : '';
      return (
        <div>
          <span>{this.props.hijrah}</span>
-         <p className="betaFont smallFont noTopGap halfSee right-align"><i>Its sunnah to fast today!</i></p>
+         {/* <p className="betaFont smallFont noTopGap halfSee right-align"><i>Its sunnah to fast today!</i></p> */}
+         { j }
        </div>
      )
 

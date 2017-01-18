@@ -24,6 +24,7 @@ export default class Layout extends React.Component {
             event: '',
             eventToday: '',
             currentPrayer: '',
+            fasting: false,
 
         }
     }
@@ -115,6 +116,21 @@ export default class Layout extends React.Component {
 
                 var hijriDate = data[0][currDate - 1].hijriDate;
                 var hijriYear = data[0][currDate - 1].hijriYear;
+
+                /* list can be expand */
+                const sunnahToFastDate = [13, 14, 15];
+                const sunnahToFastDay = [1, 4];
+
+                // var sunnahString = '';
+
+                if (hijriMonthName !== 'Ramadhan'){
+                  var today = moment().weekday(); //returns 1 (Monday), 2 (Tuesday)...
+                  if (sunnahToFastDate.includes(hijriDate) || sunnahToFastDay.includes(today)){
+                    that.setState({fasting: !that.state.fasting})
+                    // sunnahString += 'It\'s sunnah to fast today ;)'
+
+                  }
+                }
 
                 var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}`;
 
@@ -287,7 +303,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="topRight">
-                    <HijrahWidget hijrah={this.state.hijrah}/> {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
+                    <HijrahWidget hijrah={this.state.hijrah} fast={this.state.fasting}/> {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
                     {/* <EventAll event={events}/> */}
                 </div>
 
