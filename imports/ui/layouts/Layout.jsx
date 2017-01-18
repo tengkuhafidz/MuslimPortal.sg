@@ -108,7 +108,7 @@ export default class Layout extends React.Component{
       endUnixTime = moment().add(6, 'days').endOf('day').unix();
       // var date = new Date();
 
-      var access_token = `EAACEdEose0cBAJZACKZCY3Xi5gFEGYtdkZAqhz2dRd1gkt9aXZBr33sEiJg0z9LVdVscWYRcCFth5JEtjoP0mHokZBdG5PmCr4GzDXFj69i3esq9QB4aZCS4mj4kq0Ya99k4CdxbPtmKHuSUZAXjV9sIHJCZCMPt9glRBQNA1E5f5AZDZD`;
+      var access_token = `EAACEdEose0cBAOPWZBaiebC2F1ZB3ZAToFUp1Sdgtg4LCErN3GLfp1MEXU3ps7ZBrY5kuH3531vgOk0NP39jDsjmwbd1q1CRvlmI4ZCdWoz83YsxiZCOYoMV1ZB9hCs8vFvWOaNVBOkCafLsfc6BosfE4OxyL5IeZAQ7WBJHM1ZBB4AZDZD`;
       const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
 
 
