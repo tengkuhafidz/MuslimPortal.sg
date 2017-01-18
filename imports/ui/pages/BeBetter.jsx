@@ -55,7 +55,7 @@ export default class BeBetter extends TrackerReact(React.Component){
 
     if(joinedDate > challenge.dateStart && moment().isoWeekday() === 7){
       joinStatusArea = (
-          <p className="betaFont grey challengeMessage">
+          <p className="betaFont challengeMessage">
             <b>FINAL DAY!</b> &nbsp; Share your reflections with <b>#bebetter #nusms</b>.
           </p>
         )
