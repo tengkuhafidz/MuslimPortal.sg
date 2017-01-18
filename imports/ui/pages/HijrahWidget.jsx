@@ -65,7 +65,9 @@ export default class HijrahWidget extends React.Component{
   // }
 
   render() {
-    var j = (this.props.fasting) ? <p className="betaFont smallFont noTopGap halfSee right-align"><i>Its sunnah to fast today!</i></p> : '';
+
+    var j = (this.props.fast) ? <p className="betaFont smallFont noTopGap halfSee right-align"><i>Its sunnah to fast tomorrow!</i></p> : '';
+    console.log("THIS.PROPS.FASTING: ", this.props.fasting)
      return (
        <div>
          <span>{this.props.hijrah}</span>

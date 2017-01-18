@@ -124,9 +124,10 @@ export default class Layout extends React.Component {
                 // var sunnahString = '';
 
                 if (hijriMonthName !== 'Ramadhan'){
-                  var today = moment().weekday(); //returns 1 (Monday), 2 (Tuesday)...
-                  if (sunnahToFastDate.includes(hijriDate) || sunnahToFastDay.includes(today)){
-                    that.setState({fasting: !that.state.fasting})
+                  var today = moment().weekday() + 1; //returns 1 (Monday), 2 (Tuesday)...
+                  // console.log('TODAY', sunnahToFastDate.includes(hijriDate+1))
+                  if (sunnahToFastDate.includes(hijriDate+1) || sunnahToFastDay.includes(today)){
+                    that.setState({fasting: true})
                     // sunnahString += 'It\'s sunnah to fast today ;)'
 
                   }
