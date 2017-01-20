@@ -74,7 +74,9 @@ const Register = React.createClass({
   render(){
     return (
       <div className="row">
-        <div className="col m4 offset-m4 s12 center">
+        <div className="col m6 offset-m3 s12 center">
+                <div className="card-panel grey-text text-darken-3">
+
           <h2 className="header ">Register</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="row">
@@ -97,11 +99,12 @@ const Register = React.createClass({
             </div>
 
             <div className="row">
-              <button className="btn waves-effect waves-light grey darken-2" type="submit" name="action">Sign Up
+              <button className="btn waves-effect waves-light" type="submit" name="action">Sign Up
                 <i className="material-icons right ">send</i>
               </button>
             </div>
           </form>
+          </div>
         </div>
       </div>
     )
