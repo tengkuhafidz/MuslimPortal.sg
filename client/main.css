@@ -244,12 +244,30 @@ html{
 }
 
 
+
 .userNameSpan:hover{
   border-bottom: 1px solid grey;
 }
 
 .userNameSpan:hover .editContent{
   visibility: visible;
+}
+
+.socialShare {
+  display: none;
+  color: white;
+}
+
+.quote:hover .socialShare{
+  display: block;
+  opacity: 0.5;
+  color: white;
+}
+
+
+
+.quote:hover, .socialShare:hover{
+  opacity: 1 !important;
 }
 
 /* label focus color */
