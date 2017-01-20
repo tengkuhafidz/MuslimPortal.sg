@@ -28,7 +28,6 @@ export default class Greeting extends React.Component{
     }
 
     componentDidMount(){
-        $('.boingInUp').addClass('magictime boingInUp');
         var that = this;
         setInterval(that.updateCurrTime.bind(that), 1000);
       }
