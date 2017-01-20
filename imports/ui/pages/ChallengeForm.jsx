@@ -83,8 +83,8 @@ export default class ChallengeForm extends React.Component {
     render() {
         return (
 
-                <div className="row moreTopPadding bottomGap grey-text text-darken-3">
-                  <div className="col s12 m10 offset-m1">
+                <div className="row bottomGap grey-text text-darken-3">
+                  <div className="col s12 m10 offset-m1 ">
                     <div className="card-panel">
 
                         <h2> Add #BeBetter Challenge </h2>

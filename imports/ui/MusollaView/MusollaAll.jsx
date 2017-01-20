@@ -17,7 +17,6 @@ export default class MusollaAll extends React.Component{
         <div className="col s8 push-s2">
           <div className="collection scrollView">
 
-
           {musolla.map((musollaEach)=>{
             console.log(musollaEach._id)
             return <MusollaSingle key={musollaEach._id} musolla={musollaEach} />

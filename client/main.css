@@ -353,6 +353,10 @@ html{
   margin-top: -25px;
 }
 
+.lessMarginTop{
+  margin-top: -50px;
+}
+
 .scrollView{
   max-height: 400px;
   overflow: hidden;
@@ -360,7 +364,7 @@ html{
 }
 
 .halfSee {
-  opacity: 0.5;
+  opacity: 0.5 ;
 }
 
 .contentDiv{
@@ -370,6 +374,10 @@ html{
 
 .mainLink:hover{
   font-size: 1.2em;
+}
+
+.mainContent {
+  padding-top: 10%;
 }
 
 .topMiddle{
