@@ -13,13 +13,22 @@ import EventsView from '/imports/ui/pages/EventsView.jsx';
 import EventForm from '/imports/ui/pages/EventForm.jsx';
 
 import MosqueEventForm from '/imports/ui/pages/MosqueEventForm.jsx';
-import MosqueLogin from '/imports/ui/pages/MosqueLogin.jsx';
-import MosqueRegister from '/imports/ui/pages/MosqueRegister.jsx';
+import Login from '/imports/ui/pages/Login.jsx';
+import Register from '/imports/ui/pages/Register.jsx';
 
 import MosqueEventUpdate from '/imports/ui/pages/MosqueEventUpdate.jsx';
 import MusollaView from '/imports/ui/pages/MusollaView.jsx';
 
 import MusollaDetails from '/imports/ui/pages/MusollaDetails.jsx';
+
+function isAuthenticated(context, redirect){
+  if(!Meteor.userId()){
+    Session.set("back", context.path)
+    redirect("login")
+  }
+}
+
+FlowRouter.triggers.enter([isAuthenticated], {only: ["challengeForm"]});
 
 //home
 FlowRouter.route('/', {
@@ -120,19 +129,19 @@ name: "mosqueEventUpdate"
 FlowRouter.route('/administratorRegister_1324', {
   action: function() {
     mount(Layout, {
-      content: () => <MosqueRegister />,
+      content: () => <Register />,
   });
 },
-name: "mosqueRegister"
+name: "register"
 });
 
-FlowRouter.route('/administratorLogin', {
+FlowRouter.route('/adminLogin', {
   action: function() {
     mount(Layout, {
-      content: () => <MosqueLogin />,
+      content: () => <Login />,
   });
 },
-name: "mosqueLogin"
+name: "login"
 });
 
 
