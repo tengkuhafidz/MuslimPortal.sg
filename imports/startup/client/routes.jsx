@@ -12,11 +12,9 @@ import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
 import EventForm from '/imports/ui/pages/EventForm.jsx';
 
-import MosqueEventForm from '/imports/ui/pages/MosqueEventForm.jsx';
 import Login from '/imports/ui/pages/Login.jsx';
 import Register from '/imports/ui/pages/Register.jsx';
 
-import MosqueEventUpdate from '/imports/ui/pages/MosqueEventUpdate.jsx';
 import MusollaView from '/imports/ui/pages/MusollaView.jsx';
 
 import MusollaDetails from '/imports/ui/pages/MusollaDetails.jsx';
