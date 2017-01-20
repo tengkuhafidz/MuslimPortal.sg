@@ -1,10 +1,11 @@
 import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react'
 import {Events} from '../../api/events.js'
-import EventItemSingle from './EventItemSingle.jsx'
+
+import EventItemSingle from '../Home/EventItemSingle.jsx'
 
 export default class EventsWidget extends TrackerReact(React.Component) {
-  
+
   constructor() {
     super();
 
@@ -39,8 +40,8 @@ export default class EventsWidget extends TrackerReact(React.Component) {
         return <span>loading</span>
 
       console.log(events)
-     
-    
+
+
 
     if(events.length < 1 ) {
       eventsPanel = (
@@ -70,20 +71,20 @@ export default class EventsWidget extends TrackerReact(React.Component) {
 
     eventsToday = this.props.todayEvents
 
-    
-    eventAlert = "" 
+
+    eventAlert = ""
     if(eventsToday.length === 1){
       eventAlert = (
                       <div className="eventAlert center flash animated  ">
                          <h6> <i className="material-icons iconAlign">event_available</i> 1 EVENT TODAY!</h6>
                       </div>
-                    ) 
+                    )
     } else if (eventsToday.length > 1) {
       eventAlert = (
                       <div className="eventsPanel center flash animated">
                          <h6> <i className="material-icons iconAlign">error_outline</i> {eventsToday.length} EVENTS TODAY!</h6>
                       </div>
-                    ) 
+                    )
     }
 
 

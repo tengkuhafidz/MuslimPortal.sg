@@ -1,17 +1,16 @@
 import React from 'react';
 
-import LogoutBtn from '../components/LogoutBtn.jsx'
-import EventsWidget from '../Home/EventsWidget.jsx'
-import QuotesWidget from '../Home/QuotesWidget.jsx'
+/* import Widgets... */
+import EventsWidget from '../Widgets/EventsWidget.jsx'
+import QuotesWidget from '../Widgets/QuotesWidget.jsx'
 import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
+import HijrahWidget from '../Widgets/HijrahWidget.jsx'
+import PrayerTimesWidget from '../Widgets/PrayerTimesWidget.jsx'
+import AdminWidget from '../Widgets/AdminWidget.jsx';
 
-import HijrahWidget from '../pages/HijrahWidget.jsx'
-import PrayerTimesWidget from '../pages/PrayerTimesWidget.jsx'
-
-import AdminWidget from '../pages/AdminWidget.jsx';
-
-//events
 import EventAll from '../NUSEvents/EventAll.jsx'
+import LogoutBtn from '../components/LogoutBtn.jsx'
+
 
 export default class Layout extends React.Component {
 
@@ -29,36 +28,7 @@ export default class Layout extends React.Component {
             fasting: ''
         }
     }
-
-    getAccessToken() {
-        const url = 'https://graph.facebook.com/v2.8/oauth/access_token?grant_type=fb_exchange_token&client_id=1855990044615179&client_secret=37d5e38b8a80fc243ece45b575ef72ce&fb_exchange_token=EAAaYA1tQ4gsBAO5ZCJiYFEmADblMZAjFtzOojVXxkZAh10UQyDpZBQLeHF2WU3ksf0nXaYLjEdcaBLMtrJ3QZA8S7Rnkgsk4hieDNcYnHnodYFcBZCZCNJhErXjDRq8vZBqsbTokZCv8W8fnX1l7Vz7CKo5ZBDXSM8ZB9ex2dqWY2YcJQZDZD';
-        that = this;
-        HTTP.call('GET', url, {}, function(error, response) {
-
-            if (error) {
-                console.log(error);
-            } else {
-
-                data = JSON.parse(response.content)
-
-                var access_token = data.access_token;
-                // return access_token;
-                console.log('IM GETTING THERE: ', access_token);
-                var workingAccessToken = 'EAAaYA1tQ4gsBAI1RwZCO7cXHEvhE6HpowidmesemCrUL0YqflEvJ878NZCNBTT4JuFD5EbeNS3JPP6ygZAPqU2g7HegelZB7ZCJOxMDzQgShBgWkeXpWYP0nYhFlOLmv0eRSRMs97d1x3b3eKu05M9a5KhnrOpFYZD';
-
-                if (access_token === workingAccessToken)
-                    console.log("THEY MATCH!");
-                else {
-                    console.log("THEY DO NOT MATCH!")
-                }
-
-                that.setState({accessToken: access_token})
-            }
-        })
-    }
-
     componentDidMount() {
-        this.getAccessToken();
         this.getHijrahDate();
         this.getPrayerTime();
         this.getAllEvents();
