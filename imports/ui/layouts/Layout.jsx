@@ -280,7 +280,7 @@ export default class Layout extends React.Component {
                     <QuotesWidget/>
                 </div>
 
-                <div className="centreLeft formalFont white-text mainLink">
+                <div className="middleLeft formalFont white-text mainLink">
                   {
                     Meteor.userId() ?
                     <AdminWidget /> : ''
