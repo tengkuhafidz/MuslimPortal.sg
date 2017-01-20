@@ -95,15 +95,6 @@ FlowRouter.route('/eventsView', {
 name: "eventsView"
 });
 
-FlowRouter.route('/mosqueEventForm', {
-  action: function() {
-    mount(Layout, {
-      content: () => <MosqueEventForm />,
-  });
-},
-name: "mosqueEventForm"
-});
-
 FlowRouter.route('/eventForm', {
   action: function() {
     mount(Layout, {
@@ -111,16 +102,6 @@ FlowRouter.route('/eventForm', {
   });
 },
 name: "eventForm"
-});
-
-FlowRouter.route('/MosqueEventUpdate/:eventId', {
-  action: function(params) {
-    mount(Layout, {
-      content: () => <MosqueEventUpdate  eventId={params.eventId}/>,
-  });
-},
-
-name: "mosqueEventUpdate"
 });
 
 //admin account
@@ -140,14 +121,4 @@ FlowRouter.route('/adminLogin', {
   });
 },
 name: "login"
-});
-
-
-FlowRouter.route('/mosqueEventDetails/:eventId', {
-  action: function(params) {
-    mount(Layout, {
-      content: () => <MosqueEventDetails eventId={params.eventId}/>,
-  });
-},
-name: "mosqueEventDetails"
 });
