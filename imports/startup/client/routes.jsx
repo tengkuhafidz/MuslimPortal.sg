@@ -15,9 +15,9 @@ import EventForm from '/imports/ui/pages/EventForm.jsx';
 import Login from '/imports/ui/pages/Login.jsx';
 import Register from '/imports/ui/pages/Register.jsx';
 
-import MusollaView from '/imports/ui/pages/MusollaView.jsx';
-
-import MusollaDetails from '/imports/ui/pages/MusollaDetails.jsx';
+// import MusollaView from '/imports/ui/pages/MusollaView.jsx';
+//
+// import MusollaDetails from '/imports/ui/pages/MusollaDetails.jsx';
 
 function isAuthenticated(context, redirect){
   if(!Meteor.userId()){
@@ -57,24 +57,24 @@ FlowRouter.route('/challengeForm', {
 name: "challengeForm"
 });
 
-//musolla
-FlowRouter.route('/musollaView', {
-  action: function(){
-    mount(Layout, {
-      content: () => <MusollaView />
-  })
-},
-name: "musollaView"
-});
-
-FlowRouter.route('/musollaDetails/:musollaId', {
-  action: function(params) {
-    mount(Layout, {
-      content: () => <MusollaDetails musollaId={params.musollaId}/>,
-  });
-},
-name: "musollaDetails"
-});
+// //musolla
+// FlowRouter.route('/musollaView', {
+//   action: function(){
+//     mount(Layout, {
+//       content: () => <MusollaView />
+//   })
+// },
+// name: "musollaView"
+// });
+//
+// FlowRouter.route('/musollaDetails/:musollaId', {
+//   action: function(params) {
+//     mount(Layout, {
+//       content: () => <MusollaDetails musollaId={params.musollaId}/>,
+//   });
+// },
+// name: "musollaDetails"
+// });
 
 //events
 FlowRouter.route('/eventDetails/:eventId', {
