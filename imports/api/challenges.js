@@ -19,11 +19,20 @@ if (Meteor.isServer) {
 Meteor.methods({
 
   addChallenge(action, dateStart, dateEnd){
-
+    if(!action || !dateStart || !dateEnd){
+      throw new Meteor.Error('Some input fields are not filled in.');
+    }
+// Make sure the user is logged in before inserting a task
+  if (! this.userId) {
+    throw new Meteor.Error('not-authorized');
+  }
+  
     Challenges.insert({
       action,
       dateStart,
-      dateEnd
+      dateEnd,
+      createdBy: this.userId,
+      createdAt: new Date(),
     });
   },
   joinChallenge(){

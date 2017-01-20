@@ -3,7 +3,7 @@ import React from 'react';
 import {Challenges} from '../../api/challenges.js';
 
 export default class ChallengeForm extends React.Component {
-    
+
     constructor(props) {
         super(props);
     }
@@ -18,7 +18,7 @@ export default class ChallengeForm extends React.Component {
         });
     }
 
-   
+
     handleSubmit(e) {
       e.preventDefault()
 
@@ -28,6 +28,8 @@ export default class ChallengeForm extends React.Component {
       // var timeStart = this.refs.start.value.trim();
       // var dateEnd = this.refs.dateEnd.value.trim();
       // var timeEnd = this.refs.end.value.trim();
+
+      if (dateStart && activity) {
 
 
         properDateStart = dateStart;
@@ -55,8 +57,12 @@ export default class ChallengeForm extends React.Component {
                 FlowRouter.go("/")
 
             }
-        })
-      
+                })
+      } else {
+        Bert.alert("Some input fields are not filled", 'danger', 'fixed-top', 'fa-frown-o');
+      }
+
+
 
       // /* what */
       // var name = this.refs.name.value.trim();
@@ -106,7 +112,7 @@ export default class ChallengeForm extends React.Component {
                                     <input type="date" className="datepicker" id="dateStart" ref="dateStart"/>
                                     <label htmlFor="dateStart">Start Date</label>
                                 </div>
-                               {/* 
+                               {/*
                                <div className="input-field col m3">
                                     <input type="time" id="start" ref="start" />
                                 </div>
@@ -120,8 +126,8 @@ export default class ChallengeForm extends React.Component {
                                     <input type="time" id="end" ref="end" />
                                 </div>
                               */}
-                            </div> 
-                            
+                            </div>
+
                         </div>
 
 
