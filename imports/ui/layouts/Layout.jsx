@@ -8,6 +8,8 @@ import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
 import HijrahWidget from '../pages/HijrahWidget.jsx'
 import PrayerTimesWidget from '../pages/PrayerTimesWidget.jsx'
 
+import AdminWidget from '../pages/AdminWidget.jsx';
+
 //events
 import EventAll from '../NUSEvents/EventAll.jsx'
 
@@ -306,6 +308,13 @@ export default class Layout extends React.Component {
 
                 <div className="bottomMiddle">
                     <QuotesWidget/>
+                </div>
+
+                <div className="centreLeft formalFont white-text mainLink">
+                  {
+                    Meteor.userId() ?
+                    <AdminWidget /> : ''
+                  }
                 </div>
 
                 <div className="bottomRight">

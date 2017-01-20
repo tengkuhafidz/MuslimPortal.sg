@@ -12,7 +12,7 @@
 .usefulLinks {
   margin-top: -5px;
   color: white;
-  
+
 }
 
 .challengeMessage{
@@ -136,7 +136,7 @@ html{
     /*background-image: url("/tree4.jpg");*/
     /*background-size:cover;*/
     min-width: 100%;
-    /*    
+    /*
     background-size:     contain;
     background-repeat:   no-repeat;
     background-position: center center;
@@ -359,7 +359,7 @@ html{
 
 .scrollView{
   max-height: 400px;
-  overflow: hidden; 
+  overflow: hidden;
   overflow-y: auto;
 }
 
@@ -385,7 +385,7 @@ html{
   top: 10px;
   width:100%;
   margin: 0 auto;
-} 
+}
 
 .topRight{
     position: fixed;
@@ -424,7 +424,7 @@ html{
   left: 0px;
   right: 0px;
   width:60%;
-} 
+}
 
 
 .bottomLeft{
@@ -434,6 +434,13 @@ html{
 }
 .bottomGap{
   margin-bottom: 30px;
+}
+
+.centreLeft {
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 10px;
+
 }
 
 .marginSides{
