@@ -26,7 +26,7 @@ Meteor.methods({
   if (! this.userId) {
     throw new Meteor.Error('not-authorized');
   }
-  
+
     Challenges.insert({
       action,
       dateStart,
@@ -40,6 +40,27 @@ Meteor.methods({
       {dateEnd: {$gte: new Date().toISOString()}, dateStart: {$lte: new Date().toISOString()}},
       { $inc: { "joined" : 1 } }
     )
-  }
+  },
+  deleteChallenge(challengeId){
+    check(challengeId, String);
+    Challenges.remove(challengeId);
+  },
+  updateChallenge(eventId, action, dateStart, dateEnd) {
+    if(!action || !dateStart){
+      throw new Meteor.Error('Some input fields are not filled in.');
+    }
+    // Make sure the user is logged in before inserting a task
+    if (! this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Challenges.update({_id: eventId}, {
+      $set: {
+        action,
+        dateStart,
+        dateEnd,
+      }
+    });
+},
 
 });

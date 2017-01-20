@@ -15,6 +15,9 @@
 
 }
 
+.collection-span{
+    width: 400px;
+}
 .challengeMessage{
   background: rgba(96,96,96, 0.5);
   color: white;

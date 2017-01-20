@@ -6,7 +6,7 @@ import Layout from '/imports/ui/layouts/Layout.jsx';
 import Home from '/imports/ui/pages/Home.jsx';
 import BeBetter from '/imports/ui/pages/BeBetter.jsx';
 import ChallengeForm from '/imports/ui/pages/ChallengeForm.jsx';
-
+import ChallengesUpdate from '/imports/ui/pages/ChallengesUpdate.jsx';
 
 import EventDetails from '/imports/ui/pages/EventDetails.jsx';
 import EventsView from '/imports/ui/pages/EventsView.jsx';
@@ -16,6 +16,7 @@ import Login from '/imports/ui/pages/Login.jsx';
 import Register from '/imports/ui/pages/Register.jsx';
 
 import MusollaView from '/imports/ui/pages/MusollaView.jsx';
+import ChallengesView from '/imports/ui/pages/ChallengesView.jsx';
 
 import MusollaDetails from '/imports/ui/pages/MusollaDetails.jsx';
 
@@ -121,4 +122,23 @@ FlowRouter.route('/adminLogin', {
   });
 },
 name: "login"
+});
+
+//challenge
+FlowRouter.route('/challengesView', {
+  action: function(){
+    mount(Layout, {
+      content: () => <ChallengesView />
+  })
+},
+name: "challengesView"
+});
+
+FlowRouter.route('/challengesUpdate/:challengeId', {
+  action: function(params) {
+    mount(Layout, {
+      content: () => <ChallengesUpdate challengeId={params.challengeId}/>,
+  });
+},
+name: "challengesUpdate"
 });
