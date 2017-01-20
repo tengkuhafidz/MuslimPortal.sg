@@ -14,9 +14,9 @@ export default class PrayerTimesWidget extends React.Component{
     var prayerTimesArea = [];
     for (var i = 0; i < prayerTimes.length; i++) {
       if(currentPrayer === i)
-        prayerTimesArea.push(<span className="currentPrayer prayerTimes">{prayerTimes[i]}</span>);
+        prayerTimesArea.push(<span key={i} className="currentPrayer prayerTimes">{prayerTimes[i]}</span>);
       else
-        prayerTimesArea.push(<span className="prayerTimes">{prayerTimes[i]}</span>)
+        prayerTimesArea.push(<span key={i} className="prayerTimes">{prayerTimes[i]}</span>)
     }
 
 

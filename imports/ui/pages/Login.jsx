@@ -33,6 +33,10 @@ const Login = React.createClass({
           FlowRouter.go(Session.get("back"))
           Session.set("back", "");
         }
+        var totalCount = 31;
+        var num = Math.ceil( Math.random() * totalCount );
+        document.body.style.background = "linear-gradient(rgba(25,83,140, 0.8), rgba(25,83,140, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed" ;
+        document.body.style.backgroundSize = "cover";
 
       }
     });
