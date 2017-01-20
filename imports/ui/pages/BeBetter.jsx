@@ -69,8 +69,8 @@ export default class BeBetter extends TrackerReact(React.Component){
 
 
     return(
-      <div className="center moreTopPadding">
-        <div className="moreTopPadding">
+      <div className="center ">
+        <div className="">
         <img src="/logo-white.png" height="80px"/>
         <h5>#BeBetter Challenge of The Week:</h5>
         <br/>
