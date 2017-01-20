@@ -297,7 +297,7 @@ export default class Layout extends React.Component {
                     {/* <EventAll event={events}/> */}
                 </div>
 
-                <div className="contentDiv container">
+                <div className="contentDiv container mainContent">
                     {this.props.content()}
                 </div>
                 <a href="/musollaView" className="bottomLeft formalFont white-text mainLink">
