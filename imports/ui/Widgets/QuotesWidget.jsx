@@ -13,7 +13,7 @@ export default class QuotesWidget extends React.Component{
     var twitterLink = `https://twitter.com/intent/tweet?text="${randomMessage.message}"%20(${randomMessage.hashtag})&hashtags=NUSMSReminds`
 
     return(
-      <div className="center ">
+      <div className="center quoteArea">
 
         <div className="betaFont mainContent quote ">
           <h6 className="">

@@ -97,6 +97,8 @@
 
 a { cursor: pointer; cursor: hand; }
 
+a:hover { opacity: 1 }
+
 .currentPrayer {
 /*    position: relative;
     display: inline-block;
@@ -400,6 +402,8 @@ html{
   padding-top: 10%;
 }
 
+
+
 .topMiddle{
   position: fixed;
   top: 10px;
@@ -436,7 +440,7 @@ html{
     right: 10px;
 }
 
-.bottomMiddle{
+.bottomCenter{
   position: absolute;
   bottom: 10px;
   margin-right: auto;
@@ -444,7 +448,9 @@ html{
   left: 0px;
   right: 0px;
   width:60%;
+
 }
+
 
 
 .bottomLeft{

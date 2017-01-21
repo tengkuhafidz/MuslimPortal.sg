@@ -143,11 +143,11 @@ export default class Layout extends React.Component {
 
         for (var i = 0; i < eventPages.length; i++) {
 
-            currUnixTime = moment().unix();
+            currStrtotime = moment().format('YYYY-MM-DD');
             endUnixTime = moment().add(6, 'days').endOf('day').unix();
 
             var access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
-            const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currUnixTime}&until=${endUnixTime}&&access_token=${access_token}`;
+            const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currStrtotime}&until=${endUnixTime}&&access_token=${access_token}`;
 
             HTTP.call('GET', url, {}, function(error, response) {
 
@@ -158,11 +158,15 @@ export default class Layout extends React.Component {
 
                     var event = data.data; //returns an array of 25 event objects
 
+
+
                     for (var i = 0; i < event.length; i++) {
-                        displayEvents.push(event[i]);
-                        if (moment().isSame(event[i].start_time, 'day'))
-                            todayEvents.push(event[i]);
+                        if(moment().isBefore(event[i].end_time)){
+                            displayEvents.push(event[i]);
+                            if (moment().isSame(event[i].start_time, 'day'))
+                                todayEvents.push(event[i]);
                         }
+                    }
 
                     //sort by start_time
                     displayEvents.sort(function(left, right) {
@@ -290,7 +294,7 @@ export default class Layout extends React.Component {
                     <i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
                 {/*<img className="materialboxed bottomRight" width="50" src="coe.jpg"  data-caption="Calendar of Events for AY 2016/2017" /> */}
 
-                <div className="bottomMiddle">
+                <div className="bottomCenter">
                     <QuotesWidget/>
                 </div>
 

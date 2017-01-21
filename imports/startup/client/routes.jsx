@@ -4,6 +4,8 @@ import {FlowRouter} from 'meteor/kadira:flow-router-ssr';
 
 import Layout from '/imports/ui/layouts/Layout.jsx';
 import Home from '/imports/ui/pages/Home.jsx';
+import HomeWidget from '/imports/ui/Widgets/HomeWidget.jsx';
+
 import BeBetter from '/imports/ui/pages/BeBetter.jsx';
 import ChallengeForm from '/imports/ui/pages/ChallengeForm.jsx';
 
@@ -32,7 +34,7 @@ FlowRouter.triggers.enter([isAuthenticated], {only: ["challengeForm"]});
 FlowRouter.route('/', {
   action: function(){
     mount(Layout, {
-      content: () => <Home />
+      content: () => <HomeWidget />
   })
 },
 name: "home"
