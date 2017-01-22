@@ -48,8 +48,8 @@ export default class MusollaDetails extends TrackerReact(React.Component) {
     console.log(description)
 
     return (
-      <div className="moreTopPadding noShadow black-text">
-          <div className="row moreTopPadding">
+      <div className=" noShadow black-text">
+          <div className="row ">
               <div className="col s12">
                   <div className="card-panel hoverable">
                       <h2>

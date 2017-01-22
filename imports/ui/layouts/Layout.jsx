@@ -132,7 +132,7 @@ export default class Layout extends React.Component {
             'PBUH.TheLightofLife.1438H',
             'nusms.ias',
             'projectlink2017',
-            'valour2016',
+            'valour2017',
             'rihlah1438H',
             'nusprojectasa',
             'freshmencamp',
