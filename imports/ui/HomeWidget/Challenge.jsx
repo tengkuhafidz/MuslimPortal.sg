@@ -50,22 +50,22 @@ export default class Challenge extends TrackerReact(React.Component){
 
     var joinedNo = challenge.joined ? <span>{challenge.joined}</span> : "";
 
-    var joinStatusArea = <a className="waves-effect waves-light btn-large " onClick={this.handleJoin.bind(this)}>Join Challenge</a>
+    var joinStatusArea = joinedDate > challenge.dateStart ? "" : <a className="waves-effect waves-light btn-large " onClick={this.handleJoin.bind(this)}>Join Challenge</a>
 
 
-    if(joinedDate > challenge.dateStart && moment().isoWeekday() === 7){
-      joinStatusArea = (
-          <p className="betaFont challengeMessage">
-            <b>FINAL DAY!</b> &nbsp; Share your reflections with <b>#bebetter #nusms</b>.
-          </p>
-        )
-    } else if(joinedDate > challenge.dateStart) {
-      joinStatusArea = (
-          <p className="betaFont challengeMessage">
-            <b>Thank you for joining!</b> Let's do this together and <b>#bebetter</b>. 
-          </p>
-        )
-    }
+    // if(joinedDate > challenge.dateStart && moment().isoWeekday() === 7){
+    //   joinStatusArea = (
+    //       <p className="betaFont challengeMessage">
+    //         <b>FINAL DAY!</b> &nbsp; Share your reflections with <b>#bebetter #nusms</b>.
+    //       </p>
+    //     )
+    // } else if(joinedDate > challenge.dateStart) {
+    //   joinStatusArea = (
+    //       <p className="betaFont challengeMessage">
+    //         <b>Thank you for joining!</b> Let's do this together and <b>#bebetter</b>. 
+    //       </p>
+    //     )
+    // }
 
 
     return(
