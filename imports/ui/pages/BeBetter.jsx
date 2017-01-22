@@ -75,7 +75,7 @@ export default class BeBetter extends TrackerReact(React.Component){
         <h5>#BeBetter Challenge of The Week:</h5>
         <br/>
         <h1 className="cursiveFont noTopGap">{challenge.action}</h1>
-        <h6 className="joinedCount"> Current Challenge Takers: {joinedNo} </h6>
+        <h6 className="joinedCount"> You are taking this challenge with {joinedNo} other people. Hwaiting! </h6>
         
           {joinStatusArea}
 
