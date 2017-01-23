@@ -6,71 +6,76 @@ import {Challenges} from '../../api/challenges.js'
 import Greeting from '../HomeWidget/Greeting.jsx'
 import Challenge from '../HomeWidget/Challenge.jsx'
 
-export default class Home extends TrackerReact(React.Component){
+export default class Home extends TrackerReact(React.Component) {
 
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-        subscription: {
-            challenges: Meteor.subscribe("allChallenges")
-        },
-        showChallenge: false
+        this.state = {
+            subscription: {
+                challenges: Meteor.subscribe("allChallenges")
+            },
+            showChallenge: false
+        }
     }
-  }
 
- componentDidMount(){
-    showChallenge: localStorage.getItem("showChallenge")
- }
+    componentDidMount() {
+        showChallenge : localStorage.getItem("showChallenge")
+    }
 
-  getChallenge(){
+    getChallenge() {
 
-    nowDate = new Date().toISOString();
+        nowDate = new Date().toISOString();
 
-    challenge = Challenges.findOne({dateEnd: {$gte: nowDate}, dateStart: {$lte: nowDate}});
+        challenge = Challenges.findOne({
+            dateEnd: {
+                $gte: nowDate
+            },
+            dateStart: {
+                $lte: nowDate
+            }
+        });
 
-    console.log('challenge of the week:', challenge)
+        return challenge;
 
-    return challenge;
+    }
 
-  }
+    handleClick() {
+        if (localStorage.getItem("showChallenge"))
+            localStorage.setItem("showChallenge", !JSON.parse(localStorage.getItem("showChallenge")))
+        else
+            localStorage.setItem("showChallenge", false)
 
-  handleClick(){
-    if(localStorage.getItem("showChallenge"))
-      localStorage.setItem("showChallenge", !JSON.parse(localStorage.getItem("showChallenge")))
-    else
-      localStorage.setItem("showChallenge", false)
+        this.setState({
+            showChallenge: !this.state.showChallenge
+        })
 
-    this.setState({showChallenge: !this.state.showChallenge})
+    }
 
-  }
+    render() {
 
-  render(){
+        var challenge = this.getChallenge();
 
-    var challenge = this.getChallenge();
+        if (!challenge)
+            return <span>&nbsp;</span>
 
-    if (!challenge) 
-      return <span>&nbsp;</span>
+        showChallenge = JSON.parse(localStorage.getItem("showChallenge"))
 
-      showChallenge = JSON.parse(localStorage.getItem("showChallenge"))
+        if (showChallenge === null || showChallenge)
+            mainWidget = <Challenge/>
+        else
+            mainWidget = <Greeting/>
 
+        switchScreenArea = challenge
+            ? <a className="betaFont halfSee white-text switch smallFont" onClick={this.handleClick.bind(this)}>[Switch View]</a>
+            : ""
 
+        return (
+            <div className="center mainArea">
 
-    if (showChallenge === null || showChallenge)
-      mainWidget = <Challenge />
-    else 
-      mainWidget = <Greeting />
-    
-      
-
-    switchScreenArea = challenge ? <a className="betaFont halfSee white-text switch smallFont" onClick={this.handleClick.bind(this)}>[Switch View]</a> : ""
-   
-    return(
-      <div className="center mainArea">
-        
-        {mainWidget}
-        {switchScreenArea}
-      </div>
-    )
-  }
+                {mainWidget}
+                {switchScreenArea}
+            </div>
+        )
+    }
 }
