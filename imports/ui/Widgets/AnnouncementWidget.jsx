@@ -1,42 +1,33 @@
 import React from 'react';
 import EventItemSingle from '../Home/EventItemSingle.jsx'
 
-
 export default class AnnouncementWidget extends React.Component {
 
-  handleClick(){
-  
-  }
+    handleClick() {}
 
-  render(){
+    render() {
 
-    events = this.props.events
+        events = this.props.events
 
+        if (events.length < 1) {
+            announcement = "";
+        } else {
+            announcement = (
+                <div className="announcementArea">
+                    <h6>
+                        Happening Today:
+                    </h6>
+                    {events.map((eventEach) => {
+                        return <EventItemSingle key={eventEach.id} eventItem={eventEach}/>
+                    })}
+                </div>
+            )
+        }
 
-
-    console.log('today events: ', events)
-     
-    
-
-    if(events.length < 1 ) {
-      announcement = "";
-    } else {
-      announcement = (
-        <div className="announcementArea">
-           <h6> Happening Today: </h6>
-           {events.map((eventEach)=>{
-            return <EventItemSingle key={eventEach.id} eventItem={eventEach} />
-            })}
-        </div>
+        return (
+            <div>
+                {/*{announcement}*/}
+            </div>
         )
-    } 
-
-
-
-    return(
-      <div>
-        {/*{announcement}*/}
-      </div>
-    )
-  }
+    }
 }

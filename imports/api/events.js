@@ -1,15 +1,22 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-//import { Future } from 'fibers/future';
 
-//Future = Npm.require('fibers/future');
-// initialise a collection here. mongo collection name should be the file name.
 export const Events = new Mongo.Collection('events');
 
 if (Meteor.isServer) {
-  //declare all publish relating to the collection here
-  //EXAMPLE: Tasks.find({}, { sort: { createdAt: -1 } });
+  //request FB API (events) here
+  var logHello = (msg) => {
+    console.log(msg)
+  }
+
+  logHello("hey")
+
+  //save them response into a database
+  //Events.insert(res)
+
+  //might need to set a cronjob
+
   Meteor.publish('allEvents', function eventsPublication() {
     return Events.find({}); //db.events.find({}, {name: 1, dateStart: 1, timeStart: 1}).sort({dateStart: -1})
   });
@@ -76,7 +83,7 @@ Meteor.methods({
   //     adminId: Meteor.userId(),           // _id of logged in user
   //     mosqueName: Meteor.user().profile.name  // username of logged in user
   //   });
-  // }, 
+  // },
 
   addEvent(name, dateStart, dateEnd, url){
 
@@ -133,7 +140,7 @@ Meteor.methods({
       adminId: Meteor.userId(),           // _id of logged in user
       mosqueName: Meteor.user().profile.name  // username of logged in user
     });
-  }, 
+  },
   //this.props.eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags
   updateEvents(eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags) {
   //dateStart

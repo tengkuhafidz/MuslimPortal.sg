@@ -11,7 +11,6 @@ import AdminWidget from '../Widgets/AdminWidget.jsx';
 import EventAll from '../NUSEvents/EventAll.jsx'
 import LogoutBtn from '../components/LogoutBtn.jsx'
 
-
 export default class Layout extends React.Component {
 
     constructor() {
@@ -35,16 +34,16 @@ export default class Layout extends React.Component {
 
         $('.materialboxed').materialbox();
 
-        if (Meteor.userId()){
-          var totalCount = 31;
-          var num = Math.ceil( Math.random() * totalCount );
-          document.body.style.background = "linear-gradient(rgba(25,83,140, 0.8), rgba(25,83,140, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed" ;
-          document.body.style.backgroundSize = "cover";
+        if (Meteor.userId()) {
+            var totalCount = 31;
+            var num = Math.ceil(Math.random() * totalCount);
+            document.body.style.background = "linear-gradient(rgba(25,83,140, 0.8), rgba(25,83,140, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed";
+            document.body.style.backgroundSize = "cover";
         } else {
-          var totalCount = 31;
-          var num = Math.ceil( Math.random() * totalCount );
-          // document.body.background = num + ".jpg";
-            document.body.style.background = "linear-gradient(rgba(15,109,102, 0.8), rgba(15,109,102, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed" ;
+            var totalCount = 31;
+            var num = Math.ceil(Math.random() * totalCount);
+            // document.body.background = num + ".jpg";
+            document.body.style.background = "linear-gradient(rgba(15,109,102, 0.8), rgba(15,109,102, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed";
             document.body.style.backgroundSize = "cover";
 
         }
@@ -137,7 +136,6 @@ export default class Layout extends React.Component {
             'nusprojectasa',
             'freshmencamp',
             'BrothersOfNUS',
-            'nusnisaa',
             'voksnus'
         ]
 
@@ -158,15 +156,13 @@ export default class Layout extends React.Component {
 
                     var event = data.data; //returns an array of 25 event objects
 
-
-
                     for (var i = 0; i < event.length; i++) {
-                        if(moment().isBefore(event[i].end_time)){
+                        if (moment().isBefore(event[i].end_time)) {
                             displayEvents.push(event[i]);
                             if (moment().isSame(event[i].start_time, 'day'))
                                 todayEvents.push(event[i]);
+                            }
                         }
-                    }
 
                     //sort by start_time
                     displayEvents.sort(function(left, right) {
@@ -206,13 +202,10 @@ export default class Layout extends React.Component {
 
                 var displayPrayer = [];
                 var currTime = new Date;
-                console.log('currTime', currTime);
                 var currPayer;
 
                 for (var i = 0; i < 6; i++) {
                     var time = moment(timeArray[i]).format('HH:mm');
-                    console.log('prayer time', i, moment(timeArray[i]).isBefore())
-
                     if (moment(timeArray[i]).isBefore(currTime))
                         currPayer = i;
 
@@ -299,10 +292,10 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="middleLeft formalFont white-text mainLink">
-                  {
-                    Meteor.userId() ?
-                    <AdminWidget /> : ''
-                  }
+                    {Meteor.userId()
+                        ? <AdminWidget/>
+                        : ''
+}
                 </div>
 
                 <div className="bottomRight">
