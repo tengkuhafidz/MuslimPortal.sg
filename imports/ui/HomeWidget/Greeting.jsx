@@ -83,7 +83,7 @@ export default class Greeting extends React.Component{
     currTime = this.getCurrTime();
 
     return( 
-      <div className="center header truncate" >
+      <div className="center header truncate animated fadeIn" >
         <h1 className="time">{this.state.currTime} <span className="smallFont ampm">{this.state.currAmPm}</span></h1>
         <p className="greet">Assalamualaikum, <span className="userNameArea" onClick={this.handleClick.bind(this)} >{userNameArea}</span></p>
       </div>

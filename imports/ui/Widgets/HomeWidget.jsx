@@ -71,7 +71,7 @@ export default class Home extends TrackerReact(React.Component) {
             : ""
 
         return (
-            <div className="center mainArea animated fadeIn">
+            <div className="center mainArea ">
 
                 {mainWidget}
                 {switchScreenArea}
