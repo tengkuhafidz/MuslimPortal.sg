@@ -7,6 +7,8 @@ import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
 import HijrahWidget from '../Widgets/HijrahWidget.jsx'
 import PrayerTimesWidget from '../Widgets/PrayerTimesWidget.jsx'
 import AdminWidget from '../Widgets/AdminWidget.jsx';
+import ColorModeWidget from '../Widgets/ColorModeWidget.jsx';
+
 
 import EventAll from '../NUSEvents/EventAll.jsx'
 import LogoutBtn from '../components/LogoutBtn.jsx'
@@ -24,7 +26,7 @@ export default class Layout extends React.Component {
             event: '',
             eventToday: '',
             currentPrayer: '',
-            fasting: ''
+            fasting: '',
         }
     }
     componentDidMount() {
@@ -34,19 +36,7 @@ export default class Layout extends React.Component {
 
         $('.materialboxed').materialbox();
 
-        if (Meteor.userId()) {
-            var totalCount = 31;
-            var num = Math.ceil(Math.random() * totalCount);
-            document.body.style.background = "linear-gradient(rgba(25,83,140, 0.8), rgba(25,83,140, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed";
-            document.body.style.backgroundSize = "cover";
-        } else {
-            var totalCount = 31;
-            var num = Math.ceil(Math.random() * totalCount);
-            // document.body.background = num + ".jpg";
-            document.body.style.background = "linear-gradient(rgba(15,109,102, 0.8), rgba(15,109,102, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed";
-            document.body.style.backgroundSize = "cover";
-
-        }
+        this.refs.colorMode.setBgColor()
 
         // $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
         var OneSignal = window.OneSignal || [];
@@ -295,7 +285,11 @@ export default class Layout extends React.Component {
                     {Meteor.userId()
                         ? <AdminWidget/>
                         : ''
-}
+                    }
+                </div>
+
+                <div className="middleRight formalFont white-text mainLink">
+                  <ColorModeWidget ref="colorMode"/>
                 </div>
 
                 <div className="bottomRight">
