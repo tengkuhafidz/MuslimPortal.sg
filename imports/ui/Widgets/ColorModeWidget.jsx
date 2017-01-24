@@ -17,13 +17,13 @@ export default class ColorModeWidget extends React.Component {
     this.setBgColor()
   }
 
+
   setBgColor(){
         var colors = ["rgba(15,109,102, 0.8), rgba(15,109,102, 0.8)", "rgba(11,57,84, 0.9), rgba(11,57,84, 0.9)", "rgba(46,41,78, 0.9), rgba(46,41,78, 0.9)", "rgba(0,0,0, 0.8), rgba(0,0,0, 0.8)"];
         var currentBgColor = parseInt(localStorage.getItem("bgColor")) % colors.length || 0
-        var totalCount = 31;
-        var num = Math.ceil(Math.random() * totalCount);
+        var image = this.props.image;
 
-        document.body.style.background = "linear-gradient("+colors[currentBgColor]+"), url('/bg/" + num + ".jpg') no-repeat center center fixed";
+        document.body.style.background = "linear-gradient("+colors[currentBgColor]+"), url('/bg/" + image + ".jpg') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover";  
 
   }

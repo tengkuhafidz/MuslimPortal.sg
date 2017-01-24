@@ -207,6 +207,12 @@ export default class Layout extends React.Component {
         })
     }
 
+    getBgImage(){
+        var totalCount = 31;
+        var image = Math.ceil(Math.random() * totalCount);
+        return image;
+    }
+
     handleClick(e) {
 
         e.preventDefault();
@@ -222,6 +228,8 @@ export default class Layout extends React.Component {
     }
 
     render() {
+
+        var image = this.getBgImage();
 
         var events = this.state.event;
         var todayEvents = this.state.eventToday;
@@ -289,7 +297,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="middleRight formalFont white-text mainLink">
-                  <ColorModeWidget ref="colorMode"/>
+                  <ColorModeWidget ref="colorMode" image={image}/>
                 </div>
 
                 <div className="bottomRight">
