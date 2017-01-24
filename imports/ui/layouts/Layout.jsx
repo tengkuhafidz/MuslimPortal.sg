@@ -30,7 +30,7 @@ export default class Layout extends React.Component {
     componentDidMount() {
         this.getHijrahDate();
         this.getPrayerTime();
-        this.getAllEvents();
+        // this.getAllEvents();
 
         $('.materialboxed').materialbox();
 
@@ -272,7 +272,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="topAnnouncement center">
-                    <AnnouncementWidget events={this.state.eventToday}/>
+                    {/* <AnnouncementWidget events={this.state.eventToday}/> */}
                 </div>
 
                 <div className="topRight">
@@ -299,7 +299,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="bottomRight">
-                    <EventsWidget events={events} todayEvents={todayEvents}/>
+                    {/* <EventsWidget events={events} todayEvents={todayEvents}/> */}
                 </div>
 
             </div>
