@@ -69,7 +69,7 @@ export default class Challenge extends TrackerReact(React.Component){
 
 
     return(
-      <div className="center animated fadeIn bottomGap">
+      <div className="center bottomGap animated fadeIn">
         <div className="">
         <img src="/logo-white.png" height="80px"/>
         <h5>#BeBetter Challenge of The Week:</h5>

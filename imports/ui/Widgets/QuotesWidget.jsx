@@ -15,7 +15,7 @@ export default class QuotesWidget extends React.Component{
     return(
       <div className="center quoteArea">
 
-        <div className="betaFont mainContent quote ">
+        <div className="betaFont quote ">
           <h6 className="">
             "{randomMessage.message}"
           </h6>
