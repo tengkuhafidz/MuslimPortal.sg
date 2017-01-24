@@ -60,8 +60,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
             eventsPanel = (
                 <div className="eventsPanel scrollView">
                     <h6>
-                        1 Upcoming Event
-                        <i className="material-icons iconAlign">sentiment_satisfied</i>
+                        1 Upcoming Event <i className="material-icons iconAlign">sentiment_satisfied</i>
                     </h6>
                     {events.map((eventEach) => {
                         return <EventItemSingle key={eventEach.id} eventItem={eventEach}/>
@@ -72,8 +71,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
             eventsPanel = (
                 <div className="eventsPanel scrollView">
                     <h6 >
-                        {events.length} Upcoming Events
-                        <i className="material-icons iconAlign">sentiment_very_satisfied</i>
+                        {events.length} Upcoming Events <i className="material-icons iconAlign">sentiment_very_satisfied</i>
                     </h6>
                     {events.map((eventEach) => {
                         return <EventItemSingle key={eventEach.id} eventItem={eventEach}/>
