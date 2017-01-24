@@ -72,8 +72,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
             eventsPanel = (
                 <div className="eventsPanel scrollView">
                     <h6 >
-                        {events.length}
-                        Upcoming Events
+                        {events.length} Upcoming Events
                         <i className="material-icons iconAlign">sentiment_very_satisfied</i>
                     </h6>
                     {events.map((eventEach) => {
@@ -99,8 +98,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
                 <div className="eventsPanel center flash animated">
                     <h6>
                         <i className="material-icons iconAlign">error_outline</i>
-                        {eventsToday.length}
-                        EVENTS TODAY!</h6>
+                        {eventsToday.length} EVENTS TODAY!</h6>
                 </div>
             )
         }
