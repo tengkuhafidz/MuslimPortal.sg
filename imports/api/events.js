@@ -12,7 +12,6 @@ if (Meteor.isServer) {
   var getAllEvents = () => {
     Events.remove({}); //RE-Populate
 
-    var displayEvents = [];
     var todayEvents = [];
 
     currStrtotime = moment().format('YYYY-MM-DD');
@@ -42,9 +41,12 @@ if (Meteor.isServer) {
 
       data = JSON.parse(response.content);
       var event = data.data;
+      console.log(event.length)
 
+      var displayEvents = [];
       /* LOOP each event in array */
       for (var j = 0; j < event.length; j++) {
+
 
           if ((event[j].end_time) && (moment().isBefore(event[j].end_time))) {
               // console.log("CurrentPage: ", eventPages[i]); //undefined
@@ -57,8 +59,6 @@ if (Meteor.isServer) {
       displayEvents.forEach((event) => {
         Events.insert(event);
       });
-
-
 
     })
 
