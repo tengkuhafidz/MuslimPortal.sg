@@ -8,13 +8,12 @@ export default class EventsWidget extends TrackerReact(React.Component) {
 
     constructor() {
         super();
+        Tracker.autorun(function(){
+           Meteor.subscribe("allEvents");
+        });
 
         this.state = {
-            showEvents: 0,
-            subscription: {
-                events: Meteor.subscribe("allEvents")
-            }
-
+            showEvents: 0
         }
     }
 

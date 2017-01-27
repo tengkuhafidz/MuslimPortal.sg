@@ -1,4 +1,7 @@
 import React from 'react';
+import TrackerReact from 'meteor/ultimatejs:tracker-react'
+
+import {Events} from '../../api/events.js'
 
 /* import Widgets... */
 import EventsWidget from '../Widgets/EventsWidget.jsx'
@@ -11,26 +14,27 @@ import AdminWidget from '../Widgets/AdminWidget.jsx';
 import EventAll from '../NUSEvents/EventAll.jsx'
 import LogoutBtn from '../components/LogoutBtn.jsx'
 
-export default class Layout extends React.Component {
+export default class Layout extends TrackerReact(React.Component) {
 
     constructor() {
         super();
+        Tracker.autorun(function(){
+           Meteor.subscribe("allEvents");
+
+        });
 
         this.state = {
             accessToken: '',
             play: true,
             hijrah: '',
             prayer: '',
-            event: '',
-            eventToday: '',
             currentPrayer: '',
-            fasting: ''
+            fasting: '',
         }
     }
     componentDidMount() {
         this.getHijrahDate();
         this.getPrayerTime();
-        // this.getAllEvents();
 
         $('.materialboxed').materialbox();
 
@@ -63,158 +67,30 @@ export default class Layout extends React.Component {
     }
 
     getHijrahDate() {
+      that = this;
+      Meteor.call('getHijrahDate', (error, result) => {
 
-        that = this
-        HTTP.call('GET', 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2017/SG-1.json', {}, function(error, response) {
-
-            if (error) {
-                console.log(error);
-            } else {
-
-                const HIJRI_MONTHS = {
-                    'Muharram': 1,
-                    'Safar': 2,
-                    'Rabiulawal': 3,
-                    'Rabiulakhir': 4,
-                    'Jamadilawal': 5,
-                    'Jamadilakhir': 6,
-                    'Rejab': 7,
-                    'Syaaban': 8,
-                    'Ramadhan': 9,
-                    'Syawal': 10,
-                    'Zulkaedah': 11,
-                    'Zulhijjah': 12
-                };
-
-                var currDate = moment().date();
-                var currMonth = moment().month();
-
-                data = JSON.parse(response.content)
-
-                //get current month, day, year (hijri)
-                var currHijriMonth = data[0][currDate - 1].hijriMonth;
-                var hijriMonthName = Object.keys(HIJRI_MONTHS)[currHijriMonth - 1];
-
-                var hijriDate = data[0][currDate - 1].hijriDate;
-                var hijriYear = data[0][currDate - 1].hijriYear;
-
-                /* list can be expand */
-                const sunnahToFastDate = [13, 14, 15];
-                const sunnahToFastDay = [1, 4];
-
-                if (hijriMonthName !== 'Ramadhan') {
-                    var today = moment().weekday() + 1; //returns 1 (Monday), 2 (Tuesday)...
-
-                    if (sunnahToFastDate.includes(hijriDate + 1) || sunnahToFastDay.includes(today)) { // TOMORROW
-                        that.setState({fasting: 'tomorrow'})
-
-                    } else if (sunnahToFastDate.includes(hijriDate) || sunnahToFastDay.includes(today - 1)) { //TODAY
-                        that.setState({fasting: 'today'})
-                    }
-                }
-
-                var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}`;
-
-                that.setState({hijrah: hDate})
-            }
+        that.setState({
+          hijrah: result.hDate,
+          fasting: result.fasting,
         })
+      })
     }
 
     getAllEvents() {
-        that = this
-
-        var displayEvents = [];
-        var todayEvents = [];
-
-        eventPages = [
-            'nusms',
-            'PBUH.TheLightofLife.1438H',
-            'nusms.ias',
-            'projectlink2017',
-            'valour2017',
-            'rihlah1438H',
-            'nusprojectasa',
-            'freshmencamp',
-            'BrothersOfNUS',
-            'voksnus'
-        ]
-
-        for (var i = 0; i < eventPages.length; i++) {
-
-            currStrtotime = moment().format('YYYY-MM-DD');
-            endUnixTime = moment().add(6, 'days').endOf('day').unix();
-
-            var access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
-            const url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currStrtotime}&until=${endUnixTime}&&access_token=${access_token}`;
-
-            HTTP.call('GET', url, {}, function(error, response) {
-
-                if (error) {
-                    console.log(error);
-                } else {
-                    data = JSON.parse(response.content);
-
-                    var event = data.data; //returns an array of 25 event objects
-
-                    for (var i = 0; i < event.length; i++) {
-                        if (moment().isBefore(event[i].end_time)) {
-                            displayEvents.push(event[i]);
-                            if (moment().isSame(event[i].start_time, 'day'))
-                                todayEvents.push(event[i]);
-                            }
-                        }
-
-                    //sort by start_time
-                    displayEvents.sort(function(left, right) {
-                        return moment.utc(left.start_time).diff(moment.utc(right.start_time))
-                    });
-
-                    that.setState({event: displayEvents, eventToday: todayEvents})
-                    return displayEvents;
-
-                }
-            })
-        }
+      events = Events.find({}).fetch();
+      return events;
     }
 
     getPrayerTime() {
-        that = this
-        HTTP.call('GET', 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2017.json', {}, function(error, response) {
+      that = this;
+      Meteor.call('getPrayerTime', (error, result) => {
 
-            if (error) {
-                console.log(error);
-            } else {
-
-                const PRAYER = {
-                    'Subuh': 0,
-                    'Syuruk': 1,
-                    'Zuhur': 2,
-                    'Asar': 3,
-                    'Maghrib': 4,
-                    'Isyak': 5
-                }
-
-                var currDate = moment().date();
-                var currMonth = moment().month();
-
-                data = JSON.parse(response.content)
-                var timeArray = data[currMonth][currDate - 1].times;
-
-                var displayPrayer = [];
-                var currTime = new Date;
-                var currPayer;
-
-                for (var i = 0; i < 6; i++) {
-                    var time = moment(timeArray[i]).format('HH:mm');
-                    if (moment(timeArray[i]).isBefore(currTime))
-                        currPayer = i;
-
-                    displayPrayer.push(`${Object.keys(PRAYER)[i]}: ${time}`);
-                }
-
-                that.setState({prayer: displayPrayer, currentPrayer: currPayer})
-            }
+        that.setState({
+          prayer: result.displayPrayer,
+          currentPrayer: result.currPrayer,
         })
+      })
     }
 
     handleClick(e) {
@@ -233,8 +109,8 @@ export default class Layout extends React.Component {
 
     render() {
 
-        var events = this.state.event;
-        var todayEvents = this.state.eventToday;
+        var events = this.getAllEvents(); //should be reactive cuz i'm using TrackerReact
+        var todayEvents = this.getAllEvents();
 
         audioBtn = this.state.play
             ? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a>
@@ -272,7 +148,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="topAnnouncement center">
-                    {/* <AnnouncementWidget events={this.state.eventToday}/> */}
+                    {/*  */}<AnnouncementWidget events={events}/>
                 </div>
 
                 <div className="topRight">
@@ -299,7 +175,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div className="bottomRight">
-                    {/* <EventsWidget events={events} todayEvents={todayEvents}/> */}
+                    {/*  */}<EventsWidget events={events} todayEvents={todayEvents}/>
                 </div>
 
             </div>

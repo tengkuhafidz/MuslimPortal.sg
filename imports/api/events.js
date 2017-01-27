@@ -11,15 +11,16 @@ if (Meteor.isServer) {
 
   var getAllEvents = () => {
     Events.remove({}); //RE-Populate
-    that = this
 
     var displayEvents = [];
     var todayEvents = [];
-    var result = {};
 
     currStrtotime = moment().format('YYYY-MM-DD');
     endUnixTime = moment().add(6, 'days').endOf('day').unix();
 
+    const access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
+
+    //try using foreach to loop these
     eventPages = [
         'nusms',
         'PBUH.TheLightofLife.1438H',
@@ -33,61 +34,46 @@ if (Meteor.isServer) {
         'voksnus'
     ]
 
-    for (var i = 0; i < eventPages.length; i++) {
+    eventPages.forEach((eachPage) => {
+      //move all codes to here
+      var url = `https://graph.facebook.com/${eachPage}/events?fields=name,end_time,start_time&&access_token=${access_token}`;
 
-        const access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
-        var url = `https://graph.facebook.com/${eventPages[i]}/events?fields=name,end_time,start_time&since=${currStrtotime}&until=${endUnixTime}&&access_token=${access_token}`;
+      var response = HTTP.get(url, {});
 
-        HTTP.call('GET', url, {}, function(error, response) {
+      data = JSON.parse(response.content);
+      var event = data.data;
 
-            if (error) {
-                console.log(error);
-            } else {
+      /* LOOP each event in array */
+      for (var j = 0; j < event.length; j++) {
 
-                data = JSON.parse(response.content);
-                var event = data.data;
+          if ((event[j].end_time) && (moment().isBefore(event[j].end_time))) {
+              // console.log("CurrentPage: ", eventPages[i]); //undefined
+              event[j].by = eachPage;
+              displayEvents.push(event[j]);
 
-                /* LOOP each event in array */
-                for (var i = 0; i < event.length; i++) {
-
-                    if (moment().isBefore(event[i].end_time)) {
-                        displayEvents.push(event[i]);
-                        if (moment().isSame(event[i].start_time, 'day'))
-                            todayEvents.push(event[i]);
-                        }
-                }
-                /* consider ALL events from THIS eventPage are already inserted! */
-
-                //SORT THEM by start_time
-                displayEvents.sort(function(left, right) {
-                    return moment.utc(left.start_time).diff(moment.utc(right.start_time))
-                });
-
-                var event = displayEvents[i];
-
-                if (event !== undefined){ //to avoid async issue
-                  var isEventAlreadyExist = event.id in result;
-
-                  if (!isEventAlreadyExist){ //avoid redundancies
-                    displayEvents[i].by = eventPages[i];
-                    displayEvents[i].createdAt = new Date();
-                    result[event.id] = displayEvents[i];
-                    Events.insert(displayEvents[i]);
-                  }
-                }
             }
-        })
-    }
+      }
+
+      displayEvents.forEach((event) => {
+        Events.insert(event);
+      });
+
+
+
+    })
+
   }
 
-  getAllEvents();
+getAllEvents();
 
   Meteor.publish('allEvents', function eventsPublication() {
 
-    return Events.find({}); //db.events.find({}, {name: 1, dateStart: 1, timeStart: 1}).sort({dateStart: -1})
+    return Events.find({}, {sort: { start_time: 1 } });
+
   });
 
 }
+
 
 Meteor.methods({
 
@@ -147,7 +133,7 @@ Meteor.methods({
       mosqueName: Meteor.user().profile.name  // username of logged in user
     });
   },
-  //this.props.eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags
+
   updateEvents(eventId, name, eventType, description, speaker, dateStart, timeStart, dateEnd, timeEnd, venue, address, direction, fee, tags) {
   //dateStart
   properDateStart = dateStart;
