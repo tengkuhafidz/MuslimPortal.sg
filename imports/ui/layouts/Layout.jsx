@@ -10,6 +10,8 @@ import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
 import HijrahWidget from '../Widgets/HijrahWidget.jsx'
 import PrayerTimesWidget from '../Widgets/PrayerTimesWidget.jsx'
 import AdminWidget from '../Widgets/AdminWidget.jsx';
+import ColorModeWidget from '../Widgets/ColorModeWidget.jsx';
+
 
 import EventAll from '../NUSEvents/EventAll.jsx'
 import LogoutBtn from '../components/LogoutBtn.jsx'
@@ -38,19 +40,7 @@ export default class Layout extends TrackerReact(React.Component) {
 
         $('.materialboxed').materialbox();
 
-        if (Meteor.userId()) {
-            var totalCount = 31;
-            var num = Math.ceil(Math.random() * totalCount);
-            document.body.style.background = "linear-gradient(rgba(25,83,140, 0.8), rgba(25,83,140, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed";
-            document.body.style.backgroundSize = "cover";
-        } else {
-            var totalCount = 31;
-            var num = Math.ceil(Math.random() * totalCount);
-            // document.body.background = num + ".jpg";
-            document.body.style.background = "linear-gradient(rgba(15,109,102, 0.8), rgba(15,109,102, 0.8)), url('/bg/" + num + ".jpg') no-repeat center center fixed";
-            document.body.style.backgroundSize = "cover";
-
-        }
+        this.refs.colorMode.setBgColor()
 
         // $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
         var OneSignal = window.OneSignal || [];
@@ -93,6 +83,12 @@ export default class Layout extends TrackerReact(React.Component) {
       })
     }
 
+    getBgImage(){
+        var totalCount = 31;
+        var image = Math.ceil(Math.random() * totalCount);
+        return image;
+    }
+
     handleClick(e) {
 
         e.preventDefault();
@@ -111,6 +107,9 @@ export default class Layout extends TrackerReact(React.Component) {
 
         var events = this.getAllEvents(); //should be reactive cuz i'm using TrackerReact
         var todayEvents = this.getAllEvents();
+
+        var image = this.getBgImage();
+
 
         audioBtn = this.state.play
             ? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a>
@@ -171,7 +170,11 @@ export default class Layout extends TrackerReact(React.Component) {
                     {Meteor.userId()
                         ? <AdminWidget/>
                         : ''
-}
+                    }
+                </div>
+
+                <div className="middleRight formalFont white-text mainLink">
+                  <ColorModeWidget ref="colorMode" image={image}/>
                 </div>
 
                 <div className="bottomRight">
