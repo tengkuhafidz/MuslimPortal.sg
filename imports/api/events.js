@@ -28,7 +28,7 @@ if (Meteor.isServer) {
         'freshmencamp',
         'BrothersOfNUS',
         'voksnus',
-        'noteaminI',
+        // 'noteaminI', //testing page
     ]
 
     eventPages.forEach((eachPage) => {
