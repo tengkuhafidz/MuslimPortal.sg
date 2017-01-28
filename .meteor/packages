@@ -42,3 +42,4 @@ maximdubrovin:uploadcare
 http
 okgrow:analytics
 session
+percolate:synced-cron

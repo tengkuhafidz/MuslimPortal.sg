@@ -71,6 +71,11 @@ export default class Layout extends TrackerReact(React.Component) {
       events = Events.find({}).fetch();
       return events;
     }
+    getTodayEvents() {
+      events = Events.find({}, {'today': {$exists: true}}).fetch(); //should return 0
+      //'credit.sent': {$exists: true}
+      return events;
+    }
 
     getPrayerTime() {
       that = this;
@@ -106,7 +111,9 @@ export default class Layout extends TrackerReact(React.Component) {
     render() {
 
         var events = this.getAllEvents(); //should be reactive cuz i'm using TrackerReact
-        var todayEvents = this.getAllEvents();
+        var todayEvents = this.getTodayEvents();
+
+        console.log(todayEvents)
 
         var image = this.getBgImage();
 

@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-const request = require('request');
 const moment = require('moment');
 
 export const Events = new Mongo.Collection('events');
@@ -11,8 +10,6 @@ if (Meteor.isServer) {
 
   var getAllEvents = () => {
     Events.remove({}); //RE-Populate
-
-    var todayEvents = [];
 
     currStrtotime = moment().format('YYYY-MM-DD');
     endUnixTime = moment().add(6, 'days').endOf('day').unix();
@@ -41,35 +38,67 @@ if (Meteor.isServer) {
 
       data = JSON.parse(response.content);
       var event = data.data;
-      console.log(event.length)
 
+      //empty them up for different page
       var displayEvents = [];
+      var todayEvents = [];
+
       /* LOOP each event in array */
       for (var j = 0; j < event.length; j++) {
 
-
           if ((event[j].end_time) && (moment().isBefore(event[j].end_time))) {
-              // console.log("CurrentPage: ", eventPages[i]); //undefined
               event[j].by = eachPage;
-              displayEvents.push(event[j]);
+              // displayEvents.push(event[j]);
+              if (moment().isSame(event[j].start_time, 'day')){
+                //set a new column named 'today'
+                event[j].today = true;
+                // console.log('event j today:', event[j])
+                // todayEvents.push(event[j]);
+
+              }
+              //add here
+              event[j].createdAt = moment().format();
+              Events.insert(event[j]);
 
             }
       }
 
-      displayEvents.forEach((event) => {
-        Events.insert(event);
-      });
+      // displayEvents.forEach((event) => {
+      //   Events.insert(event);
+      // });
+      //
+      // todayEvents.forEach((event) => {
+      //   Events.insert(event);
+      // });
 
     })
 
   }
 
-getAllEvents();
 
-  Meteor.publish('allEvents', function eventsPublication() {
+    Meteor.publish('allEvents', function eventsPublication() {
 
-    return Events.find({}, {sort: { start_time: 1 } });
+      return Events.find({}, {sort: { start_time: 1 } });
 
+    });
+
+    SyncedCron.add({
+      name: 'update events collection',
+      schedule: function(parser) {
+        // parser is a later.parse object
+        return parser.text('every 1 hour');
+      },
+      job: function(intendedAt) {
+        getAllEvents();
+        console.log('event col updated @: ', intendedAt)
+      }
+  });
+
+  Meteor.startup(function () {
+    // code to run on server at startup
+    SyncedCron.start();
+    // Stop jobs after 15 seconds
+    //Meteor.setTimeout(function() { SyncedCron.stop(); }, 15 * 1000);
   });
 
 }
