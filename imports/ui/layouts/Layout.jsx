@@ -68,7 +68,8 @@ export default class Layout extends TrackerReact(React.Component) {
     }
 
     getAllEvents() {
-      events = Events.find({}).fetch();
+      events = Events.find({}, {sort: { start_time: 1 } }).fetch();
+      //Events.find({}, {sort: { start_time: 1 } })
       return events;
     }
     getTodayEvents() {
