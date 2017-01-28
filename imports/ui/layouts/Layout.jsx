@@ -72,7 +72,8 @@ export default class Layout extends TrackerReact(React.Component) {
       return events;
     }
     getTodayEvents() {
-      events = Events.find({}, {'today': {$exists: true}}).fetch(); //should return 0
+      //{ "ticketnumber.CHG_1234":{ $exists: true } }
+      events = Events.find({'today': {$exists: true}}).fetch(); //should return 0
       //'credit.sent': {$exists: true}
       return events;
     }
