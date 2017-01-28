@@ -92,7 +92,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
             )
         } else if (eventsToday.length > 1) {
             eventAlert = (
-                <div className="eventsPanel center flash animated">
+                <div className="eventAlert center flash animated">
                     <h6>
                         <i className="material-icons iconAlign">error_outline</i>
                         {eventsToday.length} EVENTS TODAY!</h6>
