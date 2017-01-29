@@ -16,8 +16,11 @@ const Login = React.createClass({
 
   handleSubmit: function(e){
     e.preventDefault();
-    var email = this.state.email;
-    var password = this.state.password;
+    // var email = this.state.email;
+    // var password = this.state.password;
+
+    email = this.refs.email.value.trim();
+    password = this.refs.pw.value.trim();
 
     if(!email || !password){
       return;
@@ -25,18 +28,18 @@ const Login = React.createClass({
 
     Meteor.loginWithPassword(email, password, function(err){
       if(err){
+        Bert.alert(err.reason, 'danger', 'fixed-top', 'fa-frown-o');
       } else {
-        var back = Session.get("back")
-        if(back == undefined || back == ""){
-          FlowRouter.go("challengeForm")
-        } else {
-          FlowRouter.go(Session.get("back"))
-          Session.set("back", "");
-        }
-
+          var back = Session.get("back")
+          if(back == undefined || back == ""){
+            FlowRouter.go("challengeForm")
+          } else {
+            FlowRouter.go(Session.get("back"))
+            Session.set("back", "");
+          }
       }
     });
-    this.setState({email: '', password: ''})
+    // this.setState({email: '', password: ''})
   },
   render(){
     return (
@@ -50,13 +53,13 @@ const Login = React.createClass({
 
             <div className="row">
               <div className="input-field col m12 s12 ">
-                <input id="email" type="email" className="validate" onChange={this.handleEmailChange} />
+                <input id="email" type="email" ref="email" className="validate" onChange={this.handleEmailChange} />
                 <label htmlFor="email" data-error="Error!">Email</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col m12 s12 ">
-                <input id="password" type="password" className="validate" onChange={this.handlePasswordChange}/>
+                <input id="password" type="password" ref="pw" className="validate" onChange={this.handlePasswordChange}/>
                 <label htmlFor="password">Password</label>
               </div>
             </div>

@@ -84,8 +84,6 @@ export default class ChallengesUpdate extends TrackerReact(React.Component) {
       })
 
     }
-
-
   }
 
     render() {

@@ -69,13 +69,11 @@ export default class Layout extends TrackerReact(React.Component) {
 
     getAllEvents() {
       events = Events.find({}, {sort: { start_time: 1 } }).fetch();
-      //Events.find({}, {sort: { start_time: 1 } })
       return events;
     }
+    
     getTodayEvents() {
-      //{ "ticketnumber.CHG_1234":{ $exists: true } }
-      events = Events.find({'today': {$exists: true}}).fetch(); //should return 0
-      //'credit.sent': {$exists: true}
+      events = Events.find({'today': {$exists: true}}).fetch();
       return events;
     }
 
@@ -115,10 +113,7 @@ export default class Layout extends TrackerReact(React.Component) {
         var events = this.getAllEvents(); //should be reactive cuz i'm using TrackerReact
         var todayEvents = this.getTodayEvents();
 
-        console.log(todayEvents)
-
         var image = this.getBgImage();
-
 
         audioBtn = this.state.play
             ? <a className="material-icons iconAlign white-text large brand" onClick={this.handleClick.bind(this)}>volume_mute</a>
