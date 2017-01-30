@@ -1,6 +1,6 @@
 Future = Npm && Npm.require('fibers/future');
 
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 Meteor.methods({
     storeOnUplodcare: function(uuid) {
@@ -135,15 +135,16 @@ Meteor.methods({
 
       var timeArray = data[currMonth][currDate - 1].times;
       var displayPrayer = [];
-      var currTime = new Date;
+      var currTime = moment().tz("Asia/Brunei").format(); //raw time
       var currPrayer;
 
       for (var i = 0; i < 6; i++) {
-        var time = moment(timeArray[i]).format('HH:mm');
-        if (moment(timeArray[i]).isBefore(currTime))
+        rawTime = moment(timeArray[i]).tz("Asia/Brunei").format();
+        formattedTime = moment(timeArray[i]).tz("Asia/Brunei").format('HH:mm');
+        if (moment(rawTime).isBefore(currTime))
             currPrayer = i;
 
-        displayPrayer.push(`${Object.keys(PRAYER)[i]}: ${time}`);
+        displayPrayer.push(`${Object.keys(PRAYER)[i]}: ${formattedTime}`);
       }
 
       return {
