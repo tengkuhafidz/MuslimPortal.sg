@@ -16,6 +16,9 @@ import ColorModeWidget from '../Widgets/ColorModeWidget.jsx';
 import EventAll from '../NUSEvents/EventAll.jsx'
 import LogoutBtn from '../components/LogoutBtn.jsx'
 
+const moment = require('moment-timezone');
+
+
 export default class Layout extends TrackerReact(React.Component) {
 
     constructor() {
@@ -37,6 +40,7 @@ export default class Layout extends TrackerReact(React.Component) {
     componentDidMount() {
         this.getHijrahDate();
         this.getPrayerTime();
+        this.getDayDateMonth();
 
         $('.materialboxed').materialbox();
 
@@ -56,9 +60,28 @@ export default class Layout extends TrackerReact(React.Component) {
 
     }
 
+    getDayDateMonth() {
+      var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
+      var fullDateSG = singaporeFullTZ.split('T')
+
+      var today = moment(fullDateSG[0]).day(); //return weekdays e.g. Monday, 1 Tuesday, 2 ...
+      var dateSG = fullDateSG[0].split('-')[2]; //return JUST the date e.g. 1, 12, 31 ...
+
+      if (fullDateSG[0].split('-')[1][0] == 0){ //if first integer is 0
+        currMonth = fullDateSG[0].split('-')[1][1]; //get ONLY the last integer
+      } else {
+        currMonth = fullDateSG[0].split('-')[1]; //01
+      }
+      return {dateSG, today, currMonth}
+    }
+
     getHijrahDate() {
+      var dateSG = this.getDayDateMonth().dateSG;
+      var today = this.getDayDateMonth().today;
+
       that = this;
-      Meteor.call('getHijrahDate', (error, result) => {
+
+      Meteor.call('getHijrahDate', today, dateSG, (error, result) => {
 
         that.setState({
           hijrah: result.hDate,
@@ -71,15 +94,17 @@ export default class Layout extends TrackerReact(React.Component) {
       events = Events.find({}, {sort: { start_time: 1 } }).fetch();
       return events;
     }
-    
+
     getTodayEvents() {
       events = Events.find({'today': {$exists: true}}).fetch();
       return events;
     }
 
     getPrayerTime() {
+      var currMonth = this.getDayDateMonth().currMonth;
+      var dateSG = this.getDayDateMonth().dateSG;
       that = this;
-      Meteor.call('getPrayerTime', (error, result) => {
+      Meteor.call('getPrayerTime', currMonth, dateSG, (error, result) => {
 
         that.setState({
           prayer: result.displayPrayer,

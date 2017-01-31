@@ -52,13 +52,11 @@ Meteor.methods({
         return future.wait();
     },
 
-    getHijrahDate: function() {
+    getHijrahDate: function(today, dateSG) {
 
-      var currDate = moment().date();
-      var currMonth = moment().month();
+      var tomorrow = today + 1;
 
       const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2017/SG-1.json';
-
       response = HTTP.call('GET', url, {});
 
       const HIJRI_MONTHS = {
@@ -79,20 +77,18 @@ Meteor.methods({
       data = JSON.parse(response.content)
 
       //get current month, day, year (hijri)
-      var currHijriMonth = data[0][currDate - 1].hijriMonth;
+      var currHijriMonth = data[0][dateSG - 1].hijriMonth;
       var hijriMonthName = Object.keys(HIJRI_MONTHS)[currHijriMonth - 1];
 
-      var hijriDate = data[0][currDate - 1].hijriDate;
-      var hijriYear = data[0][currDate - 1].hijriYear;
+      var hijriDate = data[0][dateSG - 1].hijriDate;
+      var hijriYear = data[0][dateSG - 1].hijriYear;
 
       /* list can be expand */
       const sunnahToFastDate = [13, 14, 15];
       const sunnahToFastDay = [1, 4];
 
-      var today = moment().weekday() + 1; //returns 1 (Monday), 2 (Tuesday)...
-
-      var tmr = ((sunnahToFastDate.indexOf(hijriDate + 1) !== -1) || (sunnahToFastDay.indexOf(today) !== -1));
-      var today = ((sunnahToFastDate.indexOf(hijriDate) !== -1) || (sunnahToFastDay.indexOf(today - 1) !== -1));
+      var tmr = ((sunnahToFastDate.indexOf(hijriDate + 1) !== -1) || (sunnahToFastDay.indexOf(tomorrow) !== -1));
+      var today = ((sunnahToFastDate.indexOf(hijriDate) !== -1) || (sunnahToFastDay.indexOf(today) !== -1));
 
       var fasting = '';
 
@@ -113,13 +109,10 @@ Meteor.methods({
 
     },
 
-    getPrayerTime: function() {
+    getPrayerTime: function(currMonth, dateSG) {
 
       const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2017.json';
       response = HTTP.get(url, {});
-
-      var currDate = moment().date();
-      var currMonth = moment().month();
 
       const PRAYER = {
           'Subuh': 0,
@@ -133,7 +126,7 @@ Meteor.methods({
 
       data = JSON.parse(response.content)
 
-      var timeArray = data[currMonth][currDate - 1].times;
+      var timeArray = data[currMonth - 1][dateSG - 1].times;
       var displayPrayer = [];
       var currTime = moment().tz("Asia/Brunei").format(); //raw time
       var currPrayer;
