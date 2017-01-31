@@ -54,8 +54,16 @@ Meteor.methods({
 
     getHijrahDate: function() {
 
-      var currDate = moment().date();
-      var currMonth = moment().month();
+      var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei timezone
+      var date = singaporeFullTZ.split('-')
+      // currMonth = date[1][1]; //Singapore month in numeric 1 = jan, 2 = feb
+      var fullDateSG = singaporeFullTZ.split('T')
+      var today = moment(fullDateSG[0]).day() + 1;
+
+      dateSG = date[2].split('T')[0]; //Singapore date in numeric number
+
+      // var currDate = moment().date(); //31
+      // var currMonth = moment().month(); //0
 
       const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2017/SG-1.json';
 
@@ -79,17 +87,17 @@ Meteor.methods({
       data = JSON.parse(response.content)
 
       //get current month, day, year (hijri)
-      var currHijriMonth = data[0][currDate - 1].hijriMonth;
+      var currHijriMonth = data[0][dateSG - 1].hijriMonth;
       var hijriMonthName = Object.keys(HIJRI_MONTHS)[currHijriMonth - 1];
 
-      var hijriDate = data[0][currDate - 1].hijriDate;
-      var hijriYear = data[0][currDate - 1].hijriYear;
+      var hijriDate = data[0][dateSG - 1].hijriDate;
+      var hijriYear = data[0][dateSG - 1].hijriYear;
 
       /* list can be expand */
       const sunnahToFastDate = [13, 14, 15];
       const sunnahToFastDay = [1, 4];
 
-      var today = moment().weekday() + 1; //returns 1 (Monday), 2 (Tuesday)...
+      // var today = moment().weekday() + 1; //returns 1 (Monday), 2 (Tuesday)...
 
       var tmr = ((sunnahToFastDate.indexOf(hijriDate + 1) !== -1) || (sunnahToFastDay.indexOf(today) !== -1));
       var today = ((sunnahToFastDate.indexOf(hijriDate) !== -1) || (sunnahToFastDay.indexOf(today - 1) !== -1));
@@ -118,8 +126,12 @@ Meteor.methods({
       const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2017.json';
       response = HTTP.get(url, {});
 
-      var currDate = moment().date();
-      var currMonth = moment().month();
+      var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei timezone
+      var date = singaporeFullTZ.split('-')
+      currMonth = date[1][1]; //Singapore month in numeric 1 = jan, 2 = feb
+      dateSG = date[2].split('T')[0]; //Singapore date in numeric number
+
+      // var currMonth = moment().month();
 
       const PRAYER = {
           'Subuh': 0,
@@ -133,7 +145,7 @@ Meteor.methods({
 
       data = JSON.parse(response.content)
 
-      var timeArray = data[currMonth][currDate - 1].times;
+      var timeArray = data[currMonth - 1][dateSG - 1].times;
       var displayPrayer = [];
       var currTime = moment().tz("Asia/Brunei").format(); //raw time
       var currPrayer;
