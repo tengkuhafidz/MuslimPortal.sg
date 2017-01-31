@@ -1,135 +1,99 @@
 import React from 'react';
 
 import {Challenges} from '../../api/challenges.js';
+// const moment = require('moment-timezone');
 
 export default class ChallengeForm extends React.Component {
 
     constructor(props) {
         super(props);
     }
+    //
+    // componentWillMount() {
+    //
+    // }
+
+    isEventExist(dateStart){
+      return Challenges.findOne({"dateStart": dateStart})
+    }
 
     componentDidMount() {
-      //  var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
         //load jQuery for datePicker
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year
-            format: 'dd-mm-yyyy'
+            format: 'yyyy-mm-dd'
         });
     }
 
-
     handleSubmit(e) {
-      e.preventDefault()
+        e.preventDefault()
 
-      var activity = this.refs.name.value.trim();
+        var activity = this.refs.name.value.trim();
+        var dateStart = this.refs.dateStart.value.trim();
 
-      var dateStart = this.refs.dateStart.value.trim();
-      // var timeStart = this.refs.start.value.trim();
-      // var dateEnd = this.refs.dateEnd.value.trim();
-      // var timeEnd = this.refs.end.value.trim();
+        if (dateStart && activity) {
+          //get start_date
+          dateStart = moment(dateStart).format() // 2017-01-31T00:00:00+08:00
+          dayOfWeek = moment(dateStart).day() //1 = Monday, 2 =Tuesday etc
 
-      if (dateStart && activity) {
+          if (this.isEventExist(dateStart)){
+            Bert.alert("Challenge already exist on that date", 'danger', 'fixed-top', 'fa-frown-o');
 
+          } else if (dayOfWeek == 1) {
+            //compute end_date
+            dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
 
-        properDateStart = dateStart;
-        properDateStartFormat = dateStart.split("-");
-        finalisedStart = properDateStartFormat[2] + "-" + properDateStartFormat[1] + "-" + properDateStartFormat[0] + "T" + "00:00:00"
+            Meteor.call('addChallenge', activity, dateStart, dateEnd, (error, data) => {
+                if (error) {
+                    Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
+                } else {
+                    Materialize.toast('Challenge Added Successfully!', 4000)
+                    FlowRouter.go("/")
 
-        dateStart = new Date(finalisedStart)
-
-        dateStart = dateStart.toISOString();
-
-        //dateEnd
-        dateEnd = moment(dateStart).add(6, 'days').endOf('day');
-        // properFormat = dateEnd.split("-");
-        // finalised = properFormat[2] + "-" + properFormat[1] + "-" + properFormat[0] + "T" + timeEnd + ":00"
-
-        // dateEnd = new Date(finalised)
-
-        dateEnd = dateEnd.toISOString();
-
-        Meteor.call('addChallenge', activity, dateStart, dateEnd, (error,data) => {
-            if(error){
-                Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
-            } else {
-                Materialize.toast('Challenge Added Successfully!', 4000)
-                FlowRouter.go("/")
-
-            }
-                })
-      } else {
-        Bert.alert("Some input fields are not filled", 'danger', 'fixed-top', 'fa-frown-o');
-      }
+                }
+            })
 
 
+          } else {
+            Bert.alert("Start Date must be on Monday", 'danger', 'fixed-top', 'fa-frown-o');
+          }
 
-      // /* what */
-      // var name = this.refs.name.value.trim();
-
-      // /* when */
-      // var dateStart = this.refs.dateStart.value.trim();
-      // var timeStart = this.refs.start.value.trim();
-      // var dateEnd = this.refs.dateEnd.value.trim();
-      // var timeEnd = this.refs.end.value.trim();
-
-      // console.log(dateStart)
-
-      // Meteor.call('addEvents', name, dateStart, timeStart, dateEnd, timeEnd, (error,data) => {
-      // if(error){
-      //     Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
-      // } else {
-      //     Materialize.toast('Event Added Successfully!', 4000)
-      //     FlowRouter.go("/eventsView")
-
-      //   }
-      // })
+        } else {
+            Bert.alert("Some input fields are not filled", 'danger', 'fixed-top', 'fa-frown-o');
+        }
     }
 
     render() {
         return (
 
-                <div className="row bottomGap grey-text text-darken-3">
-                  <div className="col s12 m10 offset-m1 ">
+            <div className="row bottomGap grey-text text-darken-3">
+                <div className="col s12 m10 offset-m1 ">
                     <div className="card-panel">
 
-                        <h2> Add #BeBetter Challenge </h2>
+                        <h2>
+                            Add #BeBetter Challenge
+                        </h2>
                         <form onSubmit={this.handleSubmit.bind(this)} className="topGap">
-                          <div className="topGap">
-                            {/*<h4> What ? </h4>*/}
-                            <div className="row">
-                                <div className="input-field col s12">
-                                    <input id="name" type="text" className="validate" ref="name"/>
-                                    <label htmlFor="name" className="active">Action</label>
+                            <div className="topGap">
+                                <div className="row">
+                                    <div className="input-field col s12">
+                                        <input id="name" type="text" className="validate" ref="name"/>
+                                        <label htmlFor="name" className="active">Action</label>
+                                    </div>
                                 </div>
+
                             </div>
 
-                        </div>
+                            <div className="topGap">
+                                <div className="row">
+                                    <div className="input-field col m3">
+                                        <input type="date" className="datepicker" id="dateStart" ref="dateStart"/>
+                                        <label htmlFor="dateStart">Start Date</label>
+                                    </div>
 
-                        <div className="topGap">
-                            <div className="row">
-                                <div className="input-field col m3">
-                                    <input type="date" className="datepicker" id="dateStart" ref="dateStart"/>
-                                    <label htmlFor="dateStart">Start Date</label>
                                 </div>
-                               {/*
-                               <div className="input-field col m3">
-                                    <input type="time" id="start" ref="start" />
-                                </div>
-
-                                <div className="input-field col m3">
-                                    <input type="date" className="datepicker" id="dateEnd" ref="dateEnd"/>
-                                    <label htmlFor="dateEnd">End Date</label>
-                                </div>
-
-                                <div className="input-field col m3">
-                                    <input type="time" id="end" ref="end" />
-                                </div>
-                              */}
                             </div>
-
-                        </div>
-
 
                             <div className="topGap"></div>
 
@@ -140,8 +104,8 @@ export default class ChallengeForm extends React.Component {
                         </form>
 
                     </div>
-                  </div>
                 </div>
+            </div>
 
         )
     }

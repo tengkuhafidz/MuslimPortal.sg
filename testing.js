@@ -1,6 +1,6 @@
 // /* Darksky Forecast */
 // const request = require('request');
-// const moment = require('moment-timezone');
+const moment = require('moment-timezone');
 //
 // const HIJRI_MONTHS = {
 //   'Muharram': 1,
@@ -96,7 +96,7 @@
 //
 // var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
 // var fullDateSG = singaporeFullTZ.split('T')
-//
+// console.log(fullDateSG)
 // var today = moment(fullDateSG[0]).day(); //return weekdays e.g. Monday, 1 Tuesday, 2 ...
 // var dateSG = fullDateSG[0].split('-')[2]; //return JUST the date e.g. 1, 12, 31 ...
 // console.log('weekday:', today)
@@ -108,3 +108,23 @@
 // }
 //
 // console.log('currMonth: ', currMonth)
+
+// var dateStart = '2017-02-06'
+//
+// if (dateStart) {
+//
+//   fullDateStart = moment(dateStart).format() // 2017-01-31T00:00:00+08:00
+//   dayOfWeek = moment(fullDateStart).day() //1 = Monday, 2 =Tuesday etc
+//
+//   if (dayOfWeek == 1){
+//     //dateEnd
+//     dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
+//     console.log('dateEnd: ', dateEnd)
+//
+//   }
+//
+// }
+
+// nowDate = new Date().toISOString();
+// nowDate =  moment().format();
+// console.log(nowDate)

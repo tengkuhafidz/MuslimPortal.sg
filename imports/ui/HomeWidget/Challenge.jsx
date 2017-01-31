@@ -21,8 +21,6 @@ export default class Challenge extends TrackerReact(React.Component){
 
     challenge = Challenges.findOne({dateEnd: {$gte: nowDate}, dateStart: {$lte: nowDate}});
 
-    console.log('challenge of the week:', challenge)
-
     return challenge;
 
   }
@@ -69,7 +67,7 @@ export default class Challenge extends TrackerReact(React.Component){
     // } else if(joinedDate > challenge.dateStart) {
     //   joinStatusArea = (
     //       <p className="betaFont challengeMessage">
-    //         <b>Thank you for joining!</b> Let's do this together and <b>#bebetter</b>. 
+    //         <b>Thank you for joining!</b> Let's do this together and <b>#bebetter</b>.
     //       </p>
     //     )
     // }
@@ -83,7 +81,7 @@ export default class Challenge extends TrackerReact(React.Component){
         <br/>
         <h1 className="cursiveFont noTopGap">{challenge.action}</h1>
         <h6 className="joinedCount"> Current Challenge Takers: {joinedNo} </h6>
-        
+
           {joinStatusArea}
 
         </div>
