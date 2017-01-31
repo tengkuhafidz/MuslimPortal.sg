@@ -19,12 +19,16 @@ export default class ChallengesUpdate extends TrackerReact(React.Component) {
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year
-            format: 'dd-mm-yyyy'
+            format: 'yyyy-mm-dd'
         });
     }
 
     defaultEventValues(){
         return Challenges.findOne({_id: this.props.challengeId})
+    }
+
+    isEventExist(dateStart){
+      return Challenges.findOne({"dateStart": dateStart})
     }
 
     handleSubmit(e) {
@@ -34,51 +38,55 @@ export default class ChallengesUpdate extends TrackerReact(React.Component) {
       var action = this.refs.action.value.trim();
       var dateStart = this.refs.dateStart.value.trim();
 
-      //If this.refs.dateStart is empty, dateStart = the default dateStart
-      // if (dateStart === ''){
-      //   date = defaultEventValues.dateStart //keep returning 20
-      //   dateStart = moment(defaultEventValues.date).format("DD-MM-YYYY")
-      // }
-
       if (dateStart && action) { //it doesnt run this when dateStart remains the same
+        dateStart = moment(dateStart).format() // 2017-01-31T00:00:00+08:00
+        dayOfWeek = moment(dateStart).day() //1 = Monday, 2 =Tuesday etc
 
-        properDateStart = dateStart;
-        properDateStartFormat = dateStart.split("-");
-        finalisedStart = properDateStartFormat[2] + "-" + properDateStartFormat[1] + "-" + properDateStartFormat[0] + "T" + "00:00:00"
+        if (dayOfWeek == 1){
+          //compute end_date
+          dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
 
-        dateStart = new Date(finalisedStart)
+          Meteor.call('updateChallenge', this.props.challengeId, action, dateStart, dateEnd, (error, data) => {
+              if (error) {
+                  Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
+              } else {
+                  Materialize.toast('Updated Successfully!', 4000)
+                  FlowRouter.go("/challengesView")
 
-        dateStart = dateStart.toISOString();
+              }
+          })
+        } else {
+          Bert.alert("Start Date must be on Monday", 'danger', 'fixed-top', 'fa-frown-o');
 
+        }
         //dateEnd
-        dateEnd = moment(dateStart).add(6, 'days').endOf('day');
+        // dateEnd = moment(dateStart).add(6, 'days').endOf('day');
+        // dateEnd = dateEnd.toISOString();
 
-        dateEnd = dateEnd.toISOString();
-
-      Meteor.call('updateChallenge', this.props.challengeId, action, dateStart, dateEnd, (error, data) => {
-            if(error){
-                Bert.alert('Some input fields are not filled in.', 'danger', 'fixed-top', 'fa-frown-o');
-            } else {
-                Materialize.toast('Updated Successfully!', 4000)
-            FlowRouter.go(`/challengesView`)
-
-            }
-        })
+      // Meteor.call('updateChallenge', this.props.challengeId, action, dateStart, dateEnd, (error, data) => {
+      //       if(error){
+      //           Bert.alert('Some input fields are not filled in.', 'danger', 'fixed-top', 'fa-frown-o');
+      //       } else {
+      //           Materialize.toast('Updated Successfully!', 4000)
+      //       FlowRouter.go(`/challengesView`)
+      //
+      //       }
+      //   })
 
     } else {
       //dateStart empty, set to default
       dateStart = this.defaultEventValues().dateStart;
       //dateEnd
-      dateEnd = moment(dateStart).add(6, 'days').endOf('day');
-
-      dateEnd = dateEnd.toISOString();
+      dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
+      //
+      // dateEnd = dateEnd.toISOString();
 
     Meteor.call('updateChallenge', this.props.challengeId, action, dateStart, dateEnd, (error, data) => {
           if(error){
-              Bert.alert('Some input fields are not filled in.', 'danger', 'fixed-top', 'fa-frown-o');
+              Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
           } else {
               Materialize.toast('Updated Successfully!', 4000)
-          FlowRouter.go(`/challengesView`)
+              FlowRouter.go(`/challengesView`)
 
           }
       })
