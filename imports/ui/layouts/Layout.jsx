@@ -40,7 +40,7 @@ export default class Layout extends TrackerReact(React.Component) {
     componentDidMount() {
         this.getHijrahDate();
         this.getPrayerTime();
-        this.getDayDateMonth();
+        // this.getDayDateMonth();
 
         $('.materialboxed').materialbox();
 
@@ -61,27 +61,33 @@ export default class Layout extends TrackerReact(React.Component) {
     }
 
     getDayDateMonth() {
+
       var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
       var fullDateSG = singaporeFullTZ.split('T')
 
       var today = moment(fullDateSG[0]).day(); //return weekdays e.g. Monday, 1 Tuesday, 2 ...
-      var dateSG = fullDateSG[0].split('-')[2]; //return JUST the date e.g. 1, 12, 31 ...
+      var dateSG = (fullDateSG[0].split('-')[2][0] == 0) ? fullDateSG[0].split('-')[2][1] : fullDateSG[0].split('-')[2]; //return JUST the date e.g. 1, 12, 31 ...
+
+      console.log('is this true? ', fullDateSG[0].split('-')[2][0] == 0)
+      console.log('dateSG [2][1]', fullDateSG[0].split('-')[2][1]) //1
+      console.log('dateSG [2]', fullDateSG[0].split('-')[2]) //01
 
       if (fullDateSG[0].split('-')[1][0] == 0){ //if first integer is 0
         currMonth = fullDateSG[0].split('-')[1][1]; //get ONLY the last integer
       } else {
-        currMonth = fullDateSG[0].split('-')[1]; //01
+        currMonth = fullDateSG[0].split('-')[1]; //10 onwards
       }
       return {dateSG, today, currMonth}
     }
 
     getHijrahDate() {
-      var dateSG = this.getDayDateMonth().dateSG;
+      var dateSG = this.getDayDateMonth().dateSG; //pass in currMonth !
       var today = this.getDayDateMonth().today;
+      var day = this.getDayDateMonth().currMonth
 
       that = this;
 
-      Meteor.call('getHijrahDate', today, dateSG, (error, result) => {
+      Meteor.call('getHijrahDate', today, dateSG, day, (error, result) => {
 
         that.setState({
           hijrah: result.hDate,

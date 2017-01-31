@@ -128,3 +128,6 @@ const moment = require('moment-timezone');
 // nowDate = new Date().toISOString();
 // nowDate =  moment().format();
 // console.log(nowDate)
+
+var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
+console.log(singaporeFullTZ)
