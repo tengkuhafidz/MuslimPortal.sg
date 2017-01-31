@@ -8,6 +8,14 @@ export default class ChallengeForm extends React.Component {
     constructor(props) {
         super(props);
     }
+    //
+    // componentWillMount() {
+    //
+    // }
+
+    isEventExist(dateStart){
+      return Challenges.findOne({"dateStart": dateStart})
+    }
 
     componentDidMount() {
         //load jQuery for datePicker
@@ -29,7 +37,10 @@ export default class ChallengeForm extends React.Component {
           dateStart = moment(dateStart).format() // 2017-01-31T00:00:00+08:00
           dayOfWeek = moment(dateStart).day() //1 = Monday, 2 =Tuesday etc
 
-          if (dayOfWeek == 1){
+          if (this.isEventExist(dateStart)){
+            Bert.alert("Challenge already exist on that date", 'danger', 'fixed-top', 'fa-frown-o');
+
+          } else if (dayOfWeek == 1) {
             //compute end_date
             dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
 
@@ -42,6 +53,8 @@ export default class ChallengeForm extends React.Component {
 
                 }
             })
+
+
           } else {
             Bert.alert("Start Date must be on Monday", 'danger', 'fixed-top', 'fa-frown-o');
           }
