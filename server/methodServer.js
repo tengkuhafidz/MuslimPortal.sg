@@ -52,8 +52,7 @@ Meteor.methods({
         return future.wait();
     },
 
-    getHijrahDate: function(today, dateSG) {
-
+    getHijrahDate: function(today, dateSG, day) {
       var tomorrow = today + 1;
 
       const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2017/SG-1.json';
@@ -77,11 +76,12 @@ Meteor.methods({
       data = JSON.parse(response.content)
 
       //get current month, day, year (hijri)
-      var currHijriMonth = data[0][dateSG - 1].hijriMonth;
+      var currHijriMonth = data[day - 1][dateSG - 1].hijriMonth;
       var hijriMonthName = Object.keys(HIJRI_MONTHS)[currHijriMonth - 1];
 
-      var hijriDate = data[0][dateSG - 1].hijriDate;
-      var hijriYear = data[0][dateSG - 1].hijriYear;
+      var hijriDate = data[day - 1][dateSG - 1].hijriDate;
+      var hijriYear = data[day - 1][dateSG - 1].hijriYear;
+
 
       /* list can be expand */
       const sunnahToFastDate = [13, 14, 15];
