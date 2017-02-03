@@ -11,13 +11,18 @@ export default class AdminWidget extends React.Component {
         <i className="fa fa-user-secret fa-2x iconAlign" aria-hidden="true"></i>
         <div className="adminMenu" >
           <LogoutBtn />
-          <ul>
-            <li>
+          <div>
+            <p>
               <a href="/challengeForm" className=" formalFont white-text mainLink">
-              <i className="material-icons iconAlign">location_on</i>Add Challenge</a>
+              <i className="fa fa-plus iconAlign"></i>Add Challenge</a>
+            </p>
 
-            </li>
-          </ul>
+            <p>
+              <a href="/challengesView" className=" formalFont white-text mainLink">
+              <i className="fa fa-eye iconAlign"></i>View Challenge</a>
+            </p>
+
+          </div>
         </div>
       </div>
     )

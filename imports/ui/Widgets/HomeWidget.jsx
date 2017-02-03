@@ -15,7 +15,7 @@ export default class Home extends TrackerReact(React.Component) {
             subscription: {
                 challenges: Meteor.subscribe("allChallenges")
             },
-            showChallenge: false
+            showChallenge: true
         }
     }
 
@@ -55,13 +55,12 @@ export default class Home extends TrackerReact(React.Component) {
     render() {
 
         var challenge = this.getChallenge();
-
-        if (!challenge)
-            return <span>&nbsp;</span>
+        console.log(challenge)
 
         showChallenge = JSON.parse(localStorage.getItem("showChallenge"))
+        console.log(showChallenge) //true if want to show challenge
 
-        if (showChallenge === null || showChallenge)
+        if (challenge && showChallenge) //can switch view but NOT auto
             mainWidget = <Challenge/>
         else
             mainWidget = <Greeting/>

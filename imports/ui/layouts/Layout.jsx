@@ -12,7 +12,6 @@ import PrayerTimesWidget from '../Widgets/PrayerTimesWidget.jsx'
 import AdminWidget from '../Widgets/AdminWidget.jsx';
 import ColorModeWidget from '../Widgets/ColorModeWidget.jsx';
 
-
 import EventAll from '../NUSEvents/EventAll.jsx'
 import LogoutBtn from '../components/LogoutBtn.jsx'
 
@@ -67,10 +66,6 @@ export default class Layout extends TrackerReact(React.Component) {
 
       var today = moment(fullDateSG[0]).day(); //return weekdays e.g. Monday, 1 Tuesday, 2 ...
       var dateSG = (fullDateSG[0].split('-')[2][0] == 0) ? fullDateSG[0].split('-')[2][1] : fullDateSG[0].split('-')[2]; //return JUST the date e.g. 1, 12, 31 ...
-
-      console.log('is this true? ', fullDateSG[0].split('-')[2][0] == 0)
-      console.log('dateSG [2][1]', fullDateSG[0].split('-')[2][1]) //1
-      console.log('dateSG [2]', fullDateSG[0].split('-')[2]) //01
 
       if (fullDateSG[0].split('-')[1][0] == 0){ //if first integer is 0
         currMonth = fullDateSG[0].split('-')[1][1]; //get ONLY the last integer
