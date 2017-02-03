@@ -18,17 +18,17 @@ if (Meteor.isServer) {
 
     //try using foreach to loop these
     eventPages = [
-        'nusms',
-        'PBUH.TheLightofLife.1438H',
-        'nusms.ias',
-        'projectlink2017',
-        'valour2017',
-        'rihlah1438H',
-        'nusprojectasa',
-        'freshmencamp',
-        'BrothersOfNUS',
-        'voksnus',
-        // 'noteaminI', //testing page
+        // 'nusms',
+        // 'PBUH.TheLightofLife.1438H',
+        // 'nusms.ias',
+        // 'projectlink2017',
+        // 'valour2017',
+        // 'rihlah1438H',
+        // 'nusprojectasa',
+        // 'freshmencamp',
+        // 'BrothersOfNUS',
+        // 'voksnus',
+        'noteaminI', //testing page
     ]
 
     eventPages.forEach((eachPage) => {

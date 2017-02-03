@@ -33,7 +33,7 @@ export default class ChallengesView extends TrackerReact(React.Component) {
     return(
       <div className="lessMarginTop">
         <h1 className="center ">
-          Take Teh #Challenge
+           #BeBetter Challenge
         </h1>
         <p className="betaFont belowCaption center">(Scrollable List)</p>
           <div className="row noShadow">
