@@ -37,27 +37,50 @@ export default class ChallengeForm extends React.Component {
           dateStart = moment(dateStart).format() // 2017-01-31T00:00:00+08:00
           dayOfWeek = moment(dateStart).day() //1 = Monday, 2 =Tuesday etc
 
-          if (this.isEventExist(dateStart)){
-            Bert.alert("Challenge already exist on that date", 'danger', 'fixed-top', 'fa-frown-o');
-
-          } else if (dayOfWeek == 1) {
-            //compute end_date
-            dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
-
-            Meteor.call('addChallenge', activity, dateStart, dateEnd, (error, data) => {
-                if (error) {
-                    Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
-                } else {
-                    Materialize.toast('Challenge Added Successfully!', 4000)
-                    FlowRouter.go("/")
-
-                }
-            })
-
-
-          } else {
+          /* STARTS HERE */
+          if (dayOfWeek != 1){ //don't need to contact mongoDB if start_date is not even on Monday to begin with
             Bert.alert("Start Date must be on Monday", 'danger', 'fixed-top', 'fa-frown-o');
+          } else {
+            if (this.isEventExist(dateStart)) {
+              Bert.alert("Challenge already exist on that date", 'danger', 'fixed-top', 'fa-frown-o');
+            } else {
+              //compute end_date
+              dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
+              Meteor.call('addChallenge', activity, dateStart, dateEnd, (error, data) => {
+                  if (error) {
+                      Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
+                  } else {
+                      Materialize.toast('Challenge Added Successfully!', 4000)
+                      FlowRouter.go("/")
+
+                  }
+              })
+            }
           }
+
+          /* ENDS HERE */
+
+          // if (this.isEventExist(dateStart)){
+          //   Bert.alert("Challenge already exist on that date", 'danger', 'fixed-top', 'fa-frown-o');
+          //
+          // } else if (dayOfWeek == 1) {
+          //   //compute end_date
+          //   dateEnd = moment(dateStart).add(6, 'days').endOf('day').format();
+          //
+          //   Meteor.call('addChallenge', activity, dateStart, dateEnd, (error, data) => {
+          //       if (error) {
+          //           Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
+          //       } else {
+          //           Materialize.toast('Challenge Added Successfully!', 4000)
+          //           FlowRouter.go("/")
+          //
+          //       }
+          //   })
+          //
+          //
+          // } else {
+          //   Bert.alert("Start Date must be on Monday", 'danger', 'fixed-top', 'fa-frown-o');
+          // }
 
         } else {
             Bert.alert("Some input fields are not filled", 'danger', 'fixed-top', 'fa-frown-o');
