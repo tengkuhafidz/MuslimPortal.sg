@@ -29,7 +29,8 @@ function isAuthenticated(context, redirect){
   }
 }
 
-FlowRouter.triggers.enter([isAuthenticated], {only: ["challengeForm"]});
+//if NOT logged-in, users who enter ANY OF THE FOLLOWING will be redirected to /adminLogin
+FlowRouter.triggers.enter([isAuthenticated], {only: ["challengeForm", "challengesView"]});
 
 //home
 FlowRouter.route('/', {
