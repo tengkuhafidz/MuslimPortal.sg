@@ -173,7 +173,7 @@ Meteor.methods({
           'OCIP': 'freshmencamp',
           'BroNUS': 'BrothersOfNUS',
           'VOKS': 'voksnus',
-          'testing': 'noteaminI', //uncomment this when testing
+          // 'testing': 'noteaminI', //uncomment this when testing
       }
 
       return eventPages;

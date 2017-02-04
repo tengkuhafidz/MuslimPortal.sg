@@ -21,7 +21,7 @@ export default class EventItemSingle extends React.Component{
 
       <div>
         <hr />
-          <a className="white-text mainLink" href={eventURL} target="_blank">
+          <a className="white-text" href={eventURL} target="_blank">
            <p className="truncate">{event.name} <br /><span className="smallFont">{dateFormatted}</span></p>
           </a>
       </div>

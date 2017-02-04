@@ -18,17 +18,17 @@ export default class PagesWidget extends React.Component {
         })
     }
 
-    // getAllPostsCount(){
-    //     allPosts = this.props.posts;
+    getAllPostsCount(allPosts){
+        
 
-    //     count = 0;
+        count = 0;
 
-    //     allPosts.forEach((eachPost) => {
-    //         count += eachPost.posts.length
-    //     })
+        allPosts.forEach((eachPost) => {
+            count += eachPost.posts.length
+        })
 
-    //     return count;
-    // }
+        return count;
+    }
 
     render() {
         
@@ -46,17 +46,19 @@ export default class PagesWidget extends React.Component {
         ]
 
 
-        // // posts = this.props.posts
+        posts = this.props.posts
+
+        allPostsCount = this.getAllPostsCount(posts)
 
 
         pagesPanel = (
                 <div className="eventsPanel">
                     <h6>
-                        9 Posts Since Yesterday
+                        {allPostsCount} Posts Since Yesterday
                     </h6>
                     <hr/>
-                    {pages.map((page) => {
-                        return <PageSingle key={page} page={page}/>
+                    {posts.map((post) => {
+                        return <PageSingle key={post._id} post={post}/>
                     })}
                 </div>
             )
@@ -74,7 +76,7 @@ export default class PagesWidget extends React.Component {
                 {panelArea}
                 <a onClick={this.handleClick.bind(this)} className="bottomLeft white-text mainLink">
                     <i className="material-icons iconAlign">flag</i>
-                    &nbsp;NUSMS Pages 
+                    &nbsp;NUSMS Pages ({allPostsCount})
                 </a>
             </div>
         )
