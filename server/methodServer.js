@@ -159,5 +159,23 @@ Meteor.methods({
         currMonth = fullDateSG[0].split('-')[1]; //01
       }
       return {dateSG, today, currMonth}
+    },
+
+    getAllPages: function() {
+      eventPages = {
+          'NUSMS': 'nusms',
+          'PBUH': 'PBUH.TheLightofLife.1438H',
+          'IAS': 'nusms.ias',
+          'Project Link': 'projectlink2017',
+          'Valour': 'valour2017',
+          'Rihlah': 'rihlah1438H',
+          'Project ASA': 'nusprojectasa',
+          'OCIP': 'freshmencamp',
+          'BroNUS': 'BrothersOfNUS',
+          'VOKS': 'voksnus',
+          'testing': 'noteaminI', //uncomment this when testing
+      }
+
+      return eventPages;
     }
 });

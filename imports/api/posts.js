@@ -8,27 +8,14 @@ export const Posts = new Mongo.Collection('posts');
 
 if (Meteor.isServer) {
 
-  var getAllFeeds = () => {
+  var getAllFeeds = (eventPages) => {
     Posts.remove({}); //RE-Populate
-
+    eventPages = Meteor.call('getAllPages');
     //fb../nusms
     var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei"); //date in Asia/Brunei full TZ format
     var yesterday = singaporeFullTZ.add(-1, 'days').startOf('day').unix();
 
     const access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
-    eventPages = {
-        'NUSMS': 'nusms',
-        'PBUH': 'PBUH.TheLightofLife.1438H',
-        'IAS': 'nusms.ias',
-        'Project Link': 'projectlink2017',
-        'Valour': 'valour2017',
-        'Rihlah': 'rihlah1438H',
-        'Project ASA': 'nusprojectasa',
-        'OCIP': 'freshmencamp',
-        'BroNUS': 'BrothersOfNUS',
-        'VOKS': 'voksnus',
-        // 'noteaminI', //uncomment this when testing
-    }
 
     for (var key in eventPages){
       displayPosts = []; //empty up for each new page
@@ -63,14 +50,14 @@ if (Meteor.isServer) {
         return parser.text('every 1 hour');
       },
       job: function(intendedAt) {
-        getAllFeeds();
+        getAllFeeds(eventPages);
         console.log('posts col updated @: ', intendedAt)
       }
   });
 
   Meteor.startup(function () {
     // code to run on server at startup
-    getAllFeeds();
+    getAllFeeds(eventPages);
     SyncedCron.start();
   });
 
