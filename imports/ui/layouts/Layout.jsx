@@ -99,6 +99,11 @@ export default class Layout extends TrackerReact(React.Component) {
       return events;
     }
 
+    getAllPosts() {
+      posts = Posts.find({}).fetch();
+      return posts;
+    }
+
     getTodayEvents() {
       events = Events.find({'today': {$exists: true}}).fetch();
       return events;
@@ -142,6 +147,8 @@ export default class Layout extends TrackerReact(React.Component) {
         var events = this.getAllEvents(); //should be reactive cuz i'm using TrackerReact
         var todayEvents = this.getTodayEvents();
 
+        var posts = this.getAllPosts();
+
         var image = this.getBgImage();
 
         audioBtn = this.state.play
@@ -180,7 +187,7 @@ export default class Layout extends TrackerReact(React.Component) {
                 </div>
 
                 <div className="topAnnouncement center">
-                    {/*  */}<AnnouncementWidget events={events}/>
+                    <AnnouncementWidget events={events}/>
                 </div>
 
                 <div className="topRight">
@@ -193,7 +200,7 @@ export default class Layout extends TrackerReact(React.Component) {
                 </div>
 
                 <div className="bottomLeft">
-                    <PagesWidget/>
+                    <PagesWidget posts={posts}/>
                 </div>
 
                 {/*<a href="/musollaView" className="bottomLeft formalFont white-text mainLink">
@@ -218,7 +225,7 @@ export default class Layout extends TrackerReact(React.Component) {
                 </div>
 
                 <div className="bottomRight">
-                    {/*  */}<EventsWidget events={events} todayEvents={todayEvents}/>
+                   <EventsWidget events={events} todayEvents={todayEvents}/>
                 </div>
 
             </div>
