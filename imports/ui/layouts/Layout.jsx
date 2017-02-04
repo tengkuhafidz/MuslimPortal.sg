@@ -2,6 +2,7 @@ import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react'
 
 import {Events} from '../../api/events.js'
+import {Posts} from '../../api/posts.js';
 
 /* import Widgets... */
 import EventsWidget from '../Widgets/EventsWidget.jsx'
@@ -24,6 +25,7 @@ export default class Layout extends TrackerReact(React.Component) {
         super();
         Tracker.autorun(function(){
            Meteor.subscribe("allEvents");
+           Meteor.subscribe("allPosts");
 
         });
 
