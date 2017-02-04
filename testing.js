@@ -129,5 +129,22 @@ const moment = require('moment-timezone');
 // nowDate =  moment().format();
 // console.log(nowDate)
 
-var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
-console.log(singaporeFullTZ)
+// var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei"); //date in Asia/Brunei full TZ format
+// console.log(singaporeFullTZ)
+// console.log(singaporeFullTZ.add(-1, 'days').startOf('day').unix())
+// eventPages = {
+//     'NUSMS': 'nusms',
+//     'PBUH': 'PBUH.TheLightofLife.1438H',
+//     'Islamic Awareness': 'nusms.ias',
+//     'Project Link 2017': 'projectlink2017',
+//     'Valour 2017': 'valour2017',
+//     'Rihlah 1438h': 'rihlah1438H',
+//     'NUS Project': 'nusprojectasa',
+//     'Freshmen Camp': 'freshmencamp',
+//     'Brothers of NUS': 'BrothersOfNUS',
+//     'VOK NUS': 'voksnus',
+//     // 'noteaminI', //uncomment this when testing
+// }
+//
+// for (var key in eventPages)
+//   console.log(key)

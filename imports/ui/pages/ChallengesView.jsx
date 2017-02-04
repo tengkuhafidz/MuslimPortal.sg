@@ -18,7 +18,7 @@ export default class ChallengesView extends TrackerReact(React.Component) {
 
   showAllChallenges() {
 
-      challenges = Challenges.find({}).fetch();
+      challenges = Challenges.find({}, {sort: { dateStart: 1 } }).fetch();
 
       return challenges
   }
