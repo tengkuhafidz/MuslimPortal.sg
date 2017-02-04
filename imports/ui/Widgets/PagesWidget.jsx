@@ -56,7 +56,7 @@ export default class PagesWidget extends React.Component {
                     </h6>
                     <hr/>
                     {pages.map((page) => {
-                        return <PageSingle key={post} page={page}/>
+                        return <PageSingle key={page} page={page}/>
                     })}
                 </div>
             )
