@@ -5,6 +5,7 @@ import {Events} from '../../api/events.js'
 
 /* import Widgets... */
 import EventsWidget from '../Widgets/EventsWidget.jsx'
+import PagesWidget from '../Widgets/PagesWidget.jsx'
 import QuotesWidget from '../Widgets/QuotesWidget.jsx'
 import AnnouncementWidget from '../Widgets/AnnouncementWidget.jsx'
 import HijrahWidget from '../Widgets/HijrahWidget.jsx'
@@ -188,8 +189,15 @@ export default class Layout extends TrackerReact(React.Component) {
                 <div className="contentDiv container mainContent">
                     {this.props.content()}
                 </div>
-                <a href="/musollaView" className="bottomLeft formalFont white-text mainLink">
-                    <i className="material-icons iconAlign">location_on</i>NUS Musolla</a>
+
+                <div className="bottomLeft">
+                    <PagesWidget/>
+                </div>
+
+                {/*<a href="/musollaView" className="bottomLeft formalFont white-text mainLink">
+                    <i className="material-icons iconAlign">location_on</i>NUS Musolla
+                </a>*/}
+
                 {/*<img className="materialboxed bottomRight" width="50" src="coe.jpg"  data-caption="Calendar of Events for AY 2016/2017" /> */}
 
                 <div className="bottomCenter">
