@@ -8,7 +8,7 @@ export const Posts = new Mongo.Collection('posts');
 
 if (Meteor.isServer) {
 
-  var getAllFeeds = (eventPages) => {
+  var getAllFeeds = () => {
     Posts.remove({}); //RE-Populate
     eventPages = Meteor.call('getAllPages');
     //fb../nusms
@@ -50,15 +50,15 @@ if (Meteor.isServer) {
         return parser.text('every 1 hour');
       },
       job: function(intendedAt) {
-        getAllFeeds(eventPages);
+        getAllFeeds();
         console.log('posts col updated @: ', intendedAt)
       }
   });
 
   Meteor.startup(function () {
     // code to run on server at startup
-    getAllFeeds(eventPages);
-    SyncedCron.start();
+    getAllFeeds();
+    // SyncedCron.start();
   });
 
 }

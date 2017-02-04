@@ -22,7 +22,6 @@ export default class Home extends TrackerReact(React.Component) {
     componentWillMount() {
 
         // showChallenge = localStorage.getItem("showChallenge") == null
-        console.log(localStorage.getItem("showChallenge") == null)
         if (localStorage.getItem("showChallenge") == null )
           this.setState({showChallenge: true})
         else
@@ -62,7 +61,6 @@ export default class Home extends TrackerReact(React.Component) {
 
         var challenge = this.getChallenge();
         showChallenge = JSON.parse(localStorage.getItem("showChallenge")) //true if want to show challenge
-        console.log('SC: ',showChallenge)
 
         if (showChallenge == null)
           showChallenge = true;
