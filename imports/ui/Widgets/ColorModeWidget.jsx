@@ -34,6 +34,7 @@ export default class ColorModeWidget extends React.Component {
       <div className="colorMode">
         <div onClick={this.handleClick.bind(this)}>
           <i className="fa fa-paint-brush" aria-hidden="true"></i>
+          &nbsp;Color
         </div>
       </div>
     )

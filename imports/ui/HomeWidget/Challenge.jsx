@@ -26,8 +26,14 @@ export default class Challenge extends TrackerReact(React.Component){
   }
 
   handleJoin(){
-    localStorage.setItem("joined", new Date())
 
+    var challenge = this.getChallenge()
+
+    console.log("id", challenge._id)
+
+
+    localStorage.setItem("joined", challenge._id)
+    
     Meteor.call('joinChallenge', (error,data) => {
             if(error){
                 Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
@@ -40,15 +46,16 @@ export default class Challenge extends TrackerReact(React.Component){
 
   render(){
 
-    joinedDate = localStorage.getItem("joined");
+    joinedId = localStorage.getItem("joined");
     var challenge = this.getChallenge();
 
     if (!challenge)
             return <span> &nbsp; </span>
 
+
     var joinedNo = challenge.joined ? <span>{challenge.joined}</span> : "";
 
-    var joinStatusArea = joinedDate > challenge.dateStart ? "" : <a className="waves-effect waves-light btn-large " onClick={this.handleJoin.bind(this)}>Join Challenge</a>
+    var joinStatusArea = joinedId === challenge._id ? "" : <a className="waves-effect waves-light btn-large " onClick={this.handleJoin.bind(this)}>Join Challenge</a>
 
 
     // if(joinedDate > challenge.dateStart && moment().isoWeekday() === 7){

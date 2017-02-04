@@ -1,37 +1,37 @@
 import React from 'react';
-import TrackerReact from 'meteor/ultimatejs:tracker-react'
-import {Events} from '../../api/events.js'
+// import TrackerReact from 'meteor/ultimatejs:tracker-react'
+// import {Events} from '../../api/events.js'
 
 import EventItemSingle from '../Home/EventItemSingle.jsx'
 
-export default class EventsWidget extends TrackerReact(React.Component) {
+export default class EventsWidget extends React.Component {
 
     constructor() {
         super();
-        Tracker.autorun(function(){
-           Meteor.subscribe("allEvents");
-        });
+        // Tracker.autorun(function(){
+        //    Meteor.subscribe("allEvents");
+        // });
 
         this.state = {
             showEvents: 0
         }
     }
 
-    showEvents() {
+    // showEvents() {
 
-        nowDate = new Date().toISOString()
-        events = Events.find({
-            dateEnd: {
-                $gte: nowDate
-            }
-        }, {
-            sort: {
-                dateStart: 1
-            }
-        }).fetch()
-        return events
+    //     nowDate = new Date().toISOString()
+    //     events = Events.find({
+    //         dateEnd: {
+    //             $gte: nowDate
+    //         }
+    //     }, {
+    //         sort: {
+    //             dateStart: 1
+    //         }
+    //     }).fetch()
+    //     return events
 
-    }
+    // }
 
     handleClick() {
         this.setState({
@@ -92,7 +92,7 @@ export default class EventsWidget extends TrackerReact(React.Component) {
             )
         } else if (eventsToday.length > 1) {
             eventAlert = (
-                <div className="eventsPanel center flash animated">
+                <div className="eventAlert center flash animated">
                     <h6>
                         <i className="material-icons iconAlign">error_outline</i>
                         {eventsToday.length} EVENTS TODAY!</h6>
@@ -112,9 +112,9 @@ export default class EventsWidget extends TrackerReact(React.Component) {
         return (
             <div>
                 {eventsArea}
-                <a onClick={this.handleClick.bind(this)} className="formalFont bottomRight white-text mainLink">
-                    <i className="material-icons iconAlign">date_range</i>
-                    NUSMS Events ({events.length})
+                <a onClick={this.handleClick.bind(this)} className="white-text mainLink bottomRight">
+                    <i className="material-icons iconAlign ">date_range</i>
+                    &nbsp;NUSMS Events ({events.length})
                 </a>
             </div>
         )
