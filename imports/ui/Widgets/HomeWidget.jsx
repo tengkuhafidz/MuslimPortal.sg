@@ -19,8 +19,14 @@ export default class Home extends TrackerReact(React.Component) {
         }
     }
 
-    componentDidMount() {
-        showChallenge : localStorage.getItem("showChallenge")
+    componentWillMount() {
+
+        // showChallenge = localStorage.getItem("showChallenge") == null
+        console.log(localStorage.getItem("showChallenge") == null)
+        if (localStorage.getItem("showChallenge") == null )
+          this.setState({showChallenge: true})
+        else
+          this.setState({showChallenge: localStorage.getItem("showChallenge")})
     }
 
     getChallenge() {
@@ -55,10 +61,11 @@ export default class Home extends TrackerReact(React.Component) {
     render() {
 
         var challenge = this.getChallenge();
-        console.log(challenge)
+        showChallenge = JSON.parse(localStorage.getItem("showChallenge")) //true if want to show challenge
+        console.log('SC: ',showChallenge)
 
-        showChallenge = JSON.parse(localStorage.getItem("showChallenge"))
-        console.log(showChallenge) //true if want to show challenge
+        if (showChallenge == null)
+          showChallenge = true;
 
         if (challenge && showChallenge) //can switch view but NOT auto
             mainWidget = <Challenge/>

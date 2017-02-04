@@ -14,26 +14,17 @@ if (Meteor.isServer) {
     currStrtotime = moment().format('YYYY-MM-DD');
     endUnixTime = moment().add(6, 'days').endOf('day').unix();
 
+    var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei"); //date in Asia/Brunei full TZ format
+    var yesterday = singaporeFullTZ.add(-1, 'days').startOf('day').unix();
+
     const access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
 
     //try using foreach to loop these
-    eventPages = [
-        'nusms',
-        'PBUH.TheLightofLife.1438H',
-        'nusms.ias',
-        'projectlink2017',
-        'valour2017',
-        'rihlah1438H',
-        'nusprojectasa',
-        'freshmencamp',
-        'BrothersOfNUS',
-        'voksnus',
-        // 'noteaminI', //uncomment this when testing
-    ]
-
-    eventPages.forEach((eachPage) => {
-      //move all codes to here
-      var url = `https://graph.facebook.com/${eachPage}/events?fields=name,end_time,start_time&&access_token=${access_token}`;
+    eventPages = Meteor.call('getAllPages');
+    //https://graph.facebook.com/noteaminI/events?fields=name,end_time,start_time&since=1486080000&&access_token=EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD
+    for (var key in eventPages){
+      //https://graph.facebook.com/${eachPage}/events?fields=name,end_time,start_time&&access_token=${access_token}
+      var url = `https://graph.facebook.com/${eventPages[key]}/events?fields=name,end_time,start_time&since=${yesterday}&&access_token=${access_token}`;
 
       var response = HTTP.get(url, {});
 
@@ -47,15 +38,11 @@ if (Meteor.isServer) {
       /* LOOP each event in array */
       for (var j = 0; j < event.length; j++) {
 
-          if ((event[j].end_time) && (moment().isBefore(event[j].end_time))) {
-              event[j].by = eachPage;
-              // displayEvents.push(event[j]);
+          if ((event[j].end_time) && (moment().isBefore(event[j].end_time))) { // ada end_time and belum habis
+              event[j].by = eventPages[key];
               if (moment().isSame(event[j].start_time, 'day')){
                 //set a new column named 'today'
                 event[j].today = true;
-                // console.log('event j today:', event[j])
-                // todayEvents.push(event[j]);
-
               }
               //add here
               event[j].createdAt = moment().format();
@@ -63,16 +50,7 @@ if (Meteor.isServer) {
 
             }
       }
-
-      // displayEvents.forEach((event) => {
-      //   Events.insert(event);
-      // });
-      //
-      // todayEvents.forEach((event) => {
-      //   Events.insert(event);
-      // });
-
-    })
+    }
 
   }
 

@@ -60,7 +60,7 @@ export default class ChallengesUpdate extends TrackerReact(React.Component) {
                         })
 
                     } else { //duplicate data!
-                        Bert.alert("Date Existed - Duplication detected", 'danger', 'fixed-top', 'fa-frown-o');
+                        Bert.alert("Challenge already exist on that date", 'danger', 'fixed-top', 'fa-frown-o');
 
                     }
                 } else { //add as per normal
