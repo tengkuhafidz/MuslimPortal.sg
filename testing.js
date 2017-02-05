@@ -1,7 +1,7 @@
 // /* Darksky Forecast */
 // const request = require('request');
 const moment = require('moment-timezone');
-//
+
 // const HIJRI_MONTHS = {
 //   'Muharram': 1,
 //   'Safar': 2,
@@ -150,6 +150,5 @@ const moment = require('moment-timezone');
 // for (var key in eventPages)
 //   console.log(key)
 
-// nowDate = new Date().toISOString();
-// console.log(moment().format())
+
 

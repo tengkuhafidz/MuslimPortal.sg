@@ -123,7 +123,7 @@ export default class Layout extends TrackerReact(React.Component) {
     }
 
     getBgImage(){
-        var totalCount = 31;
+        var totalCount = 39;
         var image = Math.ceil(Math.random() * totalCount);
         return image;
     }

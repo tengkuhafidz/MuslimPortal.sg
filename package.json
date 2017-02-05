@@ -14,7 +14,8 @@
     "react-addons-css-transition-group": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-mounter": "^1.2.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "whatwg-fetch": "^2.0.2"
   },
   "version": "1.0.0",
   "main": "index.js",
