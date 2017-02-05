@@ -35,9 +35,9 @@ Meteor.methods({
       createdAt: new Date(),
     });
   },
-  joinChallenge(){
+  joinChallenge(id){
     Challenges.update(
-      {dateEnd: {$gte: new Date().toISOString()}, dateStart: {$lte: new Date().toISOString()}},
+      {_id: id},
       { $inc: { "joined" : 1 } }
     )
   },
