@@ -149,3 +149,7 @@ const moment = require('moment-timezone');
 //
 // for (var key in eventPages)
 //   console.log(key)
+
+// nowDate = new Date().toISOString();
+// console.log(moment().format())
+

@@ -17,7 +17,7 @@ export default class Challenge extends TrackerReact(React.Component){
 
   getChallenge(){
 
-    nowDate = new Date().toISOString();
+    nowDate = moment().format();
 
     challenge = Challenges.findOne({dateEnd: {$gte: nowDate}, dateStart: {$lte: nowDate}});
 
