@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const Musolla = new Mongo.Collection('musolla');
+export const Musolla = new Ground.Collection('musolla');
 
 if (Meteor.isServer) {
   Meteor.publish('allMusolla', function musollaPublication() {
