@@ -20,7 +20,7 @@ if (Meteor.isServer) {
         var i = 0;
 
         do {
-            access_token = Meteor.call('getPermanentAccessToken', access_token)[i]
+            access_token = Meteor.call('getPermanentAccessToken')[i];
             i++;
         } while (!Meteor.call('isTokenValid', access_token) || i > 2)
 
