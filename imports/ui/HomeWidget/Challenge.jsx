@@ -34,7 +34,7 @@ export default class Challenge extends TrackerReact(React.Component){
 
     localStorage.setItem("joined", challenge._id)
     
-    Meteor.call('joinChallenge', (error,data) => {
+    Meteor.call('joinChallenge', challenge._id, (error,data) => {
             if(error){
                 Bert.alert(error.error, 'danger', 'fixed-top', 'fa-frown-o');
             } else {

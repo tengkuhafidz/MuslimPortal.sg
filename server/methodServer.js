@@ -3,54 +3,7 @@ Future = Npm && Npm.require('fibers/future');
 const moment = require('moment-timezone');
 
 Meteor.methods({
-    storeOnUplodcare: function(uuid) {
-        check(uuid, String);
-        this.unblock();
-        var future = new Future();
-        HTTP.call(
-            'PUT',
-            'https://api.uploadcare.com/files/' + uuid + '/storage/', {
-                headers: {
-                    Accept: 'application/vnd.uploadcare-v0.3+json',
-                    Date: new Date().toJSON(),
-                    Authorization: 'Uploadcare.Simple ' + Meteor.settings.private.uploadcare.public_key + ':' + Meteor.settings.private.uploadcare.secret_key
-                }
-            },
-            function(err) {
-                if (err) {
-                    future.return(err, null)
-                } else {
-
-                    future.return(null, true)
-                }
-            }
-        );
-        return future.wait();
-    },
-
-    deleteFromUploadcare: function(uuid) {
-        check(uuid, String);
-        this.unblock();
-        var future = new Future();
-        HTTP.call(
-            'DELETE',
-            'https://api.uploadcare.com/files/' + uuid + '/', {
-                headers: {
-                    Accept: 'application/vnd.uploadcare-v0.3+json',
-                    Date: new Date().toJSON(),
-                    Authorization: 'Uploadcare.Simple ' + Meteor.settings.private.uploadcare.public_key + ':' + Meteor.settings.private.uploadcare.secret_key
-                }
-            },
-            function(err) {
-                if (err) {
-                    future.return(err, null)
-                } else {
-                    future.return(null, true)
-                }
-            }
-        );
-        return future.wait();
-    },
+  
 
     getDayDateMonth: function() {
       var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
