@@ -177,5 +177,26 @@ Meteor.methods({
       }
 
       return eventPages;
+    },
+
+    getPermanentAccessToken: () => {
+      tokenOne = 'EAAaYA1tQ4gsBAB0hpTx3fplJVqHCbeWvQs9IbZADFDER9jMaDFSmSTSxD9TBYknjqzNQkfFu08ydhBilbr2q3mczvshtbce309nbZATl6Ru6GqYCxgiZAnk79egqZB0lvjQoiYVo7UncTGdCFgZCJRkRZC44dpZA20ZD';
+      tokenTwo = 'EAAaYA1tQ4gsBAHpz3oz1bGYVQ4tk4nWeh5iXreCT09VmU3VKj0Q9851NMkmCSYZB24pZB71WCyTHvOCvSHZBthy5OqEaNfUcBp9vswxZCZCyEkJFlnWgTIcfZAhdlJOfUYK55dmMPvzHya8eLoK01WFRxYI9uav7p5TVnyJ2pMXwZDZD';
+      tokenThree = 'EAAaYA1tQ4gsBAPCi7I7dYZCOnZAH4GG5qbfljZCLRHQ2kjPHbOMEpoE7l6Dz5aU79QipPpDZA1aqOBUhyYNydCM22U04A6AiDffWIsdsjyiMpfNx1LaXuKSDJShXpTRPPqXrsxL94FBAwh3HSnVLHNyl8djxvB8axEkTrtSfLwZDZD';
+      return [
+        tokenOne,
+        tokenThree,
+        tokenTwo
+      ]
+    },
+
+    isTokenValid: (access_token) => {
+      //dummy call with given access_token
+      var url = `https://graph.facebook.com/nusms/events?fields=name,end_time,start_time&access_token=${access_token}`
+      //return true/false
+      if (HTTP.get(url, {}))
+        return true;
+
+      return false;
     }
 });
