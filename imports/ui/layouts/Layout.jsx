@@ -3,6 +3,8 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react'
 
 import {Events} from '../../api/events.js'
 import {Posts} from '../../api/posts.js';
+import {PrayerTimes} from '../../api/prayertimes.js';
+import {Hijris} from '../../api/hijris.js';
 
 /* import Widgets... */
 import EventsWidget from '../Widgets/EventsWidget.jsx'
@@ -19,6 +21,29 @@ import LogoutBtn from '../components/LogoutBtn.jsx'
 
 const moment = require('moment-timezone');
 
+const PRAYER = {
+  'Subuh': 0,
+  'Syuruk': 1,
+  'Zuhur': 2,
+  'Asar': 3,
+  'Maghrib': 4,
+  'Isyak': 5
+}
+
+const HIJRI_MONTHS = {
+  'Muharram': 1,
+  'Safar': 2,
+  'Rabiulawal': 3,
+  'Rabiulakhir': 4,
+  'Jamadilawal': 5,
+  'Jamadilakhir': 6,
+  'Rejab': 7,
+  'Syaaban': 8,
+  'Ramadhan': 9,
+  'Syawal': 10,
+  'Zulkaedah': 11,
+  'Zulhijjah': 12
+};
 
 export default class Layout extends TrackerReact(React.Component) {
 
@@ -27,21 +52,18 @@ export default class Layout extends TrackerReact(React.Component) {
         Tracker.autorun(function(){
            Meteor.subscribe("allEvents");
            Meteor.subscribe("allPosts");
-
+           Meteor.subscribe("allPrayerTimes");
+           Meteor.subscribe("allHijris");
         });
 
         this.state = {
             accessToken: '',
             play: true,
             hijrah: '',
-            prayer: '',
-            currentPrayer: '',
             fasting: '',
         }
     }
     componentDidMount() {
-        this.getHijrahDate();
-        this.getPrayerTime();
         // this.getDayDateMonth();
 
         $('.materialboxed').materialbox();
@@ -79,19 +101,47 @@ export default class Layout extends TrackerReact(React.Component) {
     }
 
     getHijrahDate() {
-      var dateSG = this.getDayDateMonth().dateSG; //pass in currMonth !
-      var today = this.getDayDateMonth().today;
-      var day = this.getDayDateMonth().currMonth
+      var today = new Date();
+      var query = {date: today.getDate(), month: today.getMonth() + 1, year: 2017};
+      hijris = Hijris.find(query).fetch();
+      if (hijris.length == 0) {
+        return {
+          hijrah: '',
+          fasting: '',
+        };
+      }
+      var hijri = hijris[0];
 
-      that = this;
+      //get current month, day, year (hijri)
+      var currHijriMonth = hijri.hijriMonth;
+      var hijriMonthName = Object.keys(HIJRI_MONTHS)[currHijriMonth - 1];
 
-      Meteor.call('getHijrahDate', today, dateSG, day, (error, result) => {
+      var hijriDate = hijri.hijriDate;
+      var hijriYear = hijri.hijriYear;
 
-        that.setState({
-          hijrah: result.hDate,
-          fasting: result.fasting,
-        })
-      })
+      /* list can be expand */
+      const sunnahToFastDate = [13, 14, 15];
+      const sunnahToFastDay = [1, 4];
+
+      var tmr = ((sunnahToFastDate.indexOf(hijriDate + 1) !== -1) || (sunnahToFastDay.indexOf(today.getDate()) !== -1));
+      var today = ((sunnahToFastDate.indexOf(hijriDate) !== -1) || (sunnahToFastDay.indexOf(today) !== -1));
+
+      var fasting = '';
+
+      if (hijriMonthName !== 'Ramadhan') {
+
+        if (tmr)// TOMORROW
+          var fasting = 'tomorrow';
+        else if (today) //TODAY
+          var fasting = 'today';
+      }
+
+      var hDate = `${hijriDate} ${hijriMonthName} ${hijriYear}`;
+
+      return {
+        hijrah: hDate,
+        fasting: fasting,
+      };
     }
 
     getAllEvents() {
@@ -110,16 +160,34 @@ export default class Layout extends TrackerReact(React.Component) {
     }
 
     getPrayerTime() {
-      var currMonth = this.getDayDateMonth().currMonth;
-      var dateSG = this.getDayDateMonth().dateSG;
-      that = this;
-      Meteor.call('getPrayerTime', currMonth, dateSG, (error, result) => {
+      var today = new Date();
+      var query = {date: today.getDate(), month: today.getMonth() + 1, year: 2017};
+      prayertimes = PrayerTimes.find(query).fetch();
+      if (prayertimes.length == 0) {
+        return {
+            prayer: '',
+            currentPrayer: ''
+        }
+      }
 
-        that.setState({
-          prayer: result.displayPrayer,
-          currentPrayer: result.currPrayer,
-        })
-      })
+      var timeArray = prayertimes[0].times;
+      var displayPrayer = [];
+      var currTime = moment().tz("Asia/Brunei").format(); //raw time
+      var currPrayer;
+
+      for (var i = 0; i < 6; i++) {
+        rawTime = moment(timeArray[i]).tz("Asia/Brunei").format();
+        formattedTime = moment(timeArray[i]).tz("Asia/Brunei").format('HH:mm');
+        if (moment(rawTime).isBefore(currTime))
+            currPrayer = i;
+
+        displayPrayer.push(`${Object.keys(PRAYER)[i]}: ${formattedTime}`);
+      }
+
+      return {
+        prayer: displayPrayer,
+        currentPrayer: currPrayer,
+      };
     }
 
     getBgImage(){
@@ -146,8 +214,9 @@ export default class Layout extends TrackerReact(React.Component) {
 
         var events = this.getAllEvents(); //should be reactive cuz i'm using TrackerReact
         var todayEvents = this.getTodayEvents();
-
         var posts = this.getAllPosts();
+        var prayer = this.getPrayerTime();
+        var hijri = this.getHijrahDate();
 
         var image = this.getBgImage();
 
@@ -183,7 +252,7 @@ export default class Layout extends TrackerReact(React.Component) {
                 </div>
 
                 <div className="topMiddle center">
-                    <PrayerTimesWidget prayer={this.state.prayer} currentPrayer={this.state.currentPrayer}/>
+                    <PrayerTimesWidget prayer={prayer.prayer} currentPrayer={prayer.currentPrayer}/>
                 </div>
 
                 <div className="topAnnouncement center">
@@ -191,7 +260,7 @@ export default class Layout extends TrackerReact(React.Component) {
                 </div>
 
                 <div className="topRight">
-                    <HijrahWidget hijrah={this.state.hijrah} fast={this.state.fasting}/> {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
+                    <HijrahWidget hijrah={hijri.hijrah} fast={hijri.fasting}/> {/* <HijrahWidget hijrah={this.state.event[0]} /> */}
                     {/* <EventAll event={events}/> */}
                 </div>
 
