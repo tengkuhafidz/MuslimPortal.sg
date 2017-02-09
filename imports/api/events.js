@@ -10,7 +10,7 @@ import {
 
 const moment = require('moment');
 
-export const Events = new Mongo.Collection('events');
+export const Events = new Ground.Collection('events');
 
 if (Meteor.isServer) {
     var getAllEvents = () => {

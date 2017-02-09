@@ -4,7 +4,7 @@ import { check } from 'meteor/check';
 
 const moment = require('moment');
 
-export const Posts = new Mongo.Collection('posts');
+export const Posts = new Ground.Collection('posts');
 
 if (Meteor.isServer) {
 
@@ -15,7 +15,7 @@ if (Meteor.isServer) {
     var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei"); //date in Asia/Brunei full TZ format
     var yesterday = singaporeFullTZ.add(-1, 'days').startOf('day').unix();
 
-    const access_token = 'EAAaYA1tQ4gsBAPm9El3XXLE2ZCZBhLwz9y3yryWgLR3EjTNdepTjkercZBeUigEUgfD1P1p2h4ySvZAgjJuNYr3wYiMJ8CAd7KYJMPVtNFGtcfOYZBiOW8nO7e2s4LSp3tkp3zJDWgUOb7KLMB2hQbQiNDeSWWb4fdXWvDYZBUoAZDZD';
+    const access_token = 'EAAaYA1tQ4gsBAPCi7I7dYZCOnZAH4GG5qbfljZCLRHQ2kjPHbOMEpoE7l6Dz5aU79QipPpDZA1aqOBUhyYNydCM22U04A6AiDffWIsdsjyiMpfNx1LaXuKSDJShXpTRPPqXrsxL94FBAwh3HSnVLHNyl8djxvB8axEkTrtSfLwZDZD';
 
     for (var key in eventPages){
       displayPosts = []; //empty up for each new page
