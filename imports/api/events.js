@@ -17,7 +17,7 @@ if (Meteor.isServer) {
     var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei"); //date in Asia/Brunei full TZ format
     var yesterday = singaporeFullTZ.add(-1, 'days').startOf('day').unix();
 
-    const access_token = 'EAACOBJiX2AABAO3GwqOZAAAEuKxXXqMXtq4c21KOueZB37FocZCSKGZBZC2ZAcTyu6eejCRN1aul8nHh8aEVPA4uwSEbyv9J6Sl4o44mo9xFf6btZCzOvasppQmfJpHC3JhENMqEmuPZAsriC9I3NCKhd2A6U5U153WigVI7bWTadGilykxoKUww';
+    const access_token = 'EAAaYA1tQ4gsBAPCi7I7dYZCOnZAH4GG5qbfljZCLRHQ2kjPHbOMEpoE7l6Dz5aU79QipPpDZA1aqOBUhyYNydCM22U04A6AiDffWIsdsjyiMpfNx1LaXuKSDJShXpTRPPqXrsxL94FBAwh3HSnVLHNyl8djxvB8axEkTrtSfLwZDZD';
 
     //try using foreach to loop these
     eventPages = Meteor.call('getAllPages');
