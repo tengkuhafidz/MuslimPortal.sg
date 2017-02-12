@@ -10,7 +10,7 @@ export default class QuotesWidget extends React.Component{
   render(){
     var randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-    var twitterLink = `https://twitter.com/intent/tweet?text="${randomMessage.message}"%20(${randomMessage.hashtag})&hashtags=NUSMSReminds`
+    var twitterLink = `https://twitter.com/intent/tweet?text="${randomMessage.message}"%20(${randomMessage.hashtag})%20-%20Via%20MyNUSMS%20Portal`
 
     return(
       <div className="center quoteArea">
