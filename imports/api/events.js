@@ -24,8 +24,6 @@ if (Meteor.isServer) {
             i++;
         } while (!Meteor.call('isTokenValid', access_token) || i > 2)
 
-        console.log('NOW access_token: ', access_token);
-
         currStrtotime = moment().format('YYYY-MM-DD');
         endUnixTime = moment().add(6, 'days').endOf('day').unix();
 

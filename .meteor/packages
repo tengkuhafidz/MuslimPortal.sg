@@ -44,6 +44,6 @@ okgrow:analytics
 session@1.1.7
 percolate:synced-cron
 timbrandin:fetch
-appcache
+appcache@1.0.12
 ground:db
-shell-server
+shell-server@0.2.1
