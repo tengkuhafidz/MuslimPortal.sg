@@ -70,17 +70,6 @@ export default class Layout extends TrackerReact(React.Component) {
 
         this.refs.colorMode.setBgColor()
 
-        // $.getScript( "https://cdn.onesignal.com/sdks/OneSignalSDK.js" )
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push([
-            "init", {
-                appId: "3ba1c92b-4e88-49cf-ac32-daf8996231aa",
-                autoRegister: true,
-                notifyButton: {
-                    enable: false/* Set to false to hide */
-                }
-            }
-        ]);
 
     }
 
