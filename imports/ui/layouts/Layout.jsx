@@ -120,19 +120,21 @@ export default class Layout extends TrackerReact(React.Component) {
       var hijriYear = hijri.hijriYear;
 
       /* list can be expand */
-      const sunnahToFastDate = [13, 14, 15];
-      const sunnahToFastDay = [1, 4];
+      const sunnahToFastDate = [13, 14, 15]; //date in Hijri
+      const sunnahToFastDay = [1, 4]; //day of week 1 = Monday, 2 = Tues ...
 
-      var tmr = ((sunnahToFastDate.indexOf(hijriDate + 1) !== -1) || (sunnahToFastDay.indexOf(today.getDate()) !== -1));
-      var today = ((sunnahToFastDate.indexOf(hijriDate) !== -1) || (sunnahToFastDay.indexOf(today) !== -1));
+      var tmr = ((sunnahToFastDate.indexOf(hijriDate + 1) !== -1) || (sunnahToFastDay.indexOf(today.getDay() + 1) !== -1));
+      var today = ((sunnahToFastDate.indexOf(hijriDate) !== -1) || (sunnahToFastDay.indexOf(today.getDay()) !== -1));
 
       var fasting = '';
 
       if (hijriMonthName !== 'Ramadhan') {
 
-        if (tmr)// TOMORROW
+        if (today && tmr)// TODAY
+          var fasting = 'today & tomorrow';
+        else if (tmr) // Tomorrow
           var fasting = 'tomorrow';
-        else if (today) //TODAY
+        else if (today) //both
           var fasting = 'today';
       }
 
