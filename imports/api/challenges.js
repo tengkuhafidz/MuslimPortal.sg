@@ -5,7 +5,7 @@ import { check } from 'meteor/check';
 
 //Future = Npm.require('fibers/future');
 // initialise a collection here. mongo collection name should be the file name.
-export const Challenges = new Ground.Collection('challenges');
+export const Challenges = new Mongo.Collection('challenges');
 
 if (Meteor.isServer) {
   //declare all publish relating to the collection here

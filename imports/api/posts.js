@@ -4,7 +4,7 @@ import { check } from 'meteor/check';
 
 const moment = require('moment');
 
-export const Posts = new Ground.Collection('posts');
+export const Posts = new Mongo.Collection('posts');
 
 if (Meteor.isServer) {
 

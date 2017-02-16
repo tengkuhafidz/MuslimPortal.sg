@@ -3,7 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 // initialise a collection here. mongo collection name should be the file name.
-export const Hijris = new Ground.Collection('hijris');
+export const Hijris = new Mongo.Collection('hijris');
 
 if (Meteor.isServer) {
   var getHijris = () => {
