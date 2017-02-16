@@ -29,9 +29,10 @@ Meteor.methods({
           'Valour': 'valour2017',
           'Rihlah': 'rihlah1438H',
           'Project ASA': 'nusprojectasa',
-          'OCIP': 'freshmencamp',
+          'FOC': 'freshmencamp',
           'BroNUS': 'BrothersOfNUS',
           'VOKS': 'voksnus',
+          'Nisaa': 'NisaaofNUS'
           // 'testing': 'noteaminI', //uncomment this when testing
       }
 
