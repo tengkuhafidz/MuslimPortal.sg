@@ -59,7 +59,7 @@ export default class Home extends TrackerReact(React.Component) {
 
     render() {
 
-        var challenge = this.getChallenge();
+        {/* var challenge = this.getChallenge();
         showChallenge = JSON.parse(localStorage.getItem("showChallenge")) //true if want to show challenge
 
         if (showChallenge == null)
@@ -68,17 +68,18 @@ export default class Home extends TrackerReact(React.Component) {
         if (challenge && showChallenge) //can switch view but NOT auto
             mainWidget = <Challenge/>
         else
-            mainWidget = <Greeting/>
-
-        switchScreenArea = challenge
+            mainWidget = <Greeting/> */}
+        mainWidget = <Greeting />
+        switchScreenArea = "";
+        {/* switchScreenArea = challenge
             ? <a className="betaFont halfSee white-text switch smallFont" onClick={this.handleClick.bind(this)}>[Switch View]</a>
-            : ""
+            : "" */}
 
         return (
             <div className="center mainArea ">
 
                 {mainWidget}
-                {switchScreenArea}
+                {/* switchScreenArea */}
             </div>
         )
     }
