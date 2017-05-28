@@ -5,6 +5,8 @@ import {Challenges} from '../../api/challenges.js'
 
 import Greeting from '../HomeWidget/Greeting.jsx'
 import Challenge from '../HomeWidget/Challenge.jsx'
+import RamadhanHopes from '../HomeWidget/RamadhanHopes.jsx'
+
 
 export default class Home extends TrackerReact(React.Component) {
 
@@ -45,6 +47,7 @@ export default class Home extends TrackerReact(React.Component) {
 
     }
 
+
     handleClick() {
         if (localStorage.getItem("showChallenge"))
             localStorage.setItem("showChallenge", !JSON.parse(localStorage.getItem("showChallenge")))
@@ -54,6 +57,13 @@ export default class Home extends TrackerReact(React.Component) {
         this.setState({
             showChallenge: !this.state.showChallenge
         })
+
+    }
+
+
+    getRamadhanHopes() {
+
+        
 
     }
 
@@ -69,11 +79,18 @@ export default class Home extends TrackerReact(React.Component) {
             mainWidget = <Challenge/>
         else
             mainWidget = <Greeting/> */}
-        mainWidget = <Greeting />
+
+
+
+        {/* mainWidget = <Greeting />
+
         switchScreenArea = "";
-        {/* switchScreenArea = challenge
+         switchScreenArea = challenge
             ? <a className="betaFont halfSee white-text switch smallFont" onClick={this.handleClick.bind(this)}>[Switch View]</a>
             : "" */}
+
+
+        var mainWidget = <RamadhanHopes />
 
         return (
             <div className="center mainArea ">
