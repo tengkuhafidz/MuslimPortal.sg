@@ -82,15 +82,15 @@ export default class Home extends TrackerReact(React.Component) {
 
 
 
-        {/* mainWidget = <Greeting />
-
+        var mainWidget = <Greeting />
+{/*
         switchScreenArea = "";
          switchScreenArea = challenge
             ? <a className="betaFont halfSee white-text switch smallFont" onClick={this.handleClick.bind(this)}>[Switch View]</a>
             : "" */}
 
 
-        var mainWidget = <RamadhanHopes />
+        // var mainWidget = <RamadhanHopes />
 
         return (
             <div className="center mainArea ">

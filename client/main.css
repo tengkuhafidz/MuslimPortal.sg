@@ -1,12 +1,15 @@
 .betaFont{
   font-family: 'Roboto Slab', cursive, sans-serif;
+
  }
  .cursiveFont{
    font-family: 'Pacifico', cursive;
  }
 
  html, .formalFont{
-  font-family: 'futura', helvetica, sans-serif;
+  /*font-family: 'futura', helvetica, sans-serif;*/
+  font-family: 'Quicksand', sans-serif;
+
 }
 
 body {
