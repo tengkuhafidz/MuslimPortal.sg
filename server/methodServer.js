@@ -1,9 +1,9 @@
-Future = Npm && Npm.require('fibers/future');
+// Future = Npm && Npm.require('fibers/future');
 
 const moment = require('moment-timezone');
 
 Meteor.methods({
-  
+
 
     getDayDateMonth: function() {
       var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
@@ -23,11 +23,7 @@ Meteor.methods({
     getAllPages: function() {
       eventPages = {
           'NUSMS': 'nusms',
-          'PBUH': 'PBUH.TheLightofLife.1438H',
           'IAS': 'nusms.ias',
-          'Project Link': 'projectlink2017',
-          'Valour': 'valour2017',
-          'Rihlah': 'rihlah1438H',
           'Project ASA': 'nusprojectasa',
           'FOC': 'freshmencamp',
           'BroNUS': 'BrothersOfNUS',
