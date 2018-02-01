@@ -91,7 +91,7 @@ export default class Layout extends TrackerReact(React.Component) {
 
     getHijrahDate() {
       var today = new Date();
-      var query = {date: today.getDate(), month: today.getMonth() + 1, year: 2017};
+      var query = {date: today.getDate(), month: today.getMonth() + 1, year: 2018};
       hijris = Hijris.find(query).fetch();
       if (hijris.length == 0) {
         return {
@@ -152,7 +152,7 @@ export default class Layout extends TrackerReact(React.Component) {
 
     getPrayerTime() {
       var today = new Date();
-      var query = {date: today.getDate(), month: today.getMonth() + 1, year: 2017};
+      var query = {date: today.getDate(), month: today.getMonth() + 1, year: 2018};
       prayertimes = PrayerTimes.find(query).fetch();
       if (prayertimes.length == 0) {
         return {

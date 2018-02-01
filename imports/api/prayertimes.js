@@ -9,7 +9,7 @@ if (Meteor.isServer) {
   var getPrayerTimes = () => {
     PrayerTimes.remove({});
 
-    const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2017.json';
+    const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2018.json';
     response = HTTP.get(url, {});
     var data = JSON.parse(response.content);
 
@@ -41,7 +41,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     getPrayerTimes();
-    
+
     // Stop jobs after 15 seconds
     //Meteor.setTimeout(function() { SyncedCron.stop(); }, 15 * 1000);
   });
