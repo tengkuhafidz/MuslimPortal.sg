@@ -9,7 +9,7 @@ if (Meteor.isServer) {
   var getHijris = () => {
     Hijris.remove({});
 
-    const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2017/SG-1.json';
+    const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2018/SG-1.json';
     response = HTTP.get(url, {});
     var data = JSON.parse(response.content);
 
@@ -41,7 +41,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     getHijris();
-    
+
     // Stop jobs after 15 seconds
     //Meteor.setTimeout(function() { SyncedCron.stop(); }, 15 * 1000);
   });
