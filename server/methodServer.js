@@ -1,11 +1,9 @@
-// Future = Npm && Npm.require('fibers/future');
-
 const moment = require('moment-timezone');
 
 Meteor.methods({
 
 
-    getDayDateMonth: function() {
+    getDayDateMonth() {
       var singaporeFullTZ = moment.tz(new Date, "Asia/Brunei").format(); //date in Asia/Brunei full TZ format
       var fullDateSG = singaporeFullTZ.split('T')
 
@@ -20,7 +18,7 @@ Meteor.methods({
       return {dateSG, today, currMonth}
     },
 
-    getAllPages: function() {
+    getAllPages() {
       eventPages = {
           'NUSMS': 'nusms',
           'IAS': 'nusms.ias',
@@ -35,7 +33,7 @@ Meteor.methods({
       return eventPages;
     },
 
-    getPermanentAccessToken: () => {
+    getPermanentAccessToken() {
       tokenOne = 'EAAaYA1tQ4gsBAB0hpTx3fplJVqHCbeWvQs9IbZADFDER9jMaDFSmSTSxD9TBYknjqzNQkfFu08ydhBilbr2q3mczvshtbce309nbZATl6Ru6GqYCxgiZAnk79egqZB0lvjQoiYVo7UncTGdCFgZCJRkRZC44dpZA20ZD';
       tokenTwo = 'EAAaYA1tQ4gsBAHpz3oz1bGYVQ4tk4nWeh5iXreCT09VmU3VKj0Q9851NMkmCSYZB24pZB71WCyTHvOCvSHZBthy5OqEaNfUcBp9vswxZCZCyEkJFlnWgTIcfZAhdlJOfUYK55dmMPvzHya8eLoK01WFRxYI9uav7p5TVnyJ2pMXwZDZD';
       tokenThree = 'EAAaYA1tQ4gsBAPCi7I7dYZCOnZAH4GG5qbfljZCLRHQ2kjPHbOMEpoE7l6Dz5aU79QipPpDZA1aqOBUhyYNydCM22U04A6AiDffWIsdsjyiMpfNx1LaXuKSDJShXpTRPPqXrsxL94FBAwh3HSnVLHNyl8djxvB8axEkTrtSfLwZDZD';
