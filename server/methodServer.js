@@ -27,7 +27,6 @@ Meteor.methods({
           'BroNUS': 'BrothersOfNUS',
           'VOKS': 'voksnus',
           'Nisaa': 'NisaaofNUS',
-          // 'testing': 'noteaminI', //uncomment this when testing
       }
 
       return eventPages;
