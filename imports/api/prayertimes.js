@@ -9,7 +9,7 @@ if (Meteor.isServer) {
   var getPrayerTimes = () => {
     PrayerTimes.remove({});
 
-    const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/2018.json';
+    const url = `https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/data/SG/1/${new Date().getFullYear()}.json`;
     response = HTTP.get(url, {});
     var data = JSON.parse(response.content);
 

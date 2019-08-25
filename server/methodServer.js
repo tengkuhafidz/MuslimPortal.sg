@@ -26,7 +26,7 @@ Meteor.methods({
           'FOC': 'freshmencamp',
           'BroNUS': 'BrothersOfNUS',
           'VOKS': 'voksnus',
-          'Nisaa': 'NisaaofNUS'
+          'Nisaa': 'NisaaofNUS',
           // 'testing': 'noteaminI', //uncomment this when testing
       }
 

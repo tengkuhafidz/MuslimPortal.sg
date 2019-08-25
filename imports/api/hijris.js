@@ -9,7 +9,7 @@ if (Meteor.isServer) {
   var getHijris = () => {
     Hijris.remove({});
 
-    const url = 'https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/2018/SG-1.json';
+    const url = `https://raw.githubusercontent.com/ruqqq/prayertimes-database/master/hijri/${new Date().getFullYear()}/SG-1.json`;
     response = HTTP.get(url, {});
     var data = JSON.parse(response.content);
 
